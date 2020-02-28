@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:9000/api/plants/' //BaseURL may need to change due to back-end.
+const baseURL = 'http://localhost:9000/hello' //BaseURL may need to change due to back-end.
 
  export default {
 

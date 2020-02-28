@@ -5,8 +5,19 @@
 </template>
 
 <script>
+import PlantService from './services/PlantService.js'
 
 export default {
+  name:'app',
+  data(){
+    return{
+      plants:[]
+    }
+  },
+  mounted(){
+    PlantService.getPlants()
+    .then(plants => this.plants = plants)
+  }
 }
 </script>
 

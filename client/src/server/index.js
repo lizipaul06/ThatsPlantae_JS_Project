@@ -2,6 +2,11 @@ const express = require("express");
 const token = require("./token.js");
 const app = express();
 const fetch = require('node-fetch');
+const cors = require('cors');
+const parser = require('body-parser');
+
+app.use(parser.json());
+app.use(cors());
 
 app.get("/hello", (req, res) => {
   fetch("https://trefle.io/api/plants/".concat(token).concat("&complete_data=true") )
