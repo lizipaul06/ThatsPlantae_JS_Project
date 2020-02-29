@@ -1,10 +1,16 @@
-const baseURL = 'http://localhost:9000/hello' //BaseURL may need to change due to back-end.
+const baseURL = 'http://localhost:9000/hello'
+const individualURL = 'http://localhost:9000/plant/'
 
  export default {
 
    //this function shall get us our plants(nae details)
    getPlants(){
      return fetch(baseURL)
+     .then(res => res.json())
+   },
+
+   getPlant(id){
+     return fetch(individualURL + id)
      .then(res => res.json())
    },
 
