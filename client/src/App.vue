@@ -36,24 +36,7 @@ export default {
 
 })
 }
-  // .then(this.getPlants())
 }
-  // .then(for (plant of plants){
-  //   this.plantDetails.push(PlantService.getPlant(plant.id))
-  // mounted(){
-  //   PlantService.getPlants()
-  //   .then(plants => this.plants = plants)
-  //   .then(() => {
-  //       let fetches = []
-  //       fetches.push(PlantService.getPlant(this.plants[0].id))
-  //       fetches.push(PlantService.getPlant(this.plants[1].id))
-  //       Promise.all(fetches)
-  //       .then(data => console.log(data))
-  //   })
-  // }  // })
-
-
-
     </script>
 
     <style lang="css" scoped>

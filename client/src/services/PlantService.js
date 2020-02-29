@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 
 const baseURL = 'http://localhost:9000/plants' //BaseURL may need to change due to back-end.
 const individualURL = 'http://localhost:9000/plant/'
 
 
+=======
+const baseURL = 'http://localhost:9000/hello'
+const individualURL = 'http://localhost:9000/plant/'
+>>>>>>> eb94fc2eda332963a3e8a2b3a544571602ad7465
 
  export default {
 
@@ -16,6 +21,10 @@ const individualURL = 'http://localhost:9000/plant/'
      return fetch(individualURL + id)
      .then(res => res.json())
    },
+<<<<<<< HEAD
+=======
+
+>>>>>>> eb94fc2eda332963a3e8a2b3a544571602ad7465
    //we should be able to post something to our DB.
    postPlant(payload){
      return fetch(baseURL, {
