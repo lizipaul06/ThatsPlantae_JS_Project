@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "cors": "^2.8.5",
     "vue": "^2.6.11",
     "webpack": "^4.41.6"
   },
