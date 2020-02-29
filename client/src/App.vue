@@ -7,6 +7,7 @@
 <script>
 import PlantService from './services/PlantService.js';
 import token from './server/token.js';
+// import Index from './server/index.js';
 
 export default {
   name:'app',
@@ -29,9 +30,10 @@ export default {
     PlantService.getPlants()
     .then(plants => this.plants = plants);
 
-    PlantService.getPlants().then(plants => (this.plantsinfo = plants.map(plant => plant.link.concat(token))))
+    PlantService.getPlants().then(plants => (this.plantsinfo = plants.map(plant => plant.link.concat(token))));
 
-     // [3, 1337, "foo"]
+this.objects = this.plantsinfo.map(info => PlantService.getPlant(info))
+
 
 
 
