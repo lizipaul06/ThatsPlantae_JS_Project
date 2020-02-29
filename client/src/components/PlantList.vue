@@ -11,12 +11,14 @@
 
 <script>
 import PlantListItem from "../components/PlantListItem.vue";
+import Search from "../components/Search.vue";
 
 export default {
   name: "plant-list",
   props: ["plants"],
   components: {
-    "plant-list-item": PlantListItem
+    "plant-list-item": PlantListItem,
+    "search": Search
   }
 };
 </script>

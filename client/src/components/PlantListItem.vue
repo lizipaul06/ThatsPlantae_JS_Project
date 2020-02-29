@@ -6,11 +6,15 @@
 </template>
 
 <script>
-import { eventBus } from "../main.js"
+import { eventBus } from "../main.js";
+import PlantDetail from '../components/PlantDetail.vue';
 
 export default {
   name: "plant-list-item",
-  props: ["plant"]
+  props: ["plant"],
+  components: {
+    "plant-detail": PlantDetail
+  }
 }
 
 </script>

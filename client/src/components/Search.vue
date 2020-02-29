@@ -1,11 +1,11 @@
 <template lang="html">
   <form v-on: submit.prevent>
-    <input type="text" v-model="search"
-    placeholder="search through our 'plantae'-ful array of plants..." v-on:keyup="searchForCountry">
-    <select v-on:change="handleSelect" v-model="selectedPlant">
+    <input id="plantBar" type="text" v-model="search"
+    placeholder="search through our 'plantae'-ful array of plants..." v-on:keyup="searchForPlant">
+    <!-- <select v-on:change="handleSelect" v-model="selectedPlant">
       <option disabled value="">Select a Plant....</option>
       <option v-for="plant in plants" :value="plant">{{plant.common_name}}</option>
-    </select>
+    </select> -->
   </form>
 
 </template>
@@ -37,7 +37,7 @@ export default {
       this.selectedPlant)
     },
     handleSelect(){
-      this.search = ""
+      this.search = "",
       eventBus.$emit('plant-selected',
       this.selectedPlant)
     }
@@ -46,4 +46,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#plantBar {
+  width: 600px;
+  height: 30px;
+  font-size: 25px;
+  display: flex;
+  margin: auto;
+}
 </style>
