@@ -1,5 +1,7 @@
-const baseURL = 'http://localhost:9000/hello' //BaseURL may need to change due to back-end.
-// const indivURL = 'http://localhost:9000/plant'
+const baseURL = 'http://localhost:9000/plants' //BaseURL may need to change due to back-end.
+const indivURL = 'http://localhost:9000/plant/'
+
+
  export default {
 
    //this function shall get us our plants(nae details)
@@ -8,9 +10,9 @@ const baseURL = 'http://localhost:9000/hello' //BaseURL may need to change due t
      .then(res => res.json())
    },
 
-   getPlant(link){
-     return fetch(link)
-     .then(res => res.json())
+   getPlant(id){
+     return fetch(indivURL + id)
+     // .then(res => res.json())
    },
 
 

@@ -16,32 +16,56 @@ export default {
       plants:[],
       plantsinfo:[],
       objects: []
+
     };
   },
-
-  // computed:{
-  //
-  //   }
-  //
-  // },
-
-
-  mounted(){
-    PlantService.getPlants()
-    .then(plants => this.plants = plants);
-
-    PlantService.getPlants().then(plants => (this.plantsinfo = plants.map(plant => plant.link.concat(token))));
-
-this.objects = this.plantsinfo.map(info => PlantService.getPlant(info))
+  methods: {
 
 
 
+      },
+      //           Promise.all(this.promises).then(data => {
+      //
+      //             const plantData = data.reduce(
+      //
+      //               (flat, toFlatten) => flat.concat(toFlatten),
+      //               []
+      //
+      //             )
+      // debugger;
+      //               this.objects = plantData;
+      //             }))
+      //
+      //     }
+      //
+      //
+      //   },
 
-}
-}
+      // computed:{
+      //
+      //   }
+      //
+      // },
 
-</script>
 
-<style lang="css" scoped>
+      mounted(){
+        PlantService.getPlants()
+        .then(plants => this.plants = plants).then(plants => this.plantsinfo = plants.map(plant =>
+             PlantService.getPlant(plant.id)))
+      //
+      //        .then( plantsinfo => this.objects = plantsinfo.map(id => PlantService.getPlant(id))).then(objects => Promise.all(objects))
+      //        .then(data => this.objects = data);
+      //
+      //        .then(data => PlantService.getPlant(this.plants[0].id))
+      //        .then(data => this.plantDetails.push(data))
+      //        .then(data => PlantService.getPlant(this.plants[1].id))
+      //        .then(data => this.plantDetails.push(data))
+      //   // this.objects = this.plantsinfo.map(id => PlantService.getPlant(id))
+      }
+    };
 
-</style>
+    </script>
+
+    <style lang="css" scoped>
+
+    </style>
