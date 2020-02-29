@@ -14,13 +14,17 @@ app.get("/hello", (req, res) => {
   .then(data => res.send(data))
 });
 
-// app.fetch("/plant")
 
-// app.post("/hello", (req, res) => {
-//   fetch("https://trefle.io/api/plants/".concat(token) )
-//   .then(res => res.json())
-//   .then(data => res.send(data))
-// });
+// app.get("/hello", (req, res) => {
+//   fetch("https://trefle.io/api/plants/:id").concat(token) )
+// //   .then(res => res.json())
+// //   .then(data => res.send(data))
+// // });
+
+getInfo(link){
+  fetch(`${link}`.concat(token))
+  .then(res => res.json())
+};
 
 app.listen(9000, () => {
   console.log("Server is listening on port: 9000");

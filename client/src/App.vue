@@ -5,25 +5,41 @@
 </template>
 
 <script>
-import PlantService from './services/PlantService.js'
+import PlantService from './services/PlantService.js';
+import token from './server/token.js';
 
 export default {
   name:'app',
   data(){
     return{
-      plants:[]
-    }
+      plants:[],
+      plantsinfo:[],
+      objects: []
+    };
   },
+
+  // computed:{
+  //
+  //   }
+  //
+  // },
+
+
   mounted(){
     PlantService.getPlants()
-    .then(plants => this.plants = plants)
-  }
+    .then(plants => this.plants = plants);
+
+    PlantService.getPlants().then(plants => (this.plantsinfo = plants.map(plant => plant.link.concat(token))))
+
+     // [3, 1337, "foo"]
+
+
+
 }
+}
+
 </script>
 
 <style lang="css" scoped>
-.body {
-  font-family: cursive;
-  font-size: 60px;
-}
+
 </style>
