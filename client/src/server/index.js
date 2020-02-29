@@ -16,7 +16,7 @@ app.get("/plants", (req, res) => {
 
 app.get("/plant/:id", (req, res) => {
   fetch("http://trefle.io/api/plants/" + req.params.id + token)
-  .then(res => res.json())
+  .then(res => JSON.stringify(res))
   .then(data => res.send(data))
 });
 
