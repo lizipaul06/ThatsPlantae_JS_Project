@@ -6,7 +6,7 @@ const createRouter = function (collection) {
 
   const router = express.Router();
 
-  router.get('/garden', (req, res) => {
+  router.get('/', (req, res) => {
     collection
     .find()
     .toArray()
@@ -18,7 +18,7 @@ const createRouter = function (collection) {
     });
   });
 
-  router.get('/garden/:id', (req, res) => {
+  router.get('/:id', (req, res) => {
     const id = req.params.id
     collection
     .findOne({_id: ObjectID(id)})
@@ -30,7 +30,7 @@ const createRouter = function (collection) {
     });
   });
 
-  router.delete('/garden/:id', (req, res) => {
+  router.delete('/:id', (req, res) => {
     const id = req.params.id
     collection
     .deleteOne({_id: ObjectID(id)})
@@ -42,7 +42,7 @@ const createRouter = function (collection) {
     });
   });
 
-  router.post('/garden', (req, res) => {
+  router.post('/', (req, res) => {
     const newData = req.body;
     collection
     .insertOne(newData)
@@ -56,7 +56,7 @@ const createRouter = function (collection) {
     });
   });
 
-  router.put('/garden/:id', (req, res) => {
+  router.put('/:id', (req, res) => {
     const id = req.params.id;
     const updatedData = req.body;
 
