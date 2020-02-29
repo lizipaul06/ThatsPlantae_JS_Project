@@ -1,68 +1,58 @@
 <template lang="html">
   <div class="body">
     <p>That's Plantae!</p>
+    <ul>
+    <li v-for="(plant, index) in this.plantData" :key="index" :plant="plant"> {{plant.common_name}} </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import PlantService from './services/PlantService.js';
-import token from './server/token.js';
-// import Index from './server/index.js';
+import PlantService from './services/PlantService.js'
 
 export default {
   name:'app',
   data(){
     return{
       plants:[],
-      plantsinfo:[],
-      objects: []
-
-    };
+      plantData: [],
+      plantDetails: []
+    }
   },
   methods: {
+  },
+
+  mounted(){
+  PlantService.getPlants()
+  .then(plants => this.plants = plants)
+  .then(() => {
+      let fetches = []
+      fetches = this.plants.filter(plant => PlantService.getPlant(plant.id))
+      // fetches.push(PlantService.getPlant(this.plants[1].id))
+
+      Promise.resolve(fetches).then(data => this.plantData = data)
 
 
 
-      },
-      //           Promise.all(this.promises).then(data => {
-      //
-      //             const plantData = data.reduce(
-      //
-      //               (flat, toFlatten) => flat.concat(toFlatten),
-      //               []
-      //
-      //             )
-      // debugger;
-      //               this.objects = plantData;
-      //             }))
-      //
-      //     }
-      //
-      //
-      //   },
-
-      // computed:{
-      //
-      //   }
-      //
-      // },
+})
+}
+  // .then(this.getPlants())
+}
+  // .then(for (plant of plants){
+  //   this.plantDetails.push(PlantService.getPlant(plant.id))
+  // mounted(){
+  //   PlantService.getPlants()
+  //   .then(plants => this.plants = plants)
+  //   .then(() => {
+  //       let fetches = []
+  //       fetches.push(PlantService.getPlant(this.plants[0].id))
+  //       fetches.push(PlantService.getPlant(this.plants[1].id))
+  //       Promise.all(fetches)
+  //       .then(data => console.log(data))
+  //   })
+  // }  // })
 
 
-      mounted(){
-        PlantService.getPlants()
-        .then(plants => this.plants = plants).then(plants => this.plantsinfo = plants.map(plant =>
-             PlantService.getPlant(plant.id)))
-      //
-      //        .then( plantsinfo => this.objects = plantsinfo.map(id => PlantService.getPlant(id))).then(objects => Promise.all(objects))
-      //        .then(data => this.objects = data);
-      //
-      //        .then(data => PlantService.getPlant(this.plants[0].id))
-      //        .then(data => this.plantDetails.push(data))
-      //        .then(data => PlantService.getPlant(this.plants[1].id))
-      //        .then(data => this.plantDetails.push(data))
-      //   // this.objects = this.plantsinfo.map(id => PlantService.getPlant(id))
-      }
-    };
 
     </script>
 

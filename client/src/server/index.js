@@ -15,32 +15,10 @@ app.get("/plants", (req, res) => {
 });
 
 app.get("/plant/:id", (req, res) => {
-  fetch("http://trefle.io/api/plants/".concat(req.params.id).concat(token))
+  fetch("http://trefle.io/api/plants/" + req.params.id + token)
   .then(res => res.json())
   .then(data => res.send(data))
-})
-
-
-// app.get("/plant/:id", (req,res) =>{
-//   fetch(payload =("https://trefle.io/api/plants/".concat(token)),{
-//   method: 'POST',
-//   body: JSON.stringify(payload),
-//   headers: {'Content-Type': 'application/json'}
-// })
-//   .then(res => res.json())
-// });
-
-
-// app.get("/hello", (req, res) => {
-//   fetch("https://trefle.io/api/plants/:id").concat(token) )
-// //   .then(res => res.json())
-// //   .then(data => res.send(data))
-// // });
-//
-// getInfo(link){
-//   fetch(`${link}`.concat(token))
-//   .then(res => res.json())
-// };
+});
 
 app.listen(9000, () => {
   console.log("Server is listening on port: 9000");
