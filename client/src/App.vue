@@ -6,7 +6,10 @@
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
         {{plant.common_name}}</li>
       </ul> -->
-      <my-garden></my-garden>
+      <!-- After search working, click the plant to show the details in the following format
+            the first item of the plantDetails array used for reference -->
+      <plant-detail :plant="plantDetails[0]"/>
+      <my-garden/>
     </div>
   </template>
 
@@ -18,13 +21,16 @@
 
   // Added MyGarden to frontpage for visibility as no router added yet
   import MyGarden from './components/MyGarden.vue'
+  // Added PlantDetail to see properties
+  import PlantDetail from './components/PlantDetail'
 
   export default {
     name:'app',
     components: {
       "plant-list": PlantList,
       "search": Search,
-      "my-garden": MyGarden
+      "my-garden": MyGarden,
+      "plant-detail": PlantDetail
     },
     data(){
       return{
