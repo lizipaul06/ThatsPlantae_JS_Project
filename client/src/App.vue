@@ -1,11 +1,11 @@
 <template lang="html">
   <div class="body">
     <p id="title">That's Plantae!</p>
-    <search :plants="plants" />
+    <!-- <search :plants="plants" /> -->
     <!-- <plant-list :plants="plants"></plant-list> -->
     <p>That's Plantae!</p>
     <ul>
-    <li v-for="(plant, index) in this.plantData" :key="index" :plant="plant"> {{plant.common_name}} </li>
+    <!-- <li v-for="(plant, index) in this.plantData" :key="index" :plant="plant"> {{plant.common_name}} </li> -->
     </ul>
   </div>
 </template>
@@ -37,18 +37,20 @@ export default {
   .then( plants => this.plantData = plants.map(plant => plant.id))
   .then(() => {
       let fetches = []
-      this.plantData.map(id => ( fetches.push(PlantService.getPlant(id))))
-      console.log(fetches)
- // }).catch((fetches) => {console.log(fetches)}).then(res => res.json())
- //  .then(res => {
- //      console.log(res.data); // Here I get what I need
- //      this.plantDetails = res.data;
-// .then(data => console.log(data))
+      this.plantData.map(id => ( (PlantService.getPlant(id)
+            .then(res => {
+                // console.log(res); // Here I get what I need
+                this.plantDetails.push(res);
+            }))
+          ))
+
+ // function gets promise for each plant waits for a response and then pushes it into the details array
         })
+      }
+    }
 
-      // Promise.resolve(this.plantData)
-      // .then(data => this.plantData = data.filter(data => data.PromiseStatus = "resolved"))
-
+  
+</script>
 
 <style lang="css" scoped>
 .body {
@@ -71,5 +73,3 @@ export default {
 
 
 </style>
-
-      
