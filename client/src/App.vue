@@ -725,7 +725,6 @@ export default {
   },
   methods: {
   },
-
   mounted(){
     PlantService.getPlants()
     .then( plants => this.plantData = plants.map(plant => plant.id))
@@ -734,11 +733,22 @@ export default {
       this.plantData.map(id => ( fetches.push(PlantService.getPlant(id))))
       console.log(fetches)
     })
+
+    // PlantService.getPlants()
+    // .then( plants => this.plantData = plants.map(plant => plant.id))
+    // .then(() => {
+    //   let fetches = []
+    //   this.plantData.map(id => ( fetches.push(PlantService.getPlant(id))))
+    //   console.log(fetches)
+    //   Promise.all(fetches).then(data => console.log(data))
+    // })
   }
+
 }
 </script>
 
 <style lang="css" scoped>
+
 .body {
   font-family: cursive;
   font-size: 60px;
