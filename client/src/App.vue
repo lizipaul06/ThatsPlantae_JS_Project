@@ -26,6 +26,8 @@ export default {
       plants:[],
       plantData: [],
       plantDetails: [],
+      // an array of fake plants to use to test search function etc.
+      // To be replaced by plantDetails once data returning correctly
       fakePlants: [
         {
           "varieties": [
