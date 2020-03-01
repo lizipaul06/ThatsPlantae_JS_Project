@@ -1,9 +1,9 @@
 <template lang="html">
-
-  <div class="">
-    <p>All The Plants In My Garden</p>
+<div class="">
+  <div class="fave-plant-list">
     <fave-plant v-for="favePlant in myPlants" :favePlant="favePlant" />
   </div>
+</div>
 
 </template>
 
@@ -49,4 +49,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.fave-plant-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 </style>
