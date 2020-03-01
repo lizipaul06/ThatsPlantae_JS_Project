@@ -6,6 +6,7 @@
     <ul>
       <li v-for="(plant, index) in this.plants" :key="index" :plant="plant"> {{plant.common_name}} </li>
     </ul>
+    <my-garden></my-garden>
   </div>
 </template>
 
@@ -15,11 +16,15 @@ import { eventBus } from './main.js';
 import PlantList from './components/PlantList.vue';
 import Search from './components/Search.vue';
 
+// Added MyGarden to frontpage for visibility as no router added yet
+import MyGarden from './components/MyGarden.vue'
+
 export default {
   name:'app',
   components: {
     "plant-list": PlantList,
-    "search": Search
+    "search": Search,
+    "my-garden": MyGarden
   },
   data(){
     return{
