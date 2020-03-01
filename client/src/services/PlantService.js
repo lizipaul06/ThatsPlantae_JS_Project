@@ -1,5 +1,5 @@
 
-const dbBaseURL = 'http://localhost:3000/api/plants'
+const dbBaseURL = 'http://localhost:3000/api/garden'
 const baseURL = 'http://localhost:9000/plants' //BaseURL may need to change due to back-end.
 const individualURL = 'http://localhost:9000/plant/'
 
@@ -17,6 +17,12 @@ const individualURL = 'http://localhost:9000/plant/'
    // again from the front end server via api
    getPlant(id){
      return fetch(individualURL + id)
+     .then(res => res.json())
+   },
+
+   // retrieve all the plants from our garden DB
+   getMyPlants(){
+     return fetch(dbBaseURL)
      .then(res => res.json())
    },
    //we should be able to post something to our mongo DB
