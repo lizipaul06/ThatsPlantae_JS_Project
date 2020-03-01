@@ -2,7 +2,7 @@
   <div class="body">
     <p id="title">That's Plantae!</p>
     <search :plants="plants" />
-    <plant-list :plants="fakePlants"></plant-list>
+    <!-- <plant-list :plants="fakePlants"></plant-list> -->
     <ul>
       <li v-for="(plant, index) in this.plants" :key="index" :plant="plant"> {{plant.common_name}} </li>
     </ul>
