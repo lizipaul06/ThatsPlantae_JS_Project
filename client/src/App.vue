@@ -4,7 +4,7 @@
     <search :plants="plants" />
     <plant-list :plants="fakePlants"></plant-list>
     <ul>
-      <li v-for="(plant, index) in this.plants" :key="index" :plant="plant"> {{plant.common_name}} </li>
+      <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant"> {{plant.common_name}} </li>
     </ul>
   </div>
 </template>
@@ -727,42 +727,24 @@ export default {
   },
   methods: {
   },
+
   mounted(){
     PlantService.getPlants()
     .then( plants => this.plantData = plants.map(plant => plant.id))
-    .then(() => {
-      let fetches = []
-<<<<<<< HEAD
+  .then(() => {
       this.plantData.map(id => ( (PlantService.getPlant(id)
-            .then(res => {
-                // console.log(res); // Here I get what I need
-                this.plantDetails.push(res);
-            }))
-          ))
-
- // function gets promise for each plant waits for a response and then pushes it into the details array
-        })
-      }
+          .then(res => {
+              // console.log(res); // Here I get what I need
+              this.plantDetails.push(res);
+          }))
+        ))
+// function gets promise for each plant waits for a response and then pushes it into the details array
+      })
     }
-
-
-=======
-      this.plantData.map(id => ( fetches.push(PlantService.getPlant(id))))
-      console.log(fetches)
-    })
-
-    // PlantService.getPlants()
-    // .then( plants => this.plantData = plants.map(plant => plant.id))
-    // .then(() => {
-    //   let fetches = []
-    //   this.plantData.map(id => ( fetches.push(PlantService.getPlant(id))))
-    //   console.log(fetches)
-    //   Promise.all(fetches).then(data => console.log(data))
-    // })
   }
 
-}
->>>>>>> develop
+
+
 </script>
 
 <style lang="css" scoped>
