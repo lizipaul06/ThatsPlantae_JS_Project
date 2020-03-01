@@ -1,0 +1,19 @@
+{
+  "name": "week8_project_thatsplantae",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizipaul06/week8_project_thatsplantae.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lizipaul06/week8_project_thatsplantae/issues"
+  },
+  "homepage": "https://github.com/lizipaul06/week8_project_thatsplantae#readme"
+}

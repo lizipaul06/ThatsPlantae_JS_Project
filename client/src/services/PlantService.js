@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+
 
 const baseURL = 'http://localhost:9000/plants' //BaseURL may need to change due to back-end.
 const individualURL = 'http://localhost:9000/plant/'
@@ -15,8 +15,6 @@ const individualURL = 'http://localhost:9000/plant/'
    getPlant(id){
      return fetch(individualURL + id)
      .then(res => res.json())
-
-
    },
    //we should be able to post something to our DB.
    postPlant(payload){
