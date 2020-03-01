@@ -2,9 +2,10 @@
   <div class="body">
     <p id="title">That's Plantae!</p>
     <search :plants="plants" />
-    <!-- <plant-list :plants="fakePlants"></plant-list> -->
     <ul>
-      <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant"> {{plant.common_name}} </li>
+      <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
+        {{plant.common_name}}</li>
+
     </ul>
     <my-garden></my-garden>
   </div>
@@ -51,8 +52,6 @@ export default {
     }
   }
 
-
-
 </script>
 
 <style lang="css" scoped>
@@ -74,7 +73,6 @@ export default {
   justify-content: center;
   color: white;
 }
-
 
 
 </style>
