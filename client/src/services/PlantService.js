@@ -1,11 +1,12 @@
 
-const dbBaseURL = 'http://localhost:3000/api/garden'
+const dbBaseURL = 'http://localhost:3000/api/garden/'
 const baseURL = 'http://localhost:9000/plants' //BaseURL may need to change due to back-end.
 const individualURL = 'http://localhost:9000/plant/'
 
 
  export default {
 
+// API ROUTES
    //this function shall get us our plants(nae details)
    // from the front end server via the api
    getPlants(){
@@ -20,6 +21,7 @@ const individualURL = 'http://localhost:9000/plant/'
      .then(res => res.json())
    },
 
+// MONGO DB ROUTES
    // retrieve all the plants from our garden DB
    getMyPlants(){
      return fetch(dbBaseURL)
@@ -48,7 +50,7 @@ const individualURL = 'http://localhost:9000/plant/'
 
    //one of our plants from out db can be deleted
    deletePlant(id, payload){
-     return fetch(baseURL + id, {
+     return fetch(dbBaseURL + id, {
        method: 'DELETE'
      })
    }

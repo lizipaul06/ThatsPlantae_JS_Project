@@ -27,12 +27,17 @@ export default {
     eventBus.$on('plant-added', plant =>
     this.myPlants.push(plant));
 
-    eventBus.$on('plant-deleted', id => {
-      const index =
-      this.plants.findIndex(plant =>
-      plant._id === id);
-      this.myPlants.splice(index, 1);
-    })
+    eventBus.$on('plant-deleted', (id) => {
+			let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
+			this.myPlants.splice(index, 1)
+		})
+
+    // eventBus.$on('plant-deleted', id => {
+    //   const index =
+    //   this.myPlants.findIndex(plant =>
+    //   favePlant._id === id);
+    //   this.myPlants.splice(index, 1);
+    // })
   },
   methods: {
     fetchData(){

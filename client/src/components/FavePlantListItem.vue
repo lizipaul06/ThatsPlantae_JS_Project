@@ -14,7 +14,10 @@ export default {
   name: "fave-plant",
   props: ['favePlant'],
   methods:{
-
+    handleDelete(){
+      PlantService.deletePlant(this.favePlant._id)
+      .then(() => eventBus.$emit("plant-deleted", this.favePlant._id))
+    }
   }
 }
 </script>
