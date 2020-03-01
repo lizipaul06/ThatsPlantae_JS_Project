@@ -12,12 +12,15 @@ app.get("/plants", (req, res) => {
   fetch("https://trefle.io/api/plants/".concat(token).concat("&complete_data=true") )
   .then(res => res.json())
   .then(data => res.send(data))
+
 });
 
 app.get("/plant/:id", (req, res) => {
   fetch("http://trefle.io/api/plants/".concat(req.params.id).concat(token))
   .then(res => res.json())
-  .then(data => res.send(data))
+.then(data => res.send(data))
+
+
 })
 
 

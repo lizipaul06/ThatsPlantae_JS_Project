@@ -1,5 +1,7 @@
+const fetch = require('node-fetch')
+
 const baseURL = 'http://localhost:9000/plants' //BaseURL may need to change due to back-end.
-const indivURL = 'http://localhost:9000/plant/'
+const individualURL = 'http://localhost:9000/plant/'
 
 
  export default {
@@ -11,11 +13,11 @@ const indivURL = 'http://localhost:9000/plant/'
    },
 
    getPlant(id){
-     return fetch(indivURL + id)
-     // .then(res => res.json())
+     return fetch(individualURL + id)
+     .then(res => res.json())
+
+
    },
-
-
    //we should be able to post something to our DB.
    postPlant(payload){
      return fetch(baseURL, {
