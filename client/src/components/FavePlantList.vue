@@ -34,6 +34,11 @@ export default {
 			let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
 			this.myPlants.splice(index, 1)
 		})
+
+    eventBus.$on('comment-added', (aPlant) => {
+    const favePlant = this.myPlants.find(favePlant => favePlant._id === aPlant._id)
+    console.log(aPlant)
+    })
   },
   methods: {
     // whenever the page loads, retrieve my fave plants from the garden db collection
