@@ -2,13 +2,15 @@
   <div class="body">
     <p id="title">That's Plantae!</p>
     <search :plants="plants" />
+    <plant-list :plantData="plantData"></plant-list>
+      <plant-detail :plantDetailed="plantDetailed"/>
     <!-- <ul>
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
         {{plant.common_name}}</li>
       </ul> -->
       <!-- After search working, click the plant to show the details in the following format
             the first item of the plantDetails array used for reference -->
-      <plant-detail :plant="plantDetails[0]"/>
+
       <my-garden/>
     </div>
   </template>
@@ -26,24 +28,31 @@
 
 export default {
   name:'app',
+
+  data(){
+    return{
+      plants:[],
+      plantData: [],
+      selectedPlant: null,
+      plantDetailed: null
+
+
+    }
+  },
   components: {
     "plant-list": PlantList,
     "search": Search,
     "my-garden": MyGarden,
     "plant-detail": PlantDetail
-  },
-  data(){
-    return{
-      plants:[],
-      plantData: [],
-      plantDetails: [],
-      // an array of fake plants to use to test search function etc.
-      // To be replaced by plantDetails once data returning correctly
 
-
-    }
   },
+
   methods: {
+
+    //     .then(res => {
+    //       // console.log(res); // Here I get what I need
+    //       this.plantDetails.push(res);
+    //     })
   },
 
   mounted(){
@@ -52,7 +61,14 @@ export default {
       // debugger;
       // return this.plantData = plants.map(plant => plant.id)
       this.plantData = plants;
-    })
+    });
+
+    eventBus.$on('plant-selected', (plant) => {
+      this.selectedPlant = plant
+  PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res) 
+    });
+
+
     // we have got plant overview objects
 
   //   .then(() => {
