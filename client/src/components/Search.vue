@@ -2,10 +2,10 @@
   <form v-on: submit.prevent>
     <input id="plantBar" type="text" v-model="search"
     placeholder="search through our 'plantae'-ful array of plants..." v-on:keyup="searchForPlant">
-    <!-- <select v-on:change="handleSelect" v-model="selectedPlant">
+    <select v-on:change="handleSelect" v-model="selectedPlant">
       <option disabled value="">Select a Plant....</option>
-      <option v-for="plant in plants" :value="plant">{{plant.common_name}}</option>
-    </select> -->
+      <option v-for="plant in this.plantDetails" :value="plant">{{plant.common_name}}</option>
+    </select>
   </form>
 
 </template>
@@ -24,10 +24,10 @@ export default {
       "selectedPlant": {},
     }
   },
-  props: ["plants"],
+  props: ["plantDetails"],
   methods: {
     searchForPlant(){
-      let foundPlant = this.plants.find((plant) => {
+      let foundPlant = this.plantDetails.find((plant) => {
         return
         plant.common_name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
       })
