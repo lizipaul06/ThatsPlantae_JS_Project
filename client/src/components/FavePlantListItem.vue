@@ -1,12 +1,13 @@
 <template lang="html">
   <div class="plant">
     <h3>{{favePlant.common_name}}</h3>
-    <!-- <p>{{favePlant.scientific_name}}</p> -->
     <div v-if="favePlant.images.length > 0">
+      <!-- If the plant has more than one image, just show the first one -->
       <img :src="favePlant.images[0].url" alt="a plant">
     </div>
+    <!-- If the plant has no images, show a placeholder instead -->
     <div v-if="favePlant.images.length === 0">
-      <img src="../../public/placeholder_plant.jpg" alt="">
+      <img src="../../public/placeholder_plant.jpg" alt="a rubber plant placeholder image">
     </div>
     <button v-on:click="handleDelete">Remove From Garden</button>
 
