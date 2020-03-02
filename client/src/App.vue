@@ -2,22 +2,35 @@
   <div class="body">
     <p id="title">That's Plantae!</p>
     <search :plants="plants" />
-    <plant-list :plants="this.plantDetails"></plant-list>
+    <!-- <ul>
+      <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
+        {{plant.common_name}}</li>
+      </ul> -->
+      <!-- After search working, click the plant to show the details in the following format
+            the first item of the plantDetails array used for reference -->
+      <plant-detail :plant="plantDetails[0]"/>
+      <my-garden/>
+    </div>
+  </template>
 
-  </div>
-</template>
+  <script>
+  import PlantService from './services/PlantService.js';
+  import { eventBus } from './main.js';
+  import PlantList from './components/PlantList.vue';
+  import Search from './components/Search.vue';
+  // Added MyGarden to frontpage for visibility as no router added yet
+  import MyGarden from './components/MyGarden.vue'
+  // Added PlantDetail to see properties
+  import PlantDetail from './components/PlantDetail'
 
-<script>
-import PlantService from './services/PlantService.js';
-import { eventBus } from './main.js';
-import PlantList from './components/PlantList.vue';
-import Search from './components/Search.vue';
 
 export default {
   name:'app',
   components: {
     "plant-list": PlantList,
-    "search": Search
+    "search": Search,
+    "my-garden": MyGarden,
+    "plant-detail": PlantDetail
   },
   data(){
     return{
@@ -41,7 +54,7 @@ export default {
       this.plantData = plants;
     })
     // we have got plant overview objects
-    
+
   //   .then(() => {
   //     this.plantData.map(id => ( (PlantService.getPlant(id)
   //     .then(res => {
@@ -55,14 +68,13 @@ export default {
 }
 
 
-
 </script>
 
 <style lang="css" scoped>
 
 .body {
   font-family: cursive;
-  font-size: 60px;
+  font-size: 40px;
   background: url('../public/background.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -77,7 +89,6 @@ export default {
   justify-content: center;
   color: white;
 }
-
 
 
 </style>
