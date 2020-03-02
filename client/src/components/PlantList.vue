@@ -1,7 +1,6 @@
 <template lang="html">
   <form v-on:submit.prevent>
-    <input id="plantBar" type="text" v-model="search"
-    placeholder="search through our 'plantae'-ful array of plants..." v-on:keyup="searchForPlant">
+
     <select id="dropDownPlant" v-on:change="handleChange" v-model="selectedPlant">
       <option disabled value="Select a Plant"> Select a Plant </option>
         <option v-for="(plant, index) in plantData" :plant="plant"
@@ -30,7 +29,7 @@ export default {
 
   data(){
     return{
-      "search": "",
+
     "selectedPlant": null
   }
 },
@@ -39,17 +38,7 @@ export default {
 
   methods: {
 
-    searchForPlant(){
-      let foundPlant = this.plantData.find((plant) => {
-        return plant.common_name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
-      })
-      console.log(foundPlant)
-      this.selectedPlant = foundPlant
-
-      eventBus.$emit('plant-selected', this.selectedPlant)
-    },
     handleChange(){
-        this.search = "",
       eventBus.$emit('plant-selected', this.selectedPlant);
     },
 

@@ -61,7 +61,7 @@ export default {
     },
     matchAllTokens: {
       type: Boolean,
-      default: false
+      default: true
     },
     findAllMatches: {
       type: Boolean,
@@ -77,7 +77,7 @@ export default {
     },
     threshold: {
       type: Number,
-      default: 0.6
+      default: 0.0
     },
     location: {
       type: Number,

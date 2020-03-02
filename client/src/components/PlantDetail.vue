@@ -47,11 +47,12 @@ export default {
 
 <style lang="css" scoped>
 
-.plantDetail{
-  display: flex;
-  flex-direction: column;
-  padding: 5px;
-  align-items: center;
+div.plantDetail{
+  /* display: flex;
+  flex-direction: column; */
+margin: auto;
+  /* align-items: center; */
+  max-width: 100px;
 }
 
 img {
