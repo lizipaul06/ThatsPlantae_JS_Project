@@ -2,13 +2,15 @@
   <div class="body">
     <p id="title">That's Plantae!</p>
     <search :plants="plants" />
+    <plant-list :plantData="plantData"></plant-list>
+      <plant-detail :plantDetailed="plantDetailed"/>
     <!-- <ul>
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
         {{plant.common_name}}</li>
       </ul> -->
       <!-- After search working, click the plant to show the details in the following format
             the first item of the plantDetails array used for reference -->
-      <plant-detail :plant="plantDetails[0]"/>
+
       <my-garden/>
     </div>
   </template>
@@ -18,44 +20,69 @@
   import { eventBus } from './main.js';
   import PlantList from './components/PlantList.vue';
   import Search from './components/Search.vue';
-
   // Added MyGarden to frontpage for visibility as no router added yet
   import MyGarden from './components/MyGarden.vue'
   // Added PlantDetail to see properties
   import PlantDetail from './components/PlantDetail'
 
-  export default {
-    name:'app',
-    components: {
-      "plant-list": PlantList,
-      "search": Search,
-      "my-garden": MyGarden,
-      "plant-detail": PlantDetail
-    },
-    data(){
-      return{
-        plants:[],
-        plantData: [],
-        plantDetails: []
-      }
-    },
-    methods: {
-    },
 
-    mounted(){
-      PlantService.getPlants()
-      .then( plants => this.plantData = plants.map(plant => plant.id))
-      .then(() => {
-        this.plantData.map(id => ( (PlantService.getPlant(id)
-        .then(res => {
-          // console.log(res); // Here I get what I need
-          this.plantDetails.push(res);
-        }))
-      ))
-      // function gets promise for each plant waits for a response and then pushes it into the details array
-    })
-  }
+export default {
+  name:'app',
+
+  data(){
+    return{
+      plants:[],
+      plantData: [],
+      selectedPlant: null,
+      plantDetailed: null
+
+
+    }
+  },
+  components: {
+    "plant-list": PlantList,
+    "search": Search,
+    "my-garden": MyGarden,
+    "plant-detail": PlantDetail
+
+  },
+
+  methods: {
+
+    //     .then(res => {
+    //       // console.log(res); // Here I get what I need
+    //       this.plantDetails.push(res);
+    //     })
+  },
+
+  mounted(){
+    PlantService.getPlants()
+    .then( plants => {
+      // debugger;
+      // return this.plantData = plants.map(plant => plant.id)
+      this.plantData = plants;
+    });
+
+    eventBus.$on('plant-selected', (plant) => {
+      this.selectedPlant = plant
+  PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res) 
+    });
+
+
+    // we have got plant overview objects
+
+  //   .then(() => {
+  //     this.plantData.map(id => ( (PlantService.getPlant(id)
+  //     .then(res => {
+  //       // console.log(res); // Here I get what I need
+  //       this.plantDetails.push(res);
+  //     }))
+  //   ))
+  //   // function gets promise for each plant waits for a response and then pushes it into the details array
+  // })
 }
+}
+
 
 </script>
 

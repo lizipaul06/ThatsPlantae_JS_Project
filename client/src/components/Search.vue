@@ -3,7 +3,7 @@
     <VueFuseParams
     placeholder="search through our 'plantae'-ful array of plants..."
     event-name='results'
-    :list=''
+    :list='plants'
     :keys="['common_name', 'family_common_name']"
     />
 
