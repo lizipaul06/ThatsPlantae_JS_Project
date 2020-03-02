@@ -2,7 +2,7 @@
   <div class="body">
     <p id="title">That's Plantae!</p>
     <search :plantData="plantData" />
-    <plant-list :plantData="plantData"></plant-list>
+    <!-- <plant-list :plantData="plantData"></plant-list> -->
       <plant-detail :plantDetailed="plantDetailed"/>
     <!-- <ul>
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
