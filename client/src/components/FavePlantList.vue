@@ -24,6 +24,7 @@ export default {
   },
   mounted(){
     this.fetchData()
+
     eventBus.$on('plant-added', plant =>
     this.myPlants.push(plant));
 
@@ -42,7 +43,7 @@ export default {
   methods: {
     fetchData(){
       PlantService.getMyPlants()
-      .then(plants => this.myPlants = plants);
+      .then(favePlants => this.myPlants = favePlants);
     }
   }
 }

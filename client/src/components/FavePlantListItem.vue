@@ -1,8 +1,13 @@
 <template lang="html">
   <div class="plant">
-    <p>Name: {{favePlant.common_name}}</p>
+    <h3>{{favePlant.common_name}}</h3>
     <!-- <p>{{favePlant.scientific_name}}</p> -->
-    <img :src="favePlant.images[0].url" alt="a plant">
+    <div v-if="favePlant.images.length > 0">
+      <img :src="favePlant.images[0].url" alt="a plant">
+    </div>
+    <div v-if="favePlant.images.length === 0">
+      <img src="../../public/placeholder_plant.jpg" alt="">
+    </div>
     <button v-on:click="handleDelete">Remove From Garden</button>
 
   </div>
