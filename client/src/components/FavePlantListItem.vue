@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="plant">
     <h3>{{favePlant.common_name}}</h3>
-    <div v-if="favePlant.images.length > 0">
+    <div v-if="favePlant.images && favePlant.images.length > 0">
       <!-- If the plant has more than one image, just show the first one -->
       <img :src="favePlant.images[0].url" alt="a plant">
     </div>

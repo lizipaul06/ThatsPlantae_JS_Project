@@ -32,7 +32,7 @@ export default {
     },
     defaultAll: {
       type: Boolean,
-      default: true
+      default: false
     },
     list: {
       type: Array
