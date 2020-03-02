@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="body">
     <p id="title">That's Plantae!</p>
-    <search :plants="plants" />
-    <plant-list :plantData="plantData"></plant-list>
+    <search :plantData="plantData" />
+    <!-- <plant-list :plantData="plantData"></plant-list> -->
       <plant-detail :plantDetailed="plantDetailed"/>
     <!-- <ul>
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
@@ -65,7 +65,7 @@ export default {
 
     eventBus.$on('plant-selected', (plant) => {
       this.selectedPlant = plant
-  PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res) 
+  PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
     });
 
 
