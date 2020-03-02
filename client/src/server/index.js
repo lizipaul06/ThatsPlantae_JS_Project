@@ -9,19 +9,23 @@ app.use(parser.json());
 app.use(cors());
 
 app.get("/plants", (req, res) => {
-  fetch("https://trefle.io/api/plants/".concat(token).concat("&complete_data=true") )
+
+  fetch("https://trefle.io/api/plants/".concat(token).concat("&page=1&complete_data=true&page_size=1000") )
   .then(res => res.json())
-  .then(data => res.send(data))
+  .then(data => {
+    return res.send(data)
+  })
 
 });
 
 app.get("/plant/:id", (req, res) => {
+
   fetch("http://trefle.io/api/plants/".concat(req.params.id).concat(token))
   .then(res => res.json())
 .then(data => res.send(data))
 
 
-})
+});
 
 
 // app.get("/plant/:id", (req,res) =>{
