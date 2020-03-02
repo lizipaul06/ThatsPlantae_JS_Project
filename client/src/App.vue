@@ -1,9 +1,15 @@
 <template lang="html">
   <div class="body">
     <p id="title">That's Plantae!</p>
+<<<<<<< HEAD
     <plant-list :plantData="plantData"></plant-list>
       <plant-detail :plantDetailed="plantDetailed" v-if="selectedPlant">  </plant-detail>
       
+=======
+    <search :plantData="plantData" />
+    <!-- <plant-list :plantData="plantData"></plant-list> -->
+      <plant-detail :plantDetailed="plantDetailed"/>
+>>>>>>> develop
     <!-- <ul>
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
         {{plant.common_name}}</li>
@@ -65,11 +71,14 @@ export default {
     eventBus.$on('plant-selected', (plant) => {
       this.selectedPlant = plant
   PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
+<<<<<<< HEAD
     });
 
     eventBus.$on('plants-selected', (plant) => {
       this.selectedPlant = plant
   PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
+=======
+>>>>>>> develop
     });
 
 

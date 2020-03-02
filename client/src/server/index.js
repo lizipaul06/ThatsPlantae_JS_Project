@@ -10,7 +10,8 @@ app.use(cors());
 
 app.get("/plants", (req, res) => {
 
-  fetch("https://trefle.io/api/plants/".concat(token).concat("&page=1&complete_data=true&page_size=1953") )
+  fetch("https://trefle.io/api/plants/"
+  .concat(token).concat("&page=1&complete_data=true&page_size=1953") )
   .then(res => res.json())
   .then(data => {
     return res.send(data)

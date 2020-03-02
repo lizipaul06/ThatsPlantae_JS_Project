@@ -39,7 +39,7 @@ const individualURL = 'http://localhost:9000/plant/'
    },
 
    //we can update entries in our garden.
-   updateGarden(id, payload){
+   updatePlant(id, payload){
      return fetch(dbBaseURL + id, {
        method: 'PUT',
        body: JSON.stringify(payload),

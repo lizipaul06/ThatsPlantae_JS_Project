@@ -24,25 +24,27 @@ export default {
   },
   mounted(){
     this.fetchData()
+
+    // when a plant from the list is added, push this to the myPlants array
     eventBus.$on('plant-added', plant =>
     this.myPlants.push(plant));
 
+    // when a plant from the garden is deleted, slice this out of myPlants array
     eventBus.$on('plant-deleted', (id) => {
 			let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
 			this.myPlants.splice(index, 1)
 		})
 
-    // eventBus.$on('plant-deleted', id => {
-    //   const index =
-    //   this.myPlants.findIndex(plant =>
-    //   favePlant._id === id);
-    //   this.myPlants.splice(index, 1);
-    // })
+    eventBus.$on('comment-added', (aPlant) => {
+    const favePlant = this.myPlants.find(favePlant => favePlant._id === aPlant._id)
+    console.log(aPlant)
+    })
   },
   methods: {
+    // whenever the page loads, retrieve my fave plants from the garden db collection
     fetchData(){
       PlantService.getMyPlants()
-      .then(plants => this.myPlants = plants);
+      .then(favePlants => this.myPlants = favePlants);
     }
   }
 }
