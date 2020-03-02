@@ -732,37 +732,29 @@ export default {
     .then( plants => this.plantData = plants.map(plant => plant.id))
     .then(() => {
       let fetches = []
-<<<<<<< HEAD
+
       this.plantData.map(id => ( (PlantService.getPlant(id)
-            .then(res => {
-                // console.log(res); // Here I get what I need
-                this.plantDetails.push(res);
-            }))
-          ))
+      .then(res => {
+        // console.log(res); // Here I get what I need
+        this.plantDetails.push(res);
+      }))
+    ))
 
- // function gets promise for each plant waits for a response and then pushes it into the details array
-        })
-      }
-    }
+    // function gets promise for each plant waits for a response and then pushes it into the details array
+    this.plantData.map(id => ( fetches.push(PlantService.getPlant(id))))
+    console.log(fetches)
 
-
-=======
-      this.plantData.map(id => ( fetches.push(PlantService.getPlant(id))))
-      console.log(fetches)
-    })
-
-    // PlantService.getPlants()
-    // .then( plants => this.plantData = plants.map(plant => plant.id))
-    // .then(() => {
-    //   let fetches = []
-    //   this.plantData.map(id => ( fetches.push(PlantService.getPlant(id))))
-    //   console.log(fetches)
-    //   Promise.all(fetches).then(data => console.log(data))
-    // })
-  }
-
+  })
 }
->>>>>>> develop
+}
+
+
+
+
+
+
+
+
 </script>
 
 <style lang="css" scoped>
