@@ -1,15 +1,11 @@
 <template lang="html">
   <div class="body">
     <p id="title">That's Plantae!</p>
-<<<<<<< HEAD
-    <plant-list :plantData="plantData"></plant-list>
-      <plant-detail :plantDetailed="plantDetailed" v-if="selectedPlant">  </plant-detail>
-      
-=======
+
     <search :plantData="plantData" />
     <plant-list :plantData="plantData"></plant-list>
-      <plant-detail :plantDetailed="plantDetailed"/>
->>>>>>> develop
+      <plant-detail :plantDetailed="plantDetailed" v-if="selectedPlant"/>
+
     <!-- <ul>
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
         {{plant.common_name}}</li>
