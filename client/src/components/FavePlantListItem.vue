@@ -36,7 +36,7 @@ export default {
   data(){
     return{
       comments: [],
-      status: ""
+      statusg: ""
     }
   },
   props: ['favePlant'],

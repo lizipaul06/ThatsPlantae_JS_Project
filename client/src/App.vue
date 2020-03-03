@@ -11,24 +11,18 @@
         <plant-detail :plantDetailed="plantDetailed"/>
       </div>
       <div id="item">
-          <plant-list :plantData="plantData"></plant-list>
+        <plant-list :plantData="plantData"></plant-list>
 
       </div>
     </div>
 
-    <!-- <ul>
-    <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
-    {{plant.common_name}}</li>
-  </ul> -->
-  <!-- After search working, click the plant to show the details in the following format
-  the first item of the plantDetails array used for reference -->
-  <button class="accordion"> My Garden </button>
-  <div class="panel">
-  <my-garden></my-garden>
-</div>
+    <button class="accordion"> My Garden </button>
+    <div class="panel">
+      <my-garden></my-garden>
+    </div>
 
 
-</div>
+  </div>
 </template>
 
 <script>
@@ -67,34 +61,34 @@ export default {
   mounted(){
     PlantService.getPlants().then(plantData => this.plantData = plantData.sort(function (a, b){
 
-          if (a.common_name < b.common_name) {
-            return -1;
-          }
-          if (b.common_name < a.common_name) {
-            return 1;
-          }
-          return 0;
-        }))
-
-
-      var acc = document.getElementsByClassName("accordion");
-      var i;
-
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-          /* Toggle between adding and removing the "active" class,
-          to highlight the button that controls the panel */
-          this.classList.toggle("active");
-
-          /* Toggle between hiding and showing the active panel */
-          var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-            panel.style.display = "none";
-          } else {
-            panel.style.display = "block";
-          }
-        });
+      if (a.common_name < b.common_name) {
+        return -1;
       }
+      if (b.common_name < a.common_name) {
+        return 1;
+      }
+      return 0;
+    }))
+
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
 
     eventBus.$on('plant-selected', (plant) => {
       this.selectedPlant = plant
@@ -117,10 +111,7 @@ export default {
   font-size: 40px;
 }
 .plantDetail{
-  /* display: flex;
-  flex-direction: column; */
   margin: auto;
-  /* align-items: center; */
   max-width: 100px;
 }
 .panel {
@@ -140,8 +131,8 @@ export default {
   border: none;
   outline: none;
   transition: 0.4s;
-    font-size: 30px;
-      font-family: "Simonetta";
+  font-size: 30px;
+  font-family: "Simonetta";
 }
 
 #container {
