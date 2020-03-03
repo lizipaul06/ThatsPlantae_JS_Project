@@ -11,9 +11,11 @@
     "cors": "^2.8.5",
     "fuse": "^0.4.0",
     "fuse.js": "^3.4.6",
+    "konva": "^4.1.6",
     "vue": "^2.6.11",
     "vue-collapsible": "^2.0.0",
     "vue-fuse": "^2.2.1",
+    "vue-konva": "^2.1.1",
     "webpack": "^4.41.6"
   },
   "devDependencies": {

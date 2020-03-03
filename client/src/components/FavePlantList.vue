@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="">
   <div class="fave-plant-list">
-    <fave-plant v-for="favePlant in myPlants" :favePlant="favePlant" />
+    <fave-plant v-for="favePlant in myPlants" :favePlant="favePlant" :key="index"/>
   </div>
 </div>
 

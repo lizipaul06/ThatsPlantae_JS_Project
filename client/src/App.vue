@@ -21,7 +21,10 @@
       <my-garden></my-garden>
     </div>
 
-
+    <div class="canvas">
+      <h4>Arrange Your Garden</h4>
+      <canvas-component id="canvas"/>
+    </div>
   </div>
 </template>
 
@@ -36,6 +39,8 @@ import Search from './components/Search.vue';
 import MyGarden from './components/MyGarden.vue'
 // Added PlantDetail to see properties
 import PlantDetail from './components/PlantDetail'
+import Canvas from './components/Canvas'
+
 require('@/assets/css/style.css')
 
 export default {
@@ -53,7 +58,8 @@ export default {
     "plant-list": PlantList,
     "my-garden": MyGarden,
     "plant-detail": PlantDetail,
-    "search": Search
+    "search": Search,
+    "canvas-component": Canvas
 
   },
 
@@ -102,7 +108,18 @@ export default {
 
 <style lang="css" scoped>
 
+.canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+#canvas {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 25px
+}
 
 #title {
   display: flex;
@@ -142,20 +159,14 @@ export default {
   justify-content: space-evenly;
 }
 .body {
-  /* font-family: cursive; */
   font-size: 30px;
-  /* background: url('../public/background.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  /* background-size: cover; */
-  /* background-color: rgba(0.25, 255, 255, 255); */
   color: white;
 }
 
 #item{
 
 }
+
 #detees {
   width: 400px;
 }
