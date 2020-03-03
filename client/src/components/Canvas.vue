@@ -6,7 +6,7 @@
           image: image,
           draggable: true,
           width:200,
-          height: 150
+          height: 120
           }"/>
         </v-layer>
       </v-stage>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-
+const imageurl = require("../../public/snail.png");
 
 export default {
   data() {
@@ -28,7 +28,7 @@ export default {
   },
   created() {
     const image = new window.Image();
-    image.src = "http://pngimg.com/uploads/snails/snails_PNG13208.png";
+    image.src = imageurl;
     image.onload = () => {
       // set image only when it is loaded
       this.image = image;
