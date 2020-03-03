@@ -33,12 +33,12 @@ export default {
     eventBus.$on('plant-deleted', (id) => {
 			let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
 			this.myPlants.splice(index, 1)
-		})
+		});
 
-    eventBus.$on('comment-added', (aPlant) => {
-    const favePlant = this.myPlants.find(favePlant => favePlant._id === aPlant._id)
-    console.log(aPlant)
+    eventBus.$on("status-changed", () =>{
+      this.fetchData()
     })
+
   },
   methods: {
     // whenever the page loads, retrieve my fave plants from the garden db collection

@@ -9,19 +9,20 @@
     <div v-if="favePlant.images.length === 0">
       <img src="../../public/placeholder_plant.jpg" alt="a rubber plant placeholder image">
     </div>
-    <!-- Show comment if exists -->
-    <div v-if="favePlant.comment">
-      Today my plant:
-      <ul v-for="comment in favePlant.comments" :comment="comment" >
-        <li> {{comment.comment}}</li>
-      </ul>
+    <!-- Show status if exists -->
+    <div v-if="favePlant.status">
+      Today my plant: {{favePlant.status}}
     </div>
 
-    <!-- An input form to add a comment about your plant-->
-    <form class="" action="index.html" method="post" v-on:submit='handleSubmit'>
-      <input type="text" name="" value="" placeholder="How is your plant looking today?" v-model='comment'>
-      <button type="submit">Submit</button>
-    </form>
+
+    <label for="status">Update plant status to:</label>
+    <select id="status" v-on:change="handleChange" v-model="status">
+      <option value="is thirsty">is thirsty</option>
+      <option value="in bloom">is in bloom</option>
+      <option value="needs fertilizer">needs fertilizer</option>
+      <option value="is producing fruit">is producing fruit</option>
+    </select>
+
 
     <button v-on:click="handleDelete">Remove From Garden</button>
 
@@ -46,16 +47,15 @@ export default {
       PlantService.deletePlant(this.favePlant._id)
       .then(() => eventBus.$emit("plant-deleted", this.favePlant._id))
     },
-    handleSubmit(e){
-      e.preventDefault()
-      this.comments.push({comment:this.comment})
-      const update =
-      {comment: this.comment}
 
+    handleChange(){
+      const update = {
+        status: this.status
+      }
       PlantService.updatePlant(this.favePlant._id, update)
-      .then(res => eventBus.$emit('comment-added', this.favePlant))
+      .then(() => eventBus.$emit('status-changed'))
+    }
 
-}
   }
 }
 </script>

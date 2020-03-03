@@ -67,7 +67,9 @@ const createRouter = function (collection) {
       {$set: updatedData},
       {returnOriginal: false}
     )
-    .then(result => res.json(result.value))
+    .then((result) => {
+      res.json(result.value)
+    })
     .catch((err) => {
       console.error(err);
       res.status(500);
