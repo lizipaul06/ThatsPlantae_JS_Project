@@ -9,16 +9,18 @@
       />
     </div>
     <div v-if="results">
-      <div v-for="plant in results" :key="plant.common_name">
-        <div class="plant">{{plant.common_name}}</div>
-      </div>
+      <form v-for="plant in results">
 
-    </div>
+        <input type="radio" @change="handleChange" v-model="selectedPlant" v-bind:value="plant" > </input >
+<label :for="plant" > {{plant.common_name}} </label>
+</form>
+
+</div>
 
   </div>
   <!-- <form v-on: submit.prevent>
-  <!-- <input id="plantBar" v-model="search"
-  placeholder="search through our 'plantae'-ful array of plants..." v-on:keyup="searchForPlant"> -->
+  <!-- <input id="plantBar" v-model="search"-->
+    <!--placeholder="search through our 'plantae'-ful array of plants..." v-on:keyup="searchForPlant"> -->
   <!-- <select v-on:change="handleSelect" v-model="selectedPlant">
   <option disabled value="">Select a Plant....</option>
   <option v-for="plant in plants" :value="plant">{{plant.common_name}}</option>
@@ -48,19 +50,20 @@ export default {
       "selectedPlant": {},
     }
   },
+  created () {
+    this.$on('results', results => {
+      this.results = results
+    })
+  },
   methods: {
     runSearch() {
       this.$search('', this.plantData, { keys:['common_name', 'family_common_name']}
       .then(result => {
         this.results = result
       }))
-    }
-  },
-  created () {
-    this.$on('results', results => {
-      this.results = results
-    })
-  },
+    },
+
+
   // searchForPlant(){
   //   let foundPlant = this.plants.find((plant) => {
   //     return
@@ -71,11 +74,12 @@ export default {
   //   eventBus.$emit('plant-selected',
   //   this.selectedPlant)
   // },
-  handleSelect(){
-    this.search = "",
-    eventBus.$emit('plant-selected',
-    this.selectedPlant)
+  handleChange(){
+    this.results = []
+    eventBus.$emit('plant-selected', this.selectedPlant);
   }
+},
+
 }
 //
 //
