@@ -1,9 +1,12 @@
 <template lang="html">
 
-  <div class="">
-    <p>My Garden</p>
+<div>
+            <h4 > My Garden</h4>
+
+
     <!-- Render my list of plants in the garden -->
     <fave-plant-list/>
+
   </div>
 
 </template>
@@ -15,7 +18,9 @@ import FavePlantList from './FavePlantList.vue'
 export default {
   name: 'my-garden',
   components: {
-    "fave-plant-list": FavePlantList
+    "fave-plant-list": FavePlantList,
+"collapsible": require("vue-collapsible/collapsible"),
+"collapsible-item": require("vue-collapsible/collapsible-item")
   }
 }
 </script>

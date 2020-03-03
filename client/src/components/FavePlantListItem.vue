@@ -50,7 +50,7 @@ export default {
       e.preventDefault()
       this.comments.push({comment:this.comment})
       const update =
-      {comments: this.comments}
+      {comment: this.comment}
 
       PlantService.updatePlant(this.favePlant._id, update)
       .then(res => eventBus.$emit('comment-added', this.favePlant))
