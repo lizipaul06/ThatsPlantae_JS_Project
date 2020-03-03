@@ -1,9 +1,6 @@
 <template lang="html">
 
 <div>
-            <h4 > My Garden</h4>
-
-
     <!-- Render my list of plants in the garden -->
     <fave-plant-list/>
 
