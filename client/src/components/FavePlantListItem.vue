@@ -14,7 +14,6 @@
       Today my plant: {{favePlant.status}}
     </div>
 
-
     <label for="status">Update plant status to:</label>
     <select id="status" v-on:change="handleChange" v-model="status">
       <option value="is thirsty">is thirsty</option>
@@ -22,7 +21,6 @@
       <option value="needs fertilizer">needs fertilizer</option>
       <option value="is producing fruit">is producing fruit</option>
     </select>
-
 
     <button v-on:click="handleDelete">Remove From Garden</button>
 

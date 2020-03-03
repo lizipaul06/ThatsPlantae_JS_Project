@@ -15,9 +15,13 @@
           <div v-if="plantDetailed.main_species.flower.color != null">
             <p>Flower: {{plantDetailed.main_species.flower.color}}</p>
           </div>
-          <div v-if="plantDetailed.images.length > 0">
-            <!-- If the plant has more than one image, just show the first one -->
-            <img :src="plantDetailed.images[0].url" alt="a plant">
+
+          <div v-if="plantDetailed.images && plantDetailed.images.length > 0">
+            <div v-for="image in plantDetailed.images" class="flex">
+              <div class="">
+                <img :src="image.url" alt="plant">
+              </div>
+            </div>
           </div>
 
           <button v-on:click="addToMyGarden">Grow In My Garden</button>
@@ -47,10 +51,17 @@ export default {
 
 <style lang="css" scoped>
 
+.flex{
+  display: flex;
+  flex-direction: row-row-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
 div.plantDetail{
   /* display: flex;
   flex-direction: column; */
-margin: auto;
+  margin: auto;
   /* align-items: center; */
   max-width: 100px;
 }
