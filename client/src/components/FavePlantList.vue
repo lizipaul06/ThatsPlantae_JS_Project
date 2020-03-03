@@ -1,7 +1,7 @@
 <template lang="html">
 <div class="">
   <div class="fave-plant-list">
-    <fave-plant v-for="favePlant in myPlants" :favePlant="favePlant" :key="index"/>
+    <fave-plant v-for="favePlant in myPlants" :favePlant="favePlant"/>
   </div>
 </div>
 
@@ -24,6 +24,7 @@ export default {
   },
   mounted(){
     this.fetchData()
+    this.sendPlants()
 
     // when a plant from the list is added, push this to the myPlants array
     eventBus.$on('plant-added', plant =>
@@ -39,12 +40,17 @@ export default {
       this.fetchData()
     })
 
+
+
   },
   methods: {
     // whenever the page loads, retrieve my fave plants from the garden db collection
     fetchData(){
       PlantService.getMyPlants()
       .then(favePlants => this.myPlants = favePlants);
+    },
+    sendPlants(){
+      eventBus.$emit("my-plants", (this.myPlants))
     }
   }
 }

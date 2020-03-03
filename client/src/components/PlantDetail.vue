@@ -54,8 +54,6 @@ export default {
 .flex{
   display: flex;
   flex-direction: row-reverse;
-  /* align-items: center;
-  justify-content: space-between; */
 }
 
 div.plantDetail{

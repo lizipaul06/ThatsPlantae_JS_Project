@@ -5,6 +5,8 @@
         <v-image :config="{
           image: image,
           draggable: true,
+          width:200,
+          height: 150
           }"/>
         </v-layer>
       </v-stage>
@@ -26,7 +28,7 @@ export default {
   },
   created() {
     const image = new window.Image();
-    image.src = "https://konvajs.org/assets/yoda.jpg";
+    image.src = "http://pngimg.com/uploads/snails/snails_PNG13208.png";
     image.onload = () => {
       // set image only when it is loaded
       this.image = image;

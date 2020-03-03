@@ -1,23 +1,19 @@
 <template lang="html">
-
-<div>
+  <div>
     <!-- Render my list of plants in the garden -->
     <fave-plant-list/>
-
   </div>
-
 </template>
 
 <script>
 import { eventBus } from '../main.js';
 import FavePlantList from './FavePlantList.vue'
-
 export default {
   name: 'my-garden',
   components: {
     "fave-plant-list": FavePlantList,
-"collapsible": require("vue-collapsible/collapsible"),
-"collapsible-item": require("vue-collapsible/collapsible-item")
+    "collapsible": require("vue-collapsible/collapsible"),
+    "collapsible-item": require("vue-collapsible/collapsible-item")
   }
 }
 </script>

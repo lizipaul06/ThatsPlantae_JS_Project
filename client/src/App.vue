@@ -22,9 +22,10 @@
     </div>
 
     <div class="canvas">
-      <h4>Arrange Your Garden</h4>
+      <h4>Oh no, there's a snail!</h4>
       <canvas-component id="canvas"/>
     </div>
+
   </div>
 </template>
 
