@@ -16,42 +16,7 @@ body {
 
 }
 
-.selector-for-some-widget {
-  box-sizing: content-box;
-}
-.collapsible{
-  border: 1px solid black;
-  width: 150px;
-  list-style-type: none;
-  padding: 0;
-}
+
 p {
   margin: 0
-}
-
-  .collapsible-header{
-    display: block;
-    padding: 1em;
-  }
-  .collapsible-item{
-    border-bottom: 1px solid black;
-  }
-  .collapsible-body{
-    border-top: 1px dashed black;
-    padding: 1em 4px 1em 30px;
-  }
-
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .collapsible:hover {
-    background-color: #ccc;
-  }
-
-
-
-.content {
-  padding: 0 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
 }

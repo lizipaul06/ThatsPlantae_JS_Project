@@ -3,7 +3,8 @@
     <p id="title">That's Plantae!</p>
     <search :plantData="plantData" />
     <plant-list :plantData="plantData"></plant-list>
-    <div id="plantDetails">  <plant-detail  :plantDetailed="plantDetailed"/> </div>
+      <plant-detail :plantDetailed="plantDetailed"/>
+
     <!-- <ul>
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
         {{plant.common_name}}</li>
@@ -64,7 +65,7 @@ export default {
     .then( plants => {
       // debugger;
       // return this.plantData = plants.map(plant => plant.id)
-      this.plantData 
+      this.plantData
     });
 
     eventBus.$on('plant-selected', (plant) => {
