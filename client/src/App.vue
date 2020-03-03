@@ -1,9 +1,15 @@
 <template lang="html">
   <div class="body">
     <p id="title">That's Plantae!</p>
+<<<<<<< HEAD
+    <plant-list :plantData="plantData"></plant-list>
+      <plant-detail :plantDetailed="plantDetailed" v-if="selectedPlant">  </plant-detail>
+      
+=======
     <search :plantData="plantData" />
     <plant-list :plantData="plantData"></plant-list>
       <plant-detail :plantDetailed="plantDetailed"/>
+>>>>>>> develop
     <!-- <ul>
       <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
         {{plant.common_name}}</li>
@@ -19,7 +25,7 @@
   import PlantService from './services/PlantService.js';
   import { eventBus } from './main.js';
   import PlantList from './components/PlantList.vue';
-  import Search from './components/Search.vue';
+
   // Added MyGarden to frontpage for visibility as no router added yet
   import MyGarden from './components/MyGarden.vue'
   // Added PlantDetail to see properties
@@ -41,7 +47,6 @@ export default {
   },
   components: {
     "plant-list": PlantList,
-    "search": Search,
     "my-garden": MyGarden,
     "plant-detail": PlantDetail
 
@@ -66,6 +71,14 @@ export default {
     eventBus.$on('plant-selected', (plant) => {
       this.selectedPlant = plant
   PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
+<<<<<<< HEAD
+    });
+
+    eventBus.$on('plants-selected', (plant) => {
+      this.selectedPlant = plant
+  PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
+=======
+>>>>>>> develop
     });
 
 
