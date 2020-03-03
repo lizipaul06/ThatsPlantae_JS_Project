@@ -42,7 +42,11 @@ export default {
       eventBus.$emit('plant-selected', this.selectedPlant);
     },
 
+  },
+  computed() {
+  this.plants
   }
+}
 };
 </script>
 

@@ -64,7 +64,7 @@ export default {
     .then( plants => {
       // debugger;
       // return this.plantData = plants.map(plant => plant.id)
-      this.plantData = plants;
+      this.plantData 
     });
 
     eventBus.$on('plant-selected', (plant) => {
