@@ -11,35 +11,36 @@
         <plant-detail :plantDetailed="plantDetailed"/>
       </div>
       <div id="item">
-          <plant-list :plantData="plantData"></plant-list>
+        <plant-list :plantData="plantData"></plant-list>
 
       </div>
     </div>
 
-    <!-- <ul>
-    <li v-for="(plant, index) in this.plantDetails" :key="index" :plant="plant">
-    {{plant.common_name}}</li>
-  </ul> -->
-  <!-- After search working, click the plant to show the details in the following format
-  the first item of the plantDetails array used for reference -->
-  <button class="accordion"> My Garden </button>
-  <div class="panel">
-    <div id="container">
+    <button class="accordion"> My Garden </button>
 
-
-  <div id="garden">
-    <h1> Your Garden </h1>
-  <my-garden></my-garden>
-</div>
+    <div class="panel">
+      <div id="container">
 <div id="item">
-  <h1> Wish list </h1>
-<wish-list ></wish-list>
-</div>
+      <my-garden></my-garden>
+    </div>
+      <div id="item">
+        <h1> Wish list </h1>
+        <wish-list ></wish-list>
+      </div>
+    </div>
+    </div>
 
-</div>
-</div>
 
-</div>
+
+
+    <div class="canvas">
+      <button v-on:click='snailHidden = !snailHidden'>Oh no, there's a snail!</button>
+      <div v-if="!snailHidden">
+        <canvas-component id="canvas"/>
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -54,6 +55,7 @@ import MyGarden from './components/MyGarden.vue'
 // Added PlantDetail to see properties
 import PlantDetail from './components/PlantDetail'
 import WishList from './components/WishList'
+import Canvas from './components/Canvas'
 
 require('@/assets/css/style.css')
 
@@ -65,7 +67,8 @@ export default {
       plantData: [],
       selectedPlant: null,
       plantDetailed: null,
-      randomItem: null
+      randomItem: null,
+      snailHidden: true
     }
   },
   components: {
@@ -73,53 +76,50 @@ export default {
     "my-garden": MyGarden,
     "plant-detail": PlantDetail,
     "search": Search,
-    "wish-list": WishList
-
+    "wish-list": WishList,
+    "canvas-component": Canvas
   },
 
 
   mounted(){
     PlantService.getPlants().then(plantData => this.plantData = plantData.sort(function (a, b){
-
-          if (a.common_name < b.common_name) {
-            return -1;
-          }
-          if (b.common_name < a.common_name) {
-            return 1;
-          }
-          return 0;
-        })
-
-      )
-
-
-      var acc = document.getElementsByClassName("accordion");
-      var i;
-
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-          /* Toggle between adding and removing the "active" class,
-          to highlight the button that controls the panel */
-          this.classList.toggle("active");
-
-          /* Toggle between hiding and showing the active panel */
-          var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-            panel.style.display = "none";
-          } else {
-            panel.style.display = "block";
-          }
-        });
+      if (a.common_name < b.common_name) {
+        return -1;
       }
+      if (b.common_name < a.common_name) {
+        return 1;
+      }
+      return 0;
+    })
+  )
 
-    eventBus.$on('plant-selected', (plant) => {
-      this.selectedPlant = plant
-      PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
-    });
+  var acc = document.getElementsByClassName("accordion");
+  var i;
 
-   PlantService.getPlants().then(plantData => plantData[Math.floor(Math.random()* plantData.length)])
-   .then(plant => PlantService.getPlant(plant.id).then(res => this.plantDetailed = res))
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      /* Toggle between adding and removing the "active" class,
+      to highlight the button that controls the panel */
+      this.classList.toggle("active");
+
+      /* Toggle between hiding and showing the active panel */
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    })
   }
+
+  eventBus.$on('plant-selected', (plant) => {
+    this.selectedPlant = plant
+    PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
+  });
+
+  PlantService.getPlants().then(plantData => plantData[Math.floor(Math.random()* plantData.length)])
+  .then(plant => PlantService.getPlant(plant.id).then(res => this.plantDetailed = res))
+}
 }
 
 
@@ -128,7 +128,12 @@ export default {
 
 <style lang="css" scoped>
 
-
+#canvas {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 25px
+}
 
 #title {
   display: flex;
@@ -137,10 +142,7 @@ export default {
   font-size: 40px;
 }
 .plantDetail{
-  /* display: flex;
-  flex-direction: column; */
   margin: auto;
-  /* align-items: center; */
   max-width: 100px;
 }
 .panel {
@@ -160,8 +162,8 @@ export default {
   border: none;
   outline: none;
   transition: 0.4s;
-    font-size: 30px;
-      font-family: "Simonetta";
+  font-size: 30px;
+  font-family: "Simonetta";
 }
 
 #container {
@@ -171,20 +173,14 @@ export default {
   justify-content: space-evenly;
 }
 .body {
-  /* font-family: cursive; */
   font-size: 30px;
-  /* background: url('../public/background.jpeg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  /* background-size: cover; */
-  /* background-color: rgba(0.25, 255, 255, 255); */
   color: white;
 }
 
 #garden{
-/* width: 600px; */
+  /* width: 600px; */
 }
+
 #detees {
   width: 300px;
 }

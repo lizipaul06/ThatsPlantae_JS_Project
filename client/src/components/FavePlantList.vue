@@ -32,8 +32,9 @@ export default {
     eventBus.$on('plant-added', plant =>
     this.myPlants.push(plant)
     );
-    eventBus.$on('plant-own', plant =>
-    this.myPlants.push(plant)
+    eventBus.$on('plant-owned', plant =>
+    this.myPlants.push(plant).then(
+    this.fetchData())
     );
 
 
@@ -49,6 +50,8 @@ export default {
 			let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
 			this.myPlants.splice(index, 1)
 		});
+
+
 
 
 

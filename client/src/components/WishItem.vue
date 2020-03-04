@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
 
-  <p> {{plant.common_name}} </p>
+  <li> {{plant.common_name}} </li>
   <button v-on:click="deleteItem"> Remove From WishList </button>
   <button v-on:click="updateOwned"> Add to garden </button>
 
@@ -24,7 +24,7 @@ export default {
     }
   PlantService.updatePlant(this.plant._id, wish)
       .then(res => eventBus.$emit('plant-owned', this.plant._id))
-      .then(() => eventBus.$emit('plant-own'))
+      
     }
 
 

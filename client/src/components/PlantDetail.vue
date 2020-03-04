@@ -17,8 +17,8 @@
           </div>
 
           <div v-if="plantDetailed.images && plantDetailed.images.length > 0">
-            <div v-for="image in plantDetailed.images" class="flex">
-              <div class="">
+            <div class="flex">
+              <div v-for="image in plantDetailed.images">
                 <img :src="image.url" alt="plant">
               </div>
             </div>
@@ -65,9 +65,7 @@ export default {
 
 .flex{
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+  flex-direction: row-reverse;
 }
 
 div.plantDetail{
