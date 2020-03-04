@@ -315,7 +315,8 @@ db.plants.insertMany([
       "name": "Magnoliopsida",
       "link": "http://trefle.io/api/division_classes/1",
       "id": 1
-    }
+    },
+    "owned":true
   },
   {
     "varieties": [],
@@ -477,7 +478,8 @@ db.plants.insertMany([
     "division": null,
     "cultivars": [],
     "common_name": "eggplant",
-    "class": null
+    "class": null,
+    "owned":false
   },
   {
     "varieties": [
@@ -694,6 +696,8 @@ db.plants.insertMany([
     "division": null,
     "cultivars": [],
     "common_name": "dallisgrass",
-    "class": null
-  }
+    "class": null,
+    "owned":true
+  },
+
 ]);

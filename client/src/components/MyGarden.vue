@@ -16,8 +16,7 @@ export default {
   name: 'my-garden',
   components: {
     "fave-plant-list": FavePlantList,
-"collapsible": require("vue-collapsible/collapsible"),
-"collapsible-item": require("vue-collapsible/collapsible-item")
+
   }
 }
 </script>

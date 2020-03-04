@@ -25,7 +25,7 @@
           </div>
 
           <button v-on:click="addToMyGarden">Grow In My Garden</button>
-
+          <button v-on:click="addToWishList">Add to Wish List</button>
         </div>
       </div>
     </div>
@@ -42,10 +42,22 @@ export default {
   props: ['plantDetailed'],
   methods:{
     addToMyGarden: function(){
-      PlantService.postPlant(this.plantDetailed)
+      // const update = {owned: true }
+      // let newPlant = this.plantDetailed;
+      this.plantDetailed.owned = true;
+    PlantService.postPlant(this.plantDetailed)
       .then((res) => eventBus.$emit("plant-added", res))
-    }
+      // PlantService.updatePlant(this.plantDetailed.id, update)
+      // .then(res => eventBus.$emit('plant-owned', this.plantDetailed.id))
+  },
+  addToWishList: function(){
+    this.plantDetailed.owned = false;
+    PlantService.postPlant(this.plantDetailed)
+      .then((res) => eventBus.$emit("plant-added-wishlist", res))
   }
+
+  }
+
 }
 </script>
 
@@ -53,9 +65,9 @@ export default {
 
 .flex{
   display: flex;
-  flex-direction: row-row-reverse;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 div.plantDetail{
@@ -67,7 +79,7 @@ div.plantDetail{
 }
 
 img {
-  height: 300px;
+  height: 200px;
 }
 
 button {

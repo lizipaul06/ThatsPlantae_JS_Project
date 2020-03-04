@@ -24,9 +24,20 @@
   the first item of the plantDetails array used for reference -->
   <button class="accordion"> My Garden </button>
   <div class="panel">
+    <div id="container">
+
+
+  <div id="garden">
+    <h1> Your Garden </h1>
   <my-garden></my-garden>
 </div>
+<div id="item">
+  <h1> Wish list </h1>
+<wish-list ></wish-list>
+</div>
 
+</div>
+</div>
 
 </div>
 </template>
@@ -42,6 +53,8 @@ import Search from './components/Search.vue';
 import MyGarden from './components/MyGarden.vue'
 // Added PlantDetail to see properties
 import PlantDetail from './components/PlantDetail'
+import WishList from './components/WishList'
+
 require('@/assets/css/style.css')
 
 export default {
@@ -49,17 +62,18 @@ export default {
 
   data(){
     return{
-      plants:[],
       plantData: [],
       selectedPlant: null,
-      plantDetailed: null
+      plantDetailed: null,
+      randomItem: null
     }
   },
   components: {
     "plant-list": PlantList,
     "my-garden": MyGarden,
     "plant-detail": PlantDetail,
-    "search": Search
+    "search": Search,
+    "wish-list": WishList
 
   },
 
@@ -74,7 +88,9 @@ export default {
             return 1;
           }
           return 0;
-        }))
+        })
+
+      )
 
 
       var acc = document.getElementsByClassName("accordion");
@@ -100,8 +116,12 @@ export default {
       this.selectedPlant = plant
       PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
     });
+
+   PlantService.getPlants().then(plantData => plantData[Math.floor(Math.random()* plantData.length)])
+   .then(plant => PlantService.getPlant(plant.id).then(res => this.plantDetailed = res))
   }
 }
+
 
 
 </script>
@@ -162,11 +182,11 @@ export default {
   color: white;
 }
 
-#item{
-
+#garden{
+/* width: 600px; */
 }
 #detees {
-  width: 400px;
+  width: 300px;
 }
 
 </style>

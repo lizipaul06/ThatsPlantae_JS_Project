@@ -68,7 +68,7 @@ export default {
 }
 
 img {
-  height: 300px;
+  height: 200px;
 }
 
 button {
