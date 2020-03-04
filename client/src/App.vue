@@ -23,8 +23,8 @@
 
 
     <div class="canvas">
-      <button v-on:click='isHidden = !isHidden'>Oh no, there's a snail!</button>
-      <div v-if="!isHidden">
+      <button v-on:click='snailHidden = !snailHidden'>Oh no, there's a snail!</button>
+      <div v-if="!snailHidden">
         <canvas-component id="canvas"/>
       </div>
     </div>
@@ -56,7 +56,7 @@ export default {
       plantData: [],
       selectedPlant: null,
       plantDetailed: null,
-      isHidden: true
+      snailHidden: true
     }
   },
   components: {
