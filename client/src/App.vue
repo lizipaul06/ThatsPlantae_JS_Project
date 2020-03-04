@@ -145,7 +145,9 @@ export default {
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 40px;
+  font-size: 70px;
+  font-family: Fredericka the Great;
+  text-shadow: 2px 2px grey;
 }
 .plantDetail{
   margin: auto;
