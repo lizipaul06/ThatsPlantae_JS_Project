@@ -1,6 +1,9 @@
 <template lang="html">
   <div class="body">
     <p id="title">That's Plantae!</p>
+    <div id="item">
+      <random-plant :randomPlant="randomPlant"/>
+    </div>
     <div id="container">
       <div id="item">
 
@@ -56,6 +59,7 @@ import MyGarden from './components/MyGarden.vue'
 import PlantDetail from './components/PlantDetail'
 import WishList from './components/WishList'
 import Canvas from './components/Canvas'
+import RandomPlant from './components/RandomPlant'
 
 require('@/assets/css/style.css')
 
@@ -67,6 +71,7 @@ export default {
       plantData: [],
       selectedPlant: null,
       plantDetailed: null,
+      randomPlant: null,
       randomItem: null,
       snailHidden: true
     }
@@ -77,7 +82,8 @@ export default {
     "plant-detail": PlantDetail,
     "search": Search,
     "wish-list": WishList,
-    "canvas-component": Canvas
+    "canvas-component": Canvas,
+    "random-plant": RandomPlant
   },
 
 
@@ -118,7 +124,7 @@ export default {
   });
 
   PlantService.getPlants().then(plantData => plantData[Math.floor(Math.random()* plantData.length)])
-  .then(plant => PlantService.getPlant(plant.id).then(res => this.plantDetailed = res))
+  .then(plant => PlantService.getPlant(plant.id).then(res => this.randomPlant = res))
 }
 }
 
