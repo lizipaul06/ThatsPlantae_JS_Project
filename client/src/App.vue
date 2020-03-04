@@ -21,9 +21,12 @@
       <my-garden></my-garden>
     </div>
 
+
     <div class="canvas">
-      <h4>Oh no, there's a snail!</h4>
-      <canvas-component id="canvas"/>
+      <button v-on:click='isHidden = !isHidden'>Oh no, there's a snail!</button>
+      <div v-if="!isHidden">
+        <canvas-component id="canvas"/>
+      </div>
     </div>
 
   </div>
@@ -52,7 +55,8 @@ export default {
       plants:[],
       plantData: [],
       selectedPlant: null,
-      plantDetailed: null
+      plantDetailed: null,
+      isHidden: true
     }
   },
   components: {
@@ -108,12 +112,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
-.canvas {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 #canvas {
   display: flex;
