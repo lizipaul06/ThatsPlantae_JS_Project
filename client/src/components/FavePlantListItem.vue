@@ -38,14 +38,23 @@
       Today my plant: {{favePlant.status}}
     </div>
 
-    <label for="status">Update plant status to:</label>
-    <select id="status" v-on:change="handleChange" v-model="status">
-      <option value="is thirsty">is thirsty</option>
-      <option value="is in bloom">is in bloom</option>
-      <option value="needs fertilizer">needs fertilizer</option>
-      <option value="is producing fruit">is producing fruit</option>
-      <option value="has gone to the compost heap in the sky">has gone to the compost heap in the sky</option>
-    </select>
+<div class="">
+  <label for="status">Update plant status to:</label>
+  <select id="status" v-on:change="handleChange" v-model="status">
+    <option value="is thirsty">is thirsty</option>
+    <option value="is in bloom">is in bloom</option>
+    <option value="is producing fruit">is producing fruit</option>
+    <option value="is looking healthy">is looking healthy</option>
+    <option value="needs a chat">needs a chat</option>
+    <option value="needs fertilizer">needs fertilizer</option>
+    <option value="needs more sun">needs more sun</option>
+    <option value="needs less sun">needs less sun</option>
+    <option value="needs a hug">needs a hug</option>
+    <option value="has gone missing">has gone missing</option>
+    <option value="has been eaten">has been eaten</option>
+    <option value="has gone to the compost heap in the sky">has gone to the compost heap in the sky</option>
+  </select>
+</div>
 
     <button v-on:click="handleDelete">Remove From Garden</button>
 
