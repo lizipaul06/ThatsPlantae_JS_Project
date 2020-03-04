@@ -19,13 +19,11 @@
 body {
   background-image: url(../background2.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
+  /* background-repeat: repeat; */
   position: relative;
   text-align: center;
   font-family: "Simonetta";
-  /* text-shadow: 2px 2px darkgrey; */
 }
-
 
 p {
   margin: 0

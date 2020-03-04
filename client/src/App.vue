@@ -1,40 +1,36 @@
 <template lang="html">
   <div class="body">
     <p id="title">That's Plantae!</p>
+
     <div id="item" v-if="!plantDetailed">
       <random-plant :randomPlant="randomPlant"/>
     </div>
+
     <div id="container">
       <div id="item">
-
         <search :plantData="plantData" />
-
       </div>
+
       <div id="deets">
         <plant-detail :plantDetailed="plantDetailed"/>
       </div>
       <div id="item">
         <plant-list :plantData="plantData"></plant-list>
-
       </div>
     </div>
 
-    <button class="accordion"> My Garden </button>
-
+    <button class="accordion" name='gard'>My Garden</button>
     <div class="panel">
       <div id="container">
-<div id="item">
-      <my-garden></my-garden>
-    </div>
-      <div id="item">
-        <h1> Wish list </h1>
-        <wish-list ></wish-list>
+        <div id="item">
+          <my-garden></my-garden>
+        </div>
+        <div id="item">
+          <h1> Wish list </h1>
+          <wish-list ></wish-list>
+        </div>
       </div>
     </div>
-    </div>
-
-
-
 
     <div class="canvas">
       <button v-on:click='snailHidden = !snailHidden'>Oh no, there's a snail!</button>
@@ -53,9 +49,7 @@ import PlantService from './services/PlantService.js';
 import { eventBus } from './main.js';
 import PlantList from './components/PlantList.vue';
 import Search from './components/Search.vue';
-// Added MyGarden to frontpage for visibility as no router added yet
 import MyGarden from './components/MyGarden.vue'
-// Added PlantDetail to see properties
 import PlantDetail from './components/PlantDetail'
 import WishList from './components/WishList'
 import Canvas from './components/Canvas'
@@ -101,7 +95,6 @@ export default {
 
   var acc = document.getElementsByClassName("accordion");
   var i;
-
   for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
       /* Toggle between adding and removing the "active" class,
@@ -127,9 +120,6 @@ export default {
   .then(plant => PlantService.getPlant(plant.id).then(res => this.randomPlant = res))
 }
 }
-
-
-
 </script>
 
 <style lang="css" scoped>
@@ -166,7 +156,7 @@ export default {
   cursor: pointer;
   padding: 18px;
   width: 20%;
-  text-align: left;
+  text-align: center;
   border: none;
   outline: none;
   transition: 0.4s;
