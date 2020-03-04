@@ -102,7 +102,7 @@ export default {
 }
 
 img {
-  height: 200px;
+  height: 300px;
 }
 
 button {
