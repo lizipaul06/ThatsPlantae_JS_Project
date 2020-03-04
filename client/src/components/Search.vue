@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="plantBar">
-    <div class="">
+    <div class="searchbar">
       <VueFuseParams
       placeholder="search through our 'plantae'-ful array of plants..."
       event-name='results'
@@ -9,23 +9,16 @@
       />
     </div>
     <div v-if="results">
-      <form v-for="plant in results">
-
-        <input type="radio" @change="handleChange" v-model="selectedPlant" v-bind:value="plant" > </input >
-        <label :for="plant" > {{plant.common_name}} </label>
-      </form>
+      <div class="box">
+        <form v-for="plant in results">
+          <input type="radio" @change="handleChange" v-model="selectedPlant" v-bind:value="plant" > </input >
+          <label :for="plant" > {{plant.common_name}} </label>
+        </form>
+      </div>
 
     </div>
 
   </div>
-  <!-- <form v-on: submit.prevent>
-  <!-- <input id="plantBar" v-model="search"-->
-  <!--placeholder="search through our 'plantae'-ful array of plants..." v-on:keyup="searchForPlant"> -->
-  <!-- <select v-on:change="handleSelect" v-model="selectedPlant">
-  <option disabled value="">Select a Plant....</option>
-  <option v-for="plant in plants" :value="plant">{{plant.common_name}}</option>
-</select> -->
-<!-- </form> -->
 
 </template>
 
@@ -60,17 +53,6 @@ export default {
       }))
     },
 
-
-    // searchForPlant(){
-    //   let foundPlant = this.plants.find((plant) => {
-    //     return
-    //     plant.common_name.toLowerCase().indexOf(this.search.toLowerCase()) > -1
-    //   })
-    //   this.selectedPlant = foundPlant
-    //
-    //   eventBus.$emit('plant-selected',
-    //   this.selectedPlant)
-    // },
     handleChange(){
       this.results = []
       eventBus.$emit('plant-selected', this.selectedPlant);
@@ -90,5 +72,22 @@ export default {
   font-size: 25px;
   display: flex;
   margin: auto;
+  flex-direction: column;
+}
+
+input {
+    width: 300px;
+}
+
+.box{
+  height:500px;
+  width:300px;
+  /* border:1px solid #ccc; */
+  font:10px;
+  overflow:auto;
+  background-color: rgba(183, 183, 183, 0.29);
+  /* opacity: 10%; */
+  color: darkgrey;
+  scrollbar-base-color: white;
 }
 </style>
