@@ -65,7 +65,10 @@ export default {
 
 .flex{
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
 }
 
 div.plantDetail{
@@ -74,10 +77,12 @@ div.plantDetail{
   margin: auto;
   /* align-items: center; */
   max-width: 100px;
+  justify-content: center;
 }
 
 img {
   height: 200px;
+  padding: 5px;
 }
 
 button {
