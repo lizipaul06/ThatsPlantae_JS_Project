@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="body">
     <p id="title">That's Plantae!</p>
-    <div id="item">
+    <div id="item" v-if="!plantDetailed">
       <random-plant :randomPlant="randomPlant"/>
     </div>
     <div id="container">
