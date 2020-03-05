@@ -29,21 +29,22 @@ export default {
     eventBus.$on('plant-added', plant =>
     this.myPlants.push(plant)
   );
-  eventBus.$on('plant-owned', plant =>
-  this.myPlants.push(plant).then(
-    this.fetchData())
-  );
 
-  // Refetch the data when we change the status - not a good solution for future as reloading all plants from garden could take ages
-  eventBus.$on("status-changed", () =>{
-    this.fetchData()
-  })
+// Refetch the data when we change the status - not a good solution for future as reloading all plants from garden could take ages
+eventBus.$on("status-changed", () =>{
+  this.fetchData()
+})
 
-  // when a plant from the garden is deleted, slice this out of myPlants array
-  eventBus.$on('plant-deleted', (id) => {
-    let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
-    this.myPlants.splice(index, 1)
-  });
+eventBus.$on('plant-owned', () =>{
+  this.fetchData()
+}
+);
+
+// when a plant from the garden is deleted, slice this out of myPlants array
+eventBus.$on('plant-deleted', (id) => {
+  let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
+  this.myPlants.splice(index, 1)
+});
 },
 methods: {
   // whenever the page loads, retrieve my fave plants from the garden db collection

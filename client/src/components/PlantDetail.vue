@@ -26,6 +26,7 @@
 
           <button v-on:click="addToMyGarden">Grow In My Garden</button>
           <button v-on:click="addToWishList">Add to Wish List</button>
+          <button v-on:click="plantDetailed=null">Close Info</button>
         </div>
       </div>
     </div>
