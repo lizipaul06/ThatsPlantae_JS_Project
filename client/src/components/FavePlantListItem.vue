@@ -52,7 +52,6 @@
     <option value="needs a hug">needs a hug</option>
     <option value="has gone missing">has gone missing</option>
     <option value="has been eaten">has been eaten</option>
-    <option value="has gone to the compost heap in the sky">has gone to the compost heap in the sky</option>
   </select>
 </div>
 
