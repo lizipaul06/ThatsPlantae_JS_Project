@@ -42,4 +42,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+select{
+  width:300px;
+}
 </style>

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="plant">
-    <h3>{{favePlant.common_name}}</h3>
+    <p class="plant-title">{{favePlant.common_name}}</p>
     <div v-if="favePlant.images && favePlant.images.length > 0">
       <!-- If the plant has more than one image, just show the first one -->
       <div class="hvrbox">
@@ -84,67 +84,71 @@
     </script>
 
     <style lang="css" scoped>
-    .plant{
-      display: flex;
-      flex-direction: column;
-      padding: 5px;
-      align-items: center;
-    }
-    img {
-      height: 275px;
-    }
-    button {
-      margin-top: 10px;
-    }
-    .hvrbox,
-    .hvrbox * {
-      box-sizing: border-box;
-    }
-    .hvrbox {
-      position: relative;
-      display: inline-block;
-      overflow: hidden;
-      max-width: 100%;
-      height: auto;
-    }
-    .hvrbox img {
-      max-width: 100%;
-    }
-    .hvrbox .hvrbox-layer_bottom {
-      display: block;
-    }
-    .hvrbox .hvrbox-layer_top {
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      padding: 10px;
-      -moz-transition: all 0.4s ease-in-out 0s;
-      -webkit-transition: all 0.4s ease-in-out 0s;
-      -ms-transition: all 0.4s ease-in-out 0s;
-      transition: all 0.4s ease-in-out 0s;
-    }
-    .hvrbox:hover .hvrbox-layer_top,
-    .hvrbox.active .hvrbox-layer_top {
-      opacity: 1;
-    }
-    .hvrbox .hvrbox-text {
-      text-align: center;
-      font-size: 17px;
-      display: inline-block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -moz-transform: translate(-50%, -50%);
-      -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
+      .plant{
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        align-items: center;
+        font-size: 25px;
+      }
+      .plant-title{
+        font-size: 30px;
+      }
+      img {
+        height: 275px;
+      }
+      button {
+        margin-top: 10px;
+      }
+      .hvrbox,
+      .hvrbox * {
+        box-sizing: border-box;
+      }
+      .hvrbox {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        max-width: 100%;
+        height: auto;
+      }
+      .hvrbox img {
+        max-width: 100%;
+      }
+      .hvrbox .hvrbox-layer_bottom {
+        display: block;
+      }
+      .hvrbox .hvrbox-layer_top {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 10px;
+        -moz-transition: all 0.4s ease-in-out 0s;
+        -webkit-transition: all 0.4s ease-in-out 0s;
+        -ms-transition: all 0.4s ease-in-out 0s;
+        transition: all 0.4s ease-in-out 0s;
+      }
+      .hvrbox:hover .hvrbox-layer_top,
+      .hvrbox.active .hvrbox-layer_top {
+        opacity: 1;
+      }
+      .hvrbox .hvrbox-text {
+        text-align: center;
+        font-size: 17px;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
 
     </style>

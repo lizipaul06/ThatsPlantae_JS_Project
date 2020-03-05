@@ -66,6 +66,16 @@ export default {
 
 <style lang="css" scoped>
 
+.box{
+  font-size: 20px;
+  height:81px;
+  width:300px;
+  overflow:auto;
+  background-color: rgba(183, 183, 183, 0.29);
+  color: white;
+  scrollbar-base-color: white;
+}
+
 #plantBar {
   width: 75%;
   height: 30px;
@@ -79,15 +89,5 @@ input {
     width: 300px;
 }
 
-.box{
-  height:500px;
-  width:300px;
-  /* border:1px solid #ccc; */
-  font:10px;
-  overflow:auto;
-  background-color: rgba(183, 183, 183, 0.29);
-  /* opacity: 10%; */
-  color: darkgrey;
-  scrollbar-base-color: white;
-}
+
 </style>

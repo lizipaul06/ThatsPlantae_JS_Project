@@ -14,6 +14,7 @@
       <div id="deets">
         <plant-detail :plantDetailed="plantDetailed"/>
       </div>
+
       <div id="item">
         <plant-list :plantData="plantData"></plant-list>
       </div>
