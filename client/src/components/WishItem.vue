@@ -1,9 +1,11 @@
 <template lang="html">
-  <div>
+  <div class='wishy'>
 
     <li>{{plant.common_name}}</li>
-    <button v-on:click="deleteItem">Remove From WishList</button>
-    <button v-on:click="updateOwned">Add To Garden</button>
+    <div class="flex">
+      <button v-on:click="deleteItem">Remove From WishList</button>
+      <button v-on:click="updateOwned">Add To Garden</button>
+    </div>
 
   </div>
 </template>
@@ -30,4 +32,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+.wishy{
+  font-size: 20px;
+}
+
+.flex{
+  display: flex;
+  flex-direction: row;
+}
+
 </style>

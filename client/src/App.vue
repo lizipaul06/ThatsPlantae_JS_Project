@@ -26,7 +26,7 @@
           <my-garden></my-garden>
         </div>
         <div id="item">
-          <h1> Wish list </h1>
+          <h3> Wish list </h3>
           <wish-list ></wish-list>
         </div>
       </div>
@@ -176,7 +176,7 @@ export default {
 }
 
 #garden{
-  /* width: 600px; */
+  width: 700px;
 }
 
 #detees {
