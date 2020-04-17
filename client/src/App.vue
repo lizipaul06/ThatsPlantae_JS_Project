@@ -78,7 +78,7 @@ export default {
     "search": Search,
     "wish-list": WishList,
     "canvas-component": Canvas,
-    "random-plant": RandomPlant
+    "random-plant": RandomPlant,
   },
 
 

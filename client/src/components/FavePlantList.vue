@@ -1,9 +1,11 @@
 <template lang="html">
-
   <div class="">
     <div class="fave-plant-list">
       <fave-plant  v-for="favePlant in myPlants"  :favePlant="favePlant" />
     </div>
+    <h4>Arrange Your Garden!</h4>
+    <p>Drag the plants from top left to arrange your garden however you choose.</p>
+    <garden-canvas :urls="plantUrls"/>
   </div>
 
 </template>
@@ -12,48 +14,61 @@
 import { eventBus } from '../main.js';
 import PlantService from '../services/PlantService.js';
 import FavePlant from './FavePlantListItem.vue'
+import GardenCanvas from './GardenCanvas.vue'
 
 export default {
   name: 'fave-plants-list',
   data() {
     return {
       myPlants: [],
+      plantUrls: []
+
     }
   },
   components: {
-    'fave-plant': FavePlant
+    'fave-plant': FavePlant,
+    'garden-canvas': GardenCanvas
   },
+
   mounted(){
     this.fetchData();
+    this.fetchUrls();
+
+    // this.owned();
     // when a plant from the list is added, push this to the myPlants array
     eventBus.$on('plant-added', plant =>
     this.myPlants.push(plant)
   );
+  eventBus.$on('plant-owned', plant =>
+  this.myPlants.push(plant).then(
+    this.fetchData())
+  );
 
-// Refetch the data when we change the status - not a good solution for future as reloading all plants from garden could take ages
-eventBus.$on("status-changed", () =>{
-  this.fetchData()
-})
+  eventBus.$on("status-changed", () =>{
+    this.fetchData()
+  })
 
-eventBus.$on('plant-owned', () =>{
-  this.fetchData()
-}
-);
+  // when a plant from the garden is deleted, slice this out of myPlants array
+  eventBus.$on('plant-deleted', (id) => {
+    let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
+    this.myPlants.splice(index, 1)
+  });
 
-// when a plant from the garden is deleted, slice this out of myPlants array
-eventBus.$on('plant-deleted', (id) => {
-  let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
-  this.myPlants.splice(index, 1)
-});
+
 },
 methods: {
   // whenever the page loads, retrieve my fave plants from the garden db collection
   fetchData(){
     PlantService.getMyPlants()
     .then(favePlants => this.myPlants = favePlants.filter(plant => plant.owned == true));
+  },
+  fetchUrls(){
+    PlantService.getMyPlants()
+    .then(favePlants => this.plantUrls = favePlants.filter(plant => plant.owned == true).map(plant => plant.images[0].url));
   }
 }
 }
+
 </script>
 
 <style lang="css" scoped>
@@ -61,7 +76,7 @@ methods: {
 .fave-plant-list{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 </style>
