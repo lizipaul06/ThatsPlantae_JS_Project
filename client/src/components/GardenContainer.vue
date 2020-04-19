@@ -1,8 +1,11 @@
 <template lang="html">
   <div class="">
-    <h4>Arrange Your Garden!</h4>
-    <p>Drag the plants from top left to arrange your garden however you choose.</p>
-    <garden-canvas :urls="plantUrls"/>
+    <h4>Arrange Your Garden</h4>
+    <div class="">
+      Drag the plants from top left to arrange your garden however you choose.<br>
+      Watch out for that pesky snail!
+    </div>
+    <garden-canvas :urls="plantUrls" id="canvas"/>
   </div>
 
 </template>
@@ -43,6 +46,12 @@ methods: {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+#canvas {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 </style>

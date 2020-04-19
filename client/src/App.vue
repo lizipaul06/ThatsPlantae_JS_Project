@@ -34,16 +34,16 @@
     </div>
 
 
-    <div class="">
-      <garden-container/>
+    <div id="canvas">
+      <garden-container />
     </div>
 
-    <div class="canvas">
+    <!-- <div class="canvas">
       <button v-on:click='snailHidden = !snailHidden'>Oh no, there's a snail!</button>
       <div v-if="!snailHidden">
         <canvas-component id="canvas"/>
       </div>
-    </div>
+    </div> -->
 
   </div>
 </template>
