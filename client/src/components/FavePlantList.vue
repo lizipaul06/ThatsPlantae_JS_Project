@@ -3,9 +3,6 @@
     <div class="fave-plant-list">
       <fave-plant  v-for="favePlant in myPlants"  :favePlant="favePlant" />
     </div>
-    <h4>Arrange Your Garden!</h4>
-    <p>Drag the plants from top left to arrange your garden however you choose.</p>
-    <garden-canvas :urls="plantUrls"/>
   </div>
 
 </template>
@@ -14,25 +11,20 @@
 import { eventBus } from '../main.js';
 import PlantService from '../services/PlantService.js';
 import FavePlant from './FavePlantListItem.vue'
-import GardenCanvas from './GardenCanvas.vue'
 
 export default {
   name: 'fave-plants-list',
   data() {
     return {
-      myPlants: [],
-      plantUrls: []
-
+      myPlants: []
     }
   },
   components: {
-    'fave-plant': FavePlant,
-    'garden-canvas': GardenCanvas
+    'fave-plant': FavePlant
   },
 
   mounted(){
     this.fetchData();
-    this.fetchUrls();
 
     // this.owned();
     // when a plant from the list is added, push this to the myPlants array
@@ -61,10 +53,6 @@ methods: {
   fetchData(){
     PlantService.getMyPlants()
     .then(favePlants => this.myPlants = favePlants.filter(plant => plant.owned == true));
-  },
-  fetchUrls(){
-    PlantService.getMyPlants()
-    .then(favePlants => this.plantUrls = favePlants.filter(plant => plant.owned == true).map(plant => plant.images[0].url));
   }
 }
 }

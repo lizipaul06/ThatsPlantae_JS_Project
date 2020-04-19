@@ -33,6 +33,11 @@
       </div>
     </div>
 
+
+    <div class="">
+      <garden-container/>
+    </div>
+
     <div class="canvas">
       <button v-on:click='snailHidden = !snailHidden'>Oh no, there's a snail!</button>
       <div v-if="!snailHidden">
@@ -55,6 +60,7 @@ import PlantDetail from './components/PlantDetail'
 import WishList from './components/WishList'
 import Canvas from './components/Canvas'
 import RandomPlant from './components/RandomPlant'
+import GardenContainer from './components/GardenContainer'
 
 require('@/assets/css/style.css')
 
@@ -79,6 +85,7 @@ export default {
     "wish-list": WishList,
     "canvas-component": Canvas,
     "random-plant": RandomPlant,
+    "garden-container": GardenContainer
   },
 
 
