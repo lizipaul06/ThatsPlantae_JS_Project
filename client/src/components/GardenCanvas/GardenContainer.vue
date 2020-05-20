@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import { eventBus } from '../main.js';
-import PlantService from '../services/PlantService.js';
+import { eventBus } from '../../main.js';
+import PlantService from '../../services/PlantService.js';
 import GardenCanvas from './GardenCanvas.vue'
 
 export default {
@@ -42,16 +42,5 @@ methods: {
 
 <style lang="css" scoped>
 
-.fave-plant-list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-#canvas {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-}
-
+  @import '../../assets/css/canvasStyles.css';
 </style>

@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import PlantService from '../services/PlantService.js';
-import { eventBus } from '../main.js';
+import PlantService from '../../services/PlantService.js';
+import { eventBus } from '../../main.js';
 export default {
   name: "wish-item",
   props: ['plant'],
@@ -33,13 +33,6 @@ export default {
 
 <style lang="css" scoped>
 
-.wishy{
-  font-size: 20px;
-}
 
-.flex{
-  display: flex;
-  flex-direction: row;
-}
-
+  @import '../../assets/css/wishlistStyle.css';
 </style>

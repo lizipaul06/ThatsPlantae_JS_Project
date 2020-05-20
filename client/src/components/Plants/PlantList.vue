@@ -11,7 +11,7 @@
 
 <script>
 
-import {eventBus} from '../main.js'
+import {eventBus} from '../../main.js'
 
 export default {
   name: "plant-list",
@@ -43,7 +43,5 @@ export default {
 
 <style lang="css" scoped>
 
-select{
-  width:300px;
-}
+  @import '../../assets/css/plantListStyles.css';
 </style>

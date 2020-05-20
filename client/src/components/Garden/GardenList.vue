@@ -1,26 +1,26 @@
 <template lang="html">
   <div class="">
     <div class="fave-plant-list">
-      <fave-plant  v-for="favePlant in myPlants"  :favePlant="favePlant" />
+      <garden-item  v-for="(gardenItem, index) in myPlants"  :gardenItem="gardenItem" :key="index"/>
     </div>
   </div>
 
 </template>
 
 <script>
-import { eventBus } from '../main.js';
-import PlantService from '../services/PlantService.js';
-import FavePlant from './FavePlantListItem.vue'
+import { eventBus } from '../../main.js';
+  import PlantService from '../../services/PlantService.js';
+import GardenItem from './GardenItem.vue'
 
 export default {
-  name: 'fave-plants-list',
+  name: 'garden-list',
   data() {
     return {
       myPlants: []
     }
   },
   components: {
-    'fave-plant': FavePlant
+    'garden-item': GardenItem
   },
 
   mounted(){
@@ -42,7 +42,7 @@ export default {
 
   // when a plant from the garden is deleted, slice this out of myPlants array
   eventBus.$on('plant-deleted', (id) => {
-    let index = this.myPlants.findIndex(favePlant => favePlant._id === id)
+    let index = this.myPlants.findIndex(gardenItem => gardenItem._id === id)
     this.myPlants.splice(index, 1)
   });
 
@@ -53,6 +53,7 @@ methods: {
   fetchData(){
     PlantService.getMyPlants()
     .then(favePlants => this.myPlants = favePlants.filter(plant => plant.owned == true));
+    console.log(favePlants)
   }
 }
 }
@@ -61,10 +62,6 @@ methods: {
 
 <style lang="css" scoped>
 
-.fave-plant-list{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
+  @import '../../assets/css/gardenStyles.css';
 
 </style>

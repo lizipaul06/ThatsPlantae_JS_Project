@@ -53,16 +53,16 @@
 
 import PlantService from './services/PlantService.js';
 import { eventBus } from './main.js';
-import PlantList from './components/PlantList.vue';
+import PlantList from './components/Plants/PlantList';
 import Search from './components/Search.vue';
-import MyGarden from './components/MyGarden.vue'
-import PlantDetail from './components/PlantDetail'
-import WishList from './components/WishList'
-import Canvas from './components/Canvas'
+import MyGarden from './components/Garden/MyGarden.vue'
+import PlantDetail from './components/Plants/PlantDetail'
+import WishList from './components/WishList/WishList'
+import Canvas from './components/GardenCanvas/Canvas'
 import RandomPlant from './components/RandomPlant'
-import GardenContainer from './components/GardenContainer'
+import GardenContainer from './components/GardenCanvas/GardenContainer'
 
-require('@/assets/css/style.css')
+require('@/assets/css/coreStyles.css')
 
 export default {
   name:'app',
@@ -132,63 +132,6 @@ export default {
 
 <style lang="css" scoped>
 
-#canvas {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  padding: 25px
-}
-
-#title {
-  display: flex;
-  justify-content: center;
-  color: white;
-  font-size: 70px;
-  font-family: Fredericka the Great;
-  text-shadow: 2px 2px grey;
-}
-.plantDetail{
-  margin: auto;
-  max-width: 100px;
-}
-.panel {
-  padding: 0 18px;
-  background-color: rgba(212,169,134, 0.5);
-  display: none;
-  overflow: hidden;
-}
-
-.accordion {
-  background-color: rgba(212,169,134, 0.6);
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 20%;
-  text-align: center;
-  border: none;
-  outline: none;
-  transition: 0.4s;
-  font-size: 30px;
-  font-family: "Simonetta";
-}
-
-#container {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-evenly;
-}
-.body {
-  font-size: 30px;
-  color: white;
-}
-
-#garden{
-  width: 700px;
-}
-
-#detees {
-  width: 300px;
-}
+  @import './assets/css/coreStyles.css';
 
 </style>

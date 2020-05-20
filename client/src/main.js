@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueKonva from 'vue-konva'
+import VueFuse from 'vue-fuse'
 
 Vue.use(VueKonva)
+Vue.use(VueFuse)
 
 Vue.config.productionTip = false
 

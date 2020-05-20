@@ -1,20 +1,17 @@
 <template lang="html">
   <div>
     <!-- Render my list of plants in the garden -->
-    <fave-plant-list/>
+    <garden-list/>
   </div>
 </template>
 
 <script>
-import { eventBus } from '../main.js';
-import FavePlantList from './FavePlantList.vue'
+import { eventBus } from '../../main.js';
+import GardenList from './GardenList.vue'
 export default {
   name: 'my-garden',
   components: {
-    "fave-plant-list": FavePlantList,
+    "garden-list": GardenList,
   }
 }
 </script>
-
-<style lang="css" scoped>
-</style>

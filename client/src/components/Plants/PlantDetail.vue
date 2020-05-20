@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import { eventBus } from '../main.js';
-import PlantService from '../services/PlantService.js'
+import { eventBus } from '../../main.js';
+import PlantService from '../../services/PlantService.js'
 
 export default {
   name: 'plant-detail',
@@ -64,30 +64,6 @@ export default {
 
 <style lang="css" scoped>
 
-.flex{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-
-}
-
-div.plantDetail{
-  /* display: flex;
-  flex-direction: column; */
-  margin: auto;
-  /* align-items: center; */
-  max-width: 100px;
-  justify-content: center;
-}
-
-img {
-  height: 200px;
-  padding: 5px;
-}
-
-button {
-  margin-top: 10px;
-}
+  @import '../../assets/css/plantListStyles.css';
 
 </style>

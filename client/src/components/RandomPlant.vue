@@ -20,8 +20,7 @@ export default {
 
 <style lang="css" scoped>
 
-img {
-  height: 200px;
-}
+@import '../assets/css/coreStyles.css';
+
 
 </style>

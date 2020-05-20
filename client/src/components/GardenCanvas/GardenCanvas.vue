@@ -23,7 +23,7 @@
 </template>
 
 <script>
-const imageurl = require("../../public/snail.png");
+const imageurl = require("../../assets/images/snail.png");
 import GardenImage from "./GardenImage.vue";
 
 export default {
@@ -53,9 +53,6 @@ export default {
 
 
 <style media="screen">
+  @import '../../assets/css/canvasStyles.css';
 
-  .arrange {
-    background-image: url('../assets/lawn.jpg');
-    background-size: cover;
-  }
 </style>

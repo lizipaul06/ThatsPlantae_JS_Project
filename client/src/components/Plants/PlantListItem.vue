@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { eventBus } from "../main.js";
-import PlantDetail from '../components/PlantDetail.vue';
+import { eventBus } from "../../main.js";
+import PlantDetail from '../PlantDetail.vue';
 
 export default {
   name: "plant-list-item",
@@ -21,13 +21,6 @@ export default {
 
 <style lang="css" scoped>
 
+  @import '../../assets/css/plantListStyles.css';
 
-#common_name{
-  font-family: helvetica;
-  font-size: 20px;
-}
-
-#scientific_name{
-  font-size: 15px;
-}
 </style>

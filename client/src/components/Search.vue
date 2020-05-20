@@ -30,7 +30,7 @@
 
 import {eventBus} from '../main.js';
 import VueFuseParams from '../components/VueFuseParams.vue';
-import PlantList from '../components/PlantList.vue';
+import PlantList from '../components/Plants/PlantList.vue';
 
 export default {
   name: "plant-filter-form",
@@ -70,33 +70,6 @@ export default {
 
 <style lang="css" scoped>
 
-.help{
-  display: list-item;
-}
-
-.box{
-  font-size: 17px;
-  padding: 1px;
-  height:81px;
-  width:300px;
-  overflow:auto;
-  background-color: rgba(183, 183, 183, 0.29);
-  color: white;
-  scrollbar-base-color: grey;
-}
-
-#plantBar {
-  width: 75%;
-  height: 30px;
-  font-size: 25px;
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-}
-
-input {
-  width: 300px;
-}
-
+  @import '../assets/css/coreStyles.css';
 
 </style>

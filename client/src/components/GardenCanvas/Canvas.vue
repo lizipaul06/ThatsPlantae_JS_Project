@@ -14,7 +14,7 @@
 </template>
 
 <script>
-const imageurl = require("../../public/snail.png");
+const imageurl = require("../../assets/images/snail.png");
 
 export default {
   data() {
@@ -39,8 +39,5 @@ export default {
 
 <style media="screen">
 
-  .arrange {
-    background-image: url('../assets/lawn.jpg');
-    background-size: cover;
-  }
+  @import '../../assets/css/canvasStyles.css';
 </style>

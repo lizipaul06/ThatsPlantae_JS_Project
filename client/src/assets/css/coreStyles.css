@@ -1,0 +1,121 @@
+/* latin */
+@font-face {
+  font-family: 'Simonetta';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Simonetta Regular'), local('Simonetta-Regular'), url(https://fonts.gstatic.com/s/simonetta/v10/x3dickHVYrCU5BU15c4xe_oDnSzlBQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Fredericka the Great';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Fredericka the Great'), local('FrederickatheGreat'), url(https://fonts.gstatic.com/s/frederickathegreat/v9/9Bt33CxNwt7aOctW2xjbCstzwVKsIBVV--SjxbcHcQ2K.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+  background-image: url(../images/background2.jpg);
+  background-size: cover;
+  /* background-repeat: repeat; */
+  position: relative;
+  text-align: center;
+  font-family: "Simonetta";
+}
+
+p {
+  margin: 0
+}
+
+#canvas {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 25px
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 70px;
+  font-family: Fredericka the Great;
+  text-shadow: 2px 2px grey;
+}
+.plantDetail{
+  margin: auto;
+  max-width: 100px;
+}
+.panel {
+  padding: 0 18px;
+  background-color: rgba(212,169,134, 0.5);
+  display: none;
+  overflow: hidden;
+}
+
+.accordion {
+  background-color: rgba(212,169,134, 0.6);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 20%;
+  text-align: center;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-size: 30px;
+  font-family: "Simonetta";
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-evenly;
+}
+.body {
+  font-size: 30px;
+  color: white;
+}
+
+#garden{
+  width: 700px;
+}
+
+#detees {
+  width: 300px;
+}
+
+.help{
+  display: list-item;
+}
+
+.box{
+  font-size: 17px;
+  padding: 1px;
+  height:81px;
+  width:300px;
+  overflow:auto;
+  background-color: rgba(183, 183, 183, 0.29);
+  color: white;
+  scrollbar-base-color: grey;
+}
+
+#plantBar {
+  width: 75%;
+  height: 30px;
+  font-size: 25px;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+
+input {
+  width: 300px;
+}
+
+img {
+  height: 200px;
+}
