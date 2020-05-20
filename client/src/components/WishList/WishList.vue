@@ -46,4 +46,6 @@ methods: {
 </script>
 
 <style lang="css" scoped>
+
+  @import '../../assets/css/wishlistStyle.css';
 </style>
