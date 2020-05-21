@@ -9,9 +9,9 @@
       />
     </div>
     <div v-if="results">
-      <div class="box">
+      <div class="boxSearch">
         <form v-for="plant in results">
-          <div class="help">
+          <div class="listItemSearch">
             <input type="radio" @change="handleChange" v-model="selectedPlant" v-bind:value="plant">
             <p>{{plant.common_name}}</p>
           </div>
@@ -68,8 +68,8 @@ export default {
 //
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
-  @import '../assets/css/coreStyles.css';
+  @import '../assets/css/coreStyles.scss';
 
 </style>

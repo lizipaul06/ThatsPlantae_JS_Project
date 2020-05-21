@@ -18,9 +18,9 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
-@import '../assets/css/coreStyles.css';
+@import '../assets/css/coreStyles.scss';
 
 
 </style>

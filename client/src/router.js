@@ -1,6 +1,7 @@
 import Home from './views/Home'
 import Garden from './views/Garden'
 import PlantWishList from './views/PlantWishList'
+import selectedPlant from './views/SelectedPlant'
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
@@ -22,7 +23,10 @@ let router = new Router({
   { path: '/wishlist',
    component: PlantWishList
  },
-
+ { path: '/selectedplant',
+  name: 'selectedplant',
+  component: selectedPlant
+ },
 
   ]
 })

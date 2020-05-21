@@ -40,7 +40,7 @@ methods: {
 
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
-  @import '../../assets/css/canvasStyles.css';
+  @import '../../assets/css/canvasStyles.scss';
 </style>

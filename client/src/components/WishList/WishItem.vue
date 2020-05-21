@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class='wishy'>
+  <div>
 
     <li>{{plant.common_name}}</li>
     <div class="flex">
@@ -31,8 +31,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 
-  @import '../../assets/css/wishlistStyle.css';
 </style>

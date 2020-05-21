@@ -85,8 +85,8 @@
 
     </script>
 
-    <style lang="css" scoped>
+    <style lang="scss" scoped>
 
-     @import '../../assets/css/gardenStyles.css';
+     @import '../../assets/css/gardenStyles.scss';
 
     </style>

@@ -17,7 +17,7 @@
 }
 
 body {
-  background-image: url(../images/background2.jpg);
+  background-image: url(/images/background2.jpg);
   background-size: cover;
   /* background-repeat: repeat; */
   position: relative;
@@ -25,9 +25,6 @@ body {
   font-family: "Simonetta";
 }
 
-p {
-  margin: 0
-}
 
 input {
   width: 300px;
@@ -52,25 +49,10 @@ img {
   font-family: Fredericka the Great;
   text-shadow: 2px 2px grey;
 }
-.plantDetail{
-  margin: auto;
-  max-width: 100px;
-}
-.panel {
-  padding: 0 18px;
-  background-color: rgba(212,169,134, 0.5);
-  display: none;
-  overflow: hidden;
-}
 
 
 
-#container {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-evenly;
-}
+
 .body {
   font-size: 30px;
   color: white;
@@ -82,15 +64,12 @@ img {
   width: 700px;
 }
 
-#detees {
-  width: 300px;
-}
 
-.help{
+.listItemSearch{
   display: list-item;
 }
 
-.box{
+.boxSearch{
   font-size: 17px;
   padding: 1px;
 

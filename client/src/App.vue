@@ -3,9 +3,9 @@
 
       <div>
         <b-navbar toggleable="lg" type="dark" variant="info">
-          <b-navbar-brand href="#">NavBar</b-navbar-brand>
+          <b-navbar-brand href="#"></b-navbar-brand>
 
-    
+
             <b-navbar-nav>
               <b-nav-item to="/"> Home</b-nav-item>
               <b-nav-item to="/garden" > Garden</b-nav-item>
@@ -28,7 +28,7 @@
 <script>
 import Home from './views/Home'
 
-require('@/assets/css/coreStyles.css')
+require('@/assets/css/coreStyles.scss')
 
 
 export default {
@@ -37,8 +37,8 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
-  @import './assets/css/coreStyles.css';
+  @import './assets/css/coreStyles.scss';
 
 </style>

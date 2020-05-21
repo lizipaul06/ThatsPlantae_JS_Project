@@ -22,10 +22,7 @@ export default {
 
     }
   },
-  mounted(){
 
-
-},
 
   methods: {
     handleChange(){
@@ -41,7 +38,7 @@ export default {
 
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
-  @import '../../assets/css/plantListStyles.css';
+  @import '../../assets/css/plantListStyles.scss';
 </style>

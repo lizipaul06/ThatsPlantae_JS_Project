@@ -2,9 +2,12 @@
   <div>
   <my-garden></my-garden>
 
-      <div id="canvas">
+  <b-button v-b-toggle.collapse-1 variant="primary">Arrange your garden</b-button>
+<b-collapse id="collapse-1" class="mt-2">
+  <b-card>
         <garden-container />
-      </div>
+      </b-card>
+      </b-collapse>
   </div>
 </template>
 
@@ -29,6 +32,6 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
-  @import '../assets/css/coreStyles.css';
+<style lang="scss" scoped>
+  @import '../assets/css/coreStyles.scss';
 </style>

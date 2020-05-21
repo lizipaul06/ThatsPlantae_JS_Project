@@ -53,6 +53,6 @@ export default {
 
 
 <style media="screen">
-  @import '../../assets/css/canvasStyles.css';
+  @import '../../assets/css/canvasStyles.scss';
 
 </style>

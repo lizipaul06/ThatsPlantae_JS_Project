@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { eventBus } from '../../main.js';
+
 import PlantService from '../../services/PlantService.js'
 
 export default {
@@ -57,13 +57,14 @@ export default {
       .then((res) => eventBus.$emit("plant-added-wishlist", res))
   }
 
-  }
+},
+
 
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
-  @import '../../assets/css/plantListStyles.css';
+  @import '../../assets/css/plantListStyles.scss';
 
 </style>

@@ -1,32 +1,30 @@
 <template lang="html">
-  <div>
-  <div id="container">
+  <b-container>
+    <b-col class="text-center">
+      <p id="title">That's Plantae!</p>
+    </b-col>
+    <b-col class="text-center">
+       <random-plant :randomPlant="randomPlant"/>
+    </b-col>
+    <b-row>
+      <b-col>  <search :plantData="plantData" /> </b-col>
+      <b-col>   <plant-list :plantData="plantData"></plant-list></b-col>
+    </b-row>
 
-    <p id="title">That's Plantae!</p>
+  </b-container>
 
-          <random-plant :randomPlant="randomPlant"/>
 
-        </div>
-        <div>
-          <search :plantData="plantData" />
-          </div>
-          <div>
-            <plant-list :plantData="plantData"></plant-list>
-        </div>
-        <div id="deets">
-          <plant-detail :plantDetailed="plantDetailed"/>
-        </div>
-      </div>
 </template>
 
 <script>
 
 import PlantService from '../services/PlantService.js';
 import { eventBus } from '../main.js';
-import Search from '../components/Search'
-import RandomPlant from '../components/RandomPlant'
+import Search from '../components/Search';
+import RandomPlant from '../components/RandomPlant';
 import PlantList from '../components/Plants/PlantList';
-import PlantDetail from '../components/Plants/PlantDetail'
+
+
 export default {
     name:'Home',
     data(){
@@ -34,14 +32,12 @@ export default {
       plantData: [],
         randomPlant: null,
         selectedPlant: null,
-        plantDetailed: null,
 
       }
     },
     components: {
       "random-plant": RandomPlant,
 
-          "plant-detail": PlantDetail,
     "search": Search,
         "plant-list": PlantList,
     },
@@ -65,11 +61,16 @@ export default {
 
     PlantService.getPlants().then(plantData => plantData[Math.floor(Math.random()* plantData.length)])
     .then(plant => PlantService.getPlant(plant.id).then(res => this.randomPlant = res))
+  },
+  watch:{
+  selectedPlant() {
+        this.$router.push({name:'selectedplant'})
   }
-  }
+}
+}
 
 </script>
 
-<style lang="css" scoped>
-  @import '../assets/css/coreStyles.css';
+<style lang="scss" scoped>
+  @import '../assets/css/coreStyles.scss';
 </style>
