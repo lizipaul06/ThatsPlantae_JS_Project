@@ -1,6 +1,6 @@
 <template lang="html">
   <div v-if="randomPlant" id="randomPlant">
-    <h2>Your Plant Of The Day is: {{randomPlant.common_name}}</h2>
+    <h2>Your Plant Of The Day is: {{capital_letter(randomPlant.common_name)}}</h2>
     <div v-if="randomPlant.images && randomPlant.images.length > 0">
         <div class="image">
           <img :src="randomPlant.images[0].url">
@@ -14,11 +14,22 @@
 <script>
 export default {
   name: "random-plant",
-  props: ['randomPlant']
+  props: ['randomPlant'],
+  methods:{
+    capital_letter(str){
+      str = str.split(" ");
+
+      for (var i = 0, x = str.length; i < x; i++) {
+          str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+      }
+
+      return str.join(" ");
+      }
+  }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 
 @import '../assets/css/coreStyles.scss';
 

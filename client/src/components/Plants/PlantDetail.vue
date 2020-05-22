@@ -4,7 +4,7 @@
       <h2>More Info About: {{plantDetailed.common_name}}</h2>
       <div id="flexWrapper">
         <div id="left">
-          <p>Scientific Name: {{plantDetailed.scientific_name}}</p>
+          <p  class="font-italic" >Scientific Name: {{plantDetailed.scientific_name}}</p>
           <p>Family: {{plantDetailed.family_common_name}}</p>
           <h3>Growing Requirements</h3>
           <p>Annual Rainfall: {{plantDetailed.main_species.growth.precipitation_minimum.inches}}in - {{plantDetailed.main_species.growth.precipitation_maximum.inches}}in</p>

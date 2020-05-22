@@ -1,5 +1,5 @@
 <template lang="html">
-  <div>
+  <div class="fave-plant-list">
     <wish-item  v-for="plant in wishlist"  :plant="plant"/>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <div>
   <my-garden></my-garden>
 
-  <b-button v-b-toggle.collapse-1 variant="primary">Arrange your garden</b-button>
+  <b-button v-b-toggle.collapse-1 variant="light">Arrange your garden</b-button>
 <b-collapse id="collapse-1" class="mt-2">
   <b-card>
         <garden-container />

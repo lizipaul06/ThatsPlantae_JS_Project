@@ -14,8 +14,8 @@
 </template>
 
 <script>
-const imageurl = require("../../assets/images/snail.png");
 
+const imageurl = require("../../../public/images/snail.png");
 export default {
   data() {
     return {
@@ -27,8 +27,10 @@ export default {
     };
   },
   created() {
+    let num = 0
     const image = new window.Image();
     image.src = imageurl;
+    image.key = num++;
     image.onload = () => {
       // set image only when it is loaded
       this.image = image;

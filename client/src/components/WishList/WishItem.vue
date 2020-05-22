@@ -1,11 +1,20 @@
 <template lang="html">
   <div>
+  <b-card
+     :title="capital_letter(plant.common_name)"
+     :img-src="plant.images[0].url"
+     img-alt="a plant"
+       img-top
+       style="max-width: 20rem;"
+        class="bg-secondary text-light"
 
-    <li>{{plant.common_name}}</li>
-    <div class="flex">
-      <button v-on:click="deleteItem">Remove From WishList</button>
-      <button v-on:click="updateOwned">Add To Garden</button>
-    </div>
+     >
+     <b-button variant="light" v-on:click="deleteItem">Remove From WishList</b-button>
+     <b-button variant="light" v-on:click="updateOwned">Add To Garden</b-button>
+ </b-card>
+
+
+
 
   </div>
 </template>
@@ -26,7 +35,16 @@ export default {
       }
       PlantService.updatePlant(this.plant._id, wish)
       .then(res => eventBus.$emit('plant-owned', this.plant._id))
-    }
+    },
+    capital_letter(str){
+      str = str.split(" ");
+
+      for (var i = 0, x = str.length; i < x; i++) {
+          str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+      }
+
+      return str.join(" ");
+      }
   }
 }
 </script>

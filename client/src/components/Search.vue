@@ -13,7 +13,7 @@
         <form v-for="plant in results">
           <div class="listItemSearch">
             <input type="radio" @change="handleChange" v-model="selectedPlant" v-bind:value="plant">
-            <p>{{plant.common_name}}</p>
+            <p>{{capital_letter(plant.common_name)}}</p>
           </div>
         </form>
       </div>
@@ -49,7 +49,7 @@ export default {
       this.results = results
     })
   },
-  methods: {
+  methods:{
     runSearch() {
       this.$search('', this.plantData, { keys:['common_name', 'family_common_name']}
       .then(result => {
@@ -60,10 +60,20 @@ export default {
     handleChange(){
       this.results = []
       eventBus.$emit('plant-selected', this.selectedPlant);
-    }
-  },
+    },
 
-}
+      capital_letter(str){
+        str = str.split(" ");
+
+        for (var i = 0, x = str.length; i < x; i++) {
+            str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+        }
+
+        return str.join(" ");
+        }
+    }
+  }
+
 //
 //
 </script>

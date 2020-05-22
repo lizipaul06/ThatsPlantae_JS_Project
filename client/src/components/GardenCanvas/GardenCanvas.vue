@@ -1,7 +1,7 @@
 <template>
   <v-stage ref="stage" :config="stageSize" class="arrange">
     <v-layer ref="layer">
-      <garden-image v-for="url in urls"
+      <garden-image key="url" v-for="url in urls"
         :config="{
         src: url,
         width: 210,
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-const imageurl = require("../../assets/images/snail.png");
+const imageurl = require("../../../public/images/snail.png");
 import GardenImage from "./GardenImage.vue";
 
 export default {
