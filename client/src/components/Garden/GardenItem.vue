@@ -11,64 +11,63 @@
 
       >
       <template v-slot:header>
-      <h4 class="mb-0">{{capital_letter(gardenItem.common_name)}}</h4>
-    </template>
-      <b-card-text  >
-      <p  class="font-italic">  Scientific Name: {{gardenItem.scientific_name}} </p>
-        Rainfall: {{gardenItem.main_species.growth.precipitation_minimum.inches}}in - {{gardenItem.main_species.growth.precipitation_maximum.inches}}in <br/>
-        Soil ph: {{gardenItem.main_species.growth.ph_minimum}} - {{gardenItem.main_species.growth.ph_maximum}} <br/>
-        Min Temp: {{gardenItem.main_species.growth.temperature_minimum.deg_c.toFixed(2)}}°c <br/>
-        Shade: {{gardenItem.main_species.growth.shade_tolerance}} <br/>
-        Roots: {{gardenItem.main_species.growth.root_depth_minimum.inches}}in <br/>
-      </b-card-text>
-      <b-button variant="light" href="#" >Plant Details</b-button>
-      <b-button variant="light" v-on:click="handleDelete">Remove From Garden</b-button>
-    </b-card>
-  </div>
-  <!-- If the plant has no images, show a placeholder instead -->
-  <div v-if="gardenItem.images.length === 0">
-    <b-card
-    img-src="/images/placeholder_plant.jpg"
-    img-alt="a rubber plant placeholder image"
-    img-top
-    style="max-width: 20rem;"
-    class="bg-secondary text-light"
-    >
-    <template v-slot:header>
-    <h4 class="mb-0">{{gardenItem.common_name}}</h4>
-  </template>
-    <b-card-text >
-        <p  class="font-italic">  Scientific Name: {{gardenItem.scientific_name}} </p>
-      Rainfall: {{gardenItem.main_species.growth.precipitation_minimum.inches}}in - {{gardenItem.main_species.growth.precipitation_maximum.inches}}in <br/>
-      Soil ph: {{gardenItem.main_species.growth.ph_minimum}} - {{gardenItem.main_species.growth.ph_maximum}} <br/>
-      Min Temp: {{gardenItem.main_species.growth.temperature_minimum.deg_c.toFixed(2)}}°c <br/>
-      Shade: {{gardenItem.main_species.growth.shade_tolerance}} <br/>
-      Roots: {{gardenItem.main_species.growth.root_depth_minimum.inches}}in <br/>
-    </b-card-text>
-    <b-button variant="light" href="#" >Plant Details</b-button>
+        <h4 class="mb-0">{{capital_letter(gardenItem.common_name)}}</h4>
+      </template>
+      <b-card-body>
+        <b-card-text  >
+          <p  class="font-italic">  Scientific Name: {{gardenItem.scientific_name}} </p>
+          <div v-if="gardenItem.status">
+            Today my plant: {{gardenItem.status}}
+          </div>
+        </b-card-text>
+      </b-card-body>
+      <div class="">
+        <b-form-select  id="status" for="status" v-on:change="handleChange" text="Update plant status to:"v-model="status" class="mb-3"
+        :options="options">
+
+      </b-form-select>
+    </div>
+
+    <b-button variant="light"  v-on:click="getToDetails" >Plant Details</b-button>
     <b-button variant="light" v-on:click="handleDelete">Remove From Garden</b-button>
   </b-card>
 </div>
+<!-- If the plant has no images, show a placeholder instead -->
+<div v-if="gardenItem.images.length === 0">
+  <b-card
+  img-src="/images/placeholder_plant.jpg"
+  img-alt="a rubber plant placeholder image"
+  img-top
+  style="max-width: 20rem;"
+  class="bg-secondary text-light"
+  >
+  <template v-slot:header>
+    <h4 class="mb-0">{{gardenItem.common_name}}</h4>
+  </template>
+  <b-card-body>
+    <b-card-text >
+      <p  class="font-italic">  Scientific Name: {{gardenItem.scientific_name}} </p>
+      <div v-if="gardenItem.status">
+        Today my plant: {{gardenItem.status}}
+      </div>
+    </b-card-text>
+  </b-card-body>
+  <div class="">
+
+    <b-form-select  id="status" for="status" v-on:change="handleChange" text="Update plant status to:"v-model="status" class="mb-3"
+    :options="options">
+
+
+  </b-form-select>
+</div>
+
+<b-button variant="light" v-on:click="getToDetails" >Plant Details</b-button>
+<b-button variant="light" v-on:click="handleDelete">Remove From Garden</b-button>
+</b-card>
+</div>
 <!-- Show status if exists -->
-<div v-if="gardenItem.status">
-  Today my plant: {{gardenItem.status}}
-</div>
-<div class="">
-  <label for="status">Update plant status to:</label>
-  <select id="status" v-on:change="handleChange" v-model="status">
-    <option value="is thirsty">is thirsty</option>
-    <option value="is in bloom">is in bloom</option>
-    <option value="is producing fruit">is producing fruit</option>
-    <option value="is looking healthy">is looking healthy</option>
-    <option value="needs a chat">needs a chat</option>
-    <option value="needs fertilizer">needs fertilizer</option>
-    <option value="needs more sun">needs more sun</option>
-    <option value="needs less sun">needs less sun</option>
-    <option value="needs a hug">needs a hug</option>
-    <option value="has gone missing">has gone missing</option>
-    <option value="has been eaten">has been eaten</option>
-  </select>
-</div>
+
+
 
 </div>
 </template>
@@ -82,7 +81,22 @@ export default {
   data(){
     return{
       comments: [],
-      status: ""
+      status: null,
+      options: [
+        { value: null, text: 'Please update plant status' },
+        { value: 'is thirsty', text: 'is thirsty' },
+        { value: 'is in bloom', text: 'is in bloom' },
+        { value: 'is producing fruit', text: 'is producing fruit' },
+        { value: 'is looking healthy', text: 'is looking healthy'},
+        { value: 'needs a chat', text: 'needs a chat' },
+        { value: 'needs fertilizer', text: 'needs fertilizer' },
+        { value: 'needs more sun', text: 'needs more sun' },
+        { value: 'needs less sun', text: 'needs less sun' },
+        { value: 'needs a hug', text: 'ineeds a hug' },
+        { value: 'has gone missing', text: 'has gone missing' },
+        { value: 'has been eaten', text: 'has been eaten'},
+
+      ]
     }
   },
   props: ['gardenItem'],
@@ -100,14 +114,17 @@ export default {
       PlantService.updatePlant(this.gardenItem._id, update)
       .then(() => eventBus.$emit('status-changed'))
     },
-  capital_letter(str){
-    str = str.split(" ");
+    getToDetails(){
+      this.$router.push({name:'selectedplant', params:{plantDetail: this.gardenItem}},)
+    },
+    capital_letter(str){
+      str = str.split(" ");
 
-    for (var i = 0, x = str.length; i < x; i++) {
+      for (var i = 0, x = str.length; i < x; i++) {
         str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-    }
+      }
 
-    return str.join(" ");
+      return str.join(" ");
     }
   }
 }
@@ -116,6 +133,6 @@ export default {
 
 <style lang="scss" scoped>
 
-  @import '../../assets/css/gardenStyles.scss';
+@import '../../assets/css/gardenStyles.scss';
 
 </style>

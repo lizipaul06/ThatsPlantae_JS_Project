@@ -53,8 +53,7 @@ export default {
           }
           return 0;
         })
-      ).then(plantData => plantData[Math.floor(Math.random()* plantData.length)])
-      .then(plant => PlantService.getPlant(plant.id).then(res => this.randomPlant = res))
+      ).then(plantData => plantData[Math.floor(Math.random()* plantData.length)]).then(plant => PlantService.getPlant(plant.id).then(res => this.randomPlant = res))
 
       eventBus.$on('plant-selected', (plant) => {
         this.selectedPlant = plant
