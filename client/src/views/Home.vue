@@ -32,6 +32,7 @@ export default {
       plantData: [],
         randomPlant: null,
         selectedPlant: null,
+        plantDetailed: null
 
       }
     },
@@ -62,8 +63,8 @@ export default {
 
   },
   watch:{
-  selectedPlant() {
-        this.$router.push({name:'selectedplant'})
+  plantDetailed() {
+        this.$router.push({name:'selectedplant', params:{plantDetail: this.plantDetailed}},)
   }
 }
 }

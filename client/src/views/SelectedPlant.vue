@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
   <h1> plant details </h1>
-   <plant-detail  v-if="plantDetailed" :plantDetailed="this.plantDetailed">   </plant-detail>
+   <plant-detail   :plantDetailed="this.$route.params.plantDetail">   </plant-detail>
  </div>
 </template>
 
@@ -15,8 +15,6 @@ export default {
   data(){
     return{
 
-      selectedPlant: null,
-      plantDetailed: null
 
 
     }
@@ -25,10 +23,9 @@ export default {
         "plant-detail": PlantDetail,
 
   },
-  beforeCreate(){
-    eventBus.$on('plant-selected', (plant) => {
-      PlantService.getPlant(plant.id).then(res => this.plantDetailed = res)
-    });
+  mounted(){
+      PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
+
 
   }
 }

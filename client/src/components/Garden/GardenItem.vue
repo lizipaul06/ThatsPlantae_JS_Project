@@ -21,7 +21,7 @@
         Shade: {{gardenItem.main_species.growth.shade_tolerance}} <br/>
         Roots: {{gardenItem.main_species.growth.root_depth_minimum.inches}}in <br/>
       </b-card-text>
-      <b-button variant="light" href="#" >Go somewhere</b-button>
+      <b-button variant="light" href="#" >Plant Details</b-button>
       <b-button variant="light" v-on:click="handleDelete">Remove From Garden</b-button>
     </b-card>
   </div>
@@ -45,7 +45,7 @@
       Shade: {{gardenItem.main_species.growth.shade_tolerance}} <br/>
       Roots: {{gardenItem.main_species.growth.root_depth_minimum.inches}}in <br/>
     </b-card-text>
-    <b-button variant="light" href="#" >Go somewhere</b-button>
+    <b-button variant="light" href="#" >Plant Details</b-button>
     <b-button variant="light" v-on:click="handleDelete">Remove From Garden</b-button>
   </b-card>
 </div>
