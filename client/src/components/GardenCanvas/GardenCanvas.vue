@@ -1,12 +1,14 @@
 <template>
   <v-stage ref="stage" :config="stageSize" class="arrange">
     <v-layer ref="layer">
-      <garden-image key="url" v-for="url in urls"
+      <garden-image  v-for="url in urls" :key="url"
         :config="{
         src: url,
         width: 210,
         height: 210,
-        draggable: true
+        draggable: true,
+        x: 100,
+        y: 600
 
       }"
       ></garden-image>

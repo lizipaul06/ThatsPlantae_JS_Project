@@ -19,13 +19,14 @@ export default {
   data() {
     return {
       image: null,
-      width: 1,
-      height: 1
+      width: 106,
+      height: 100
     };
   },
   created() {
-    const image = new window.Image();
-    image.src = this.config.src;
+
+    let image = new window.Image();
+    image.src = this.config.src.url;
     image.onload = () => {
       // set image only when it is loaded
       this.image = image;

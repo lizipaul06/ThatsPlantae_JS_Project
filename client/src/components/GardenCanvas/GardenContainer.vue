@@ -17,6 +17,7 @@ import GardenCanvas from './GardenCanvas.vue'
 
 export default {
   name: 'garden-container',
+
   data() {
     return {
       plantUrls: []
@@ -29,11 +30,12 @@ export default {
 
   mounted(){
     this.fetchUrls();
+    eventBus.$on('owned-plants', plants => this.plantsOwned = plants)
 },
 methods: {
   fetchUrls(){
     PlantService.getMyPlants()
-    .then(favePlants => this.plantUrls = favePlants.filter(plant => plant.owned == true).map(plant => plant.images[0].url));
+    .then(plants => this.plantUrls =plants.map(plant => plant.images[0]));
   }
 }
 }

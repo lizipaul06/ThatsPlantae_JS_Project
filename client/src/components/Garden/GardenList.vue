@@ -38,6 +38,7 @@ export default {
     let index = this.myPlants.findIndex(gardenItem => gardenItem._id === id)
     this.myPlants.splice(index, 1)});
 
+   eventBus.$emit('owned-plants', this.myPlants)
 
 },
 methods: {
