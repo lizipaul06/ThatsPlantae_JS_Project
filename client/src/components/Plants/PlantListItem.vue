@@ -1,13 +1,14 @@
 <template lang="html">
   <div >
-    <p id="common_name">{{capital_letter(plant.common_name) }}</p>
-    <p id="scientific_name">{{capital_letter(plant.scientific_name) }}</p>
+    <p id="common_name">{{capitalLetter(plant.common_name) }}</p>
+    <p id="scientific_name">{{capitalLetter(plant.scientific_name) }}</p>
   </div>
 </template>
 
 <script>
 import { eventBus } from "../../main.js";
 import PlantDetail from '../PlantDetail.vue';
+import plantHelper from '../../helpers.js'
 
 export default {
   name: "plant-list-item",
@@ -16,15 +17,7 @@ export default {
     "plant-detail": PlantDetail
   },
   methods:{
-    capital_letter(str){
-      str = str.split(" ");
-
-      for (var i = 0, x = str.length; i < x; i++) {
-          str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-      }
-
-      return str.join(" ");
-      }
+    capitalLetter: plantHelper.capitalLetter
   }
   }
 

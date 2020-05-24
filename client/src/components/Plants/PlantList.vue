@@ -7,7 +7,7 @@
       text="select a plant"
        v-on:change="handleChange" v-model="selectedPlant">
       <option v-if="plant.common_name" v-for="(plant, index) in plantData" :plant="plant"
-        :value="plant" :key="index"> {{capital_letter(plant.common_name)}} </option>
+        :value="plant" :key="index"> {{capitalLetter(plant.common_name)}} </option>
       </b-form-select>
 
     </b-nav-form>
@@ -16,6 +16,7 @@
 <script>
 
 import {eventBus} from '../../main.js'
+import plantHelper from '../../helpers.js'
 
 export default {
   name: "plant-list",
@@ -33,15 +34,7 @@ export default {
     handleChange(){
       eventBus.$emit('plant-selected', this.selectedPlant);
     },
-    capital_letter(str){
-      str = str.split(" ");
-
-      for (var i = 0, x = str.length; i < x; i++) {
-          str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-      }
-
-      return str.join(" ");
-      }
+    capitalLetter: plantHelper.capitalLetter
 },
 computed: {
   sortedArray: function() {

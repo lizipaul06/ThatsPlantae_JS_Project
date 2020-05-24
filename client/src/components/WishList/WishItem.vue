@@ -10,11 +10,11 @@
     header-text-variant="cardHeader"
     >
     <template v-slot:header>
-      <h4 class="cardHeader">{{capital_letter(plant.common_name)}}</h4>
+      <h4 class="cardHeader">{{capitalLetter(plant.common_name)}}</h4>
     </template>
     <b-card-body>
       <b-card-text >
-        <p  class="font-italic">  Scientific Name: {{plant.scientific_name}} </p>
+        <p  class="font-italic">  Scientific Name: {{capitalLetter(plant.scientific_name)}} </p>
       </b-card-text>
       <b-button variant="outline-secondary"  v-on:click="getToDetails" >Plant Details</b-button>
       <b-button variant="outline-danger" v-on:click="deleteItem">Remove From WishList</b-button>
@@ -32,6 +32,8 @@
 <script>
 import PlantService from '../../services/PlantService.js';
 import { eventBus } from '../../main.js';
+import plantHelper from '../../helpers.js'
+
 export default {
   name: "wish-item",
   props: ['plant'],
@@ -49,15 +51,7 @@ export default {
     getToDetails(){
       this.$router.push({name:'selectedplant', params:{plantDetail: this.plant}},)
     },
-    capital_letter(str){
-      str = str.split(" ");
-
-      for (var i = 0, x = str.length; i < x; i++) {
-          str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-      }
-
-      return str.join(" ");
-      }
+    capitalLetter: plantHelper.capitalLetter
   }
 }
 </script>

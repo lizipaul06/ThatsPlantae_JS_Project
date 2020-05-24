@@ -12,11 +12,7 @@ import PlantService from '../services/PlantService.js';
 export default {
   name:'selectedPlant',
   data(){
-    return{
-
-
-
-    }
+    return{ }
   },
   components: {
     "plant-detail": PlantDetail,

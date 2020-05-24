@@ -11,11 +11,11 @@
        header-text-variant="cardHeader"
       >
 
-        <h4 class="cardHeader">{{capital_letter(this.$route.params.plantDetail.common_name)}}</h4>
+        <h4 class="cardHeader">{{capitalLetter(this.$route.params.plantDetail.common_name)}}</h4>
 
       <b-card-body>
     <b-card-text>
-        <p> Scientific Name: {{this.$route.params.plantDetail.scientific_name}} </p>
+        <p> Scientific Name: {{capitalLetter(this.$route.params.plantDetail.scientific_name)}} </p>
         <p>Family: {{this.$route.params.plantDetail.family_common_name}}</p>
         <p>Growing Requirements</p>
         <p>Annual Rainfall: {{this.$route.params.plantDetail.main_species.growth.precipitation_minimum.inches}}in - {{this.$route.params.plantDetail.main_species.growth.precipitation_maximum.inches}}in</p>
@@ -67,6 +67,7 @@
 <script>
 
 import PlantService from '../../services/PlantService.js'
+import plantHelper from '../../helpers.js'
 
 export default {
   name: 'plant-detail',
@@ -78,35 +79,21 @@ export default {
     }
   },
   methods:{
-    onSlideStart(slide) {
-      this.sliding = true
-    },
-    onSlideEnd(slide) {
-      this.sliding = false
-    },
+    onSlideStart: plantHelper.onSlideStart,
+    onSlideEnd: plantHelper.onSlideEnd,
+    capitalLetter: plantHelper.capitalLetter,
     addToMyGarden: function(){
-      // const update = {owned: true }
-      // let newPlant = this.plantDetailed;
       this.$route.params.plantDetail.owned = true;
       PlantService.postPlant(this.$route.params.plantDetail)
       .then((res) => eventBus.$emit("plant-added", res))
-      // PlantService.updatePlant(this.plantDetailed.id, update)
-      // .then(res => eventBus.$emit('plant-owned', this.plantDetailed.id))
+
     },
     addToWishList: function(){
       this.$route.params.plantDetail.owned = false;
       PlantService.postPlant(this.$route.params.plantDetail)
       .then((res) => eventBus.$emit("plant-added-wishlist", res))
     },
-  capital_letter(str){
-    str = str.split(" ");
 
-    for (var i = 0, x = str.length; i < x; i++) {
-      str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-    }
-
-    return str.join(" ");
-  }
 
   },
 

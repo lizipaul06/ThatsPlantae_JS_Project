@@ -2,7 +2,7 @@
   <div v-if="randomPlant" id="randomPlant">
 
     <b-col  v-if="randomPlant.images && randomPlant.images.length > 0">
-      <h2>Your Plant Of The Day is: {{capital_letter(randomPlant.common_name)}}</h2>
+      <h2>Your Plant Of The Day is: {{capitalLetter(randomPlant.common_name)}}</h2>
       <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import plantHelper from '../helpers.js'
 export default {
   name: "random-plant",
   props: ['randomPlant'],
@@ -43,22 +44,12 @@ export default {
 
     }
   },
+
   methods:{
-    capital_letter(str){
-      str = str.split(" ");
+    capitalLetter: plantHelper.capitalLetter,
+    onSlideStart: plantHelper.onSlideStart,
+    onSlideEnd: plantHelper.onSlideEnd
 
-      for (var i = 0, x = str.length; i < x; i++) {
-        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-      }
-
-      return str.join(" ");
-    },
-    onSlideStart(slide) {
-      this.sliding = true
-    },
-    onSlideEnd(slide) {
-      this.sliding = false
-    }
   }
 }
 </script>

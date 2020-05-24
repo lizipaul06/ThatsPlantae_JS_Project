@@ -30,7 +30,7 @@
 
 import {eventBus} from '../main.js';
 import VueFuseParams from '../components/VueFuseParams.vue';
-import PlantList from '../components/Plants/PlantList.vue';
+import plantHelper from '../helpers.js'
 
 export default {
   name: "plant-filter-form",
@@ -61,16 +61,8 @@ export default {
       this.results = []
       eventBus.$emit('plant-selected', this.selectedPlant);
     },
+    capitalLetter: plantHelper.capitalLetter
 
-    capital_letter(str){
-      str = str.split(" ");
-
-      for (var i = 0, x = str.length; i < x; i++) {
-        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-      }
-
-      return str.join(" ");
-    }
   }
 }
 

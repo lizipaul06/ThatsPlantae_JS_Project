@@ -8,16 +8,16 @@
       img-top
       style="max-width: 20rem;"
       header-class="header-bg-variant"
-       body-class='cardBody'
-       header-text-variant="cardHeader"
-       align="center"
-    >
+      body-class='cardBody'
+      header-text-variant="cardHeader"
+      align="center"
+      >
       <template v-slot:header>
-        <h4 class="cardHeader">{{capital_letter(gardenItem.common_name)}}</h4>
+        <h4 class="cardHeader">{{capitalLetter(gardenItem.common_name)}}</h4>
       </template>
       <b-card-body>
         <b-card-text  >
-          <p  class="font-italic">  Scientific Name: {{gardenItem.scientific_name}} </p>
+          <p  class="font-italic">  Scientific Name: {{capitalLetter(gardenItem.scientific_name)}} </p>
           <div v-if="gardenItem.status">
             Today my plant: {{gardenItem.status}}
           </div>
@@ -31,7 +31,7 @@
 
       <b-button variant="outline-secondary" v-on:click="getToDetails" >Plant Details</b-button>
       <b-button variant="outline-danger" v-on:click="handleDelete">Remove From Garden</b-button>
-      </b-card-body>
+    </b-card-body>
 
   </b-card>
 </div>
@@ -42,9 +42,9 @@
   img-alt="a rubber plant placeholder image"
   img-top
   style="max-width: 20rem;"
-      header-class="header-bg-variant"
-           body-class='cardBody'
-           header-text-variant="cardHeader"
+  header-class="header-bg-variant"
+  body-class='cardBody'
+  header-text-variant="cardHeader"
   >
   <template v-slot:header>
     <h4 class="cardHeader">{{gardenItem.common_name}}</h4>
@@ -70,14 +70,13 @@
 <b-button variant="outline-danger" v-on:click="handleDelete">Remove From Garden</b-button>
 </b-card>
 </div>
-<!-- Show status if exists -->
-
 
 
 </div>
 </template>
 
 <script>
+import plantHelper from '../../helpers.js'
 import PlantService from '../../services/PlantService.js';
 import { eventBus } from '../../main.js';
 
@@ -122,15 +121,7 @@ export default {
     getToDetails(){
       this.$router.push({name:'selectedplant', params:{plantDetail: this.gardenItem}},)
     },
-    capital_letter(str){
-      str = str.split(" ");
-
-      for (var i = 0, x = str.length; i < x; i++) {
-        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-      }
-
-      return str.join(" ");
-    }
+    capitalLetter: plantHelper.capitalLetter
   }
 }
 
