@@ -1,25 +1,27 @@
 <template lang="html">
   <div class="plant">
-  <b-card
-     :img-src="plant.images[0].url"
-     img-alt="a plant"
-       img-top
-       style="max-width: 20rem;"
-        class="bg-secondary text-light"
-
-     >
-     <template v-slot:header>
-     <h4 class="mb-0">{{capital_letter(plant.common_name)}}</h4>
-   </template>
+    <b-card
+    :img-src="plant.images[0].url"
+    img-alt="a plant"
+    img-top
+    style="max-width: 20rem;"
+    header-class="header-bg-variant"
+    body-class='cardBody'
+    header-text-variant="cardHeader"
+    >
+    <template v-slot:header>
+      <h4 class="cardHeader">{{capital_letter(plant.common_name)}}</h4>
+    </template>
     <b-card-body>
-     <b-card-text >
-         <p  class="font-italic">  Scientific Name: {{plant.scientific_name}} </p>
-       </b-card-text>
-           </b-card-body>
-       <b-button variant="light"  v-on:click="getToDetails" >Plant Details</b-button>
-     <b-button variant="light" v-on:click="deleteItem">Remove From WishList</b-button>
-     <b-button variant="light" v-on:click="updateOwned">Add To Garden</b-button>
- </b-card>
+      <b-card-text >
+        <p  class="font-italic">  Scientific Name: {{plant.scientific_name}} </p>
+      </b-card-text>
+      <b-button variant="outline-secondary"  v-on:click="getToDetails" >Plant Details</b-button>
+      <b-button variant="outline-danger" v-on:click="deleteItem">Remove From WishList</b-button>
+      <b-button variant="outline-success" v-on:click="updateOwned">Add To Garden</b-button>
+    </b-card-body>
+
+  </b-card>
 
 
 

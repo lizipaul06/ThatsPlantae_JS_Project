@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="plant">
+  <div >
     <div v-if="gardenItem.images && gardenItem.images.length > 0">
       <!-- If the plant has more than one image, just show the first one -->
       <b-card
@@ -7,11 +7,13 @@
       img-alt="a plant"
       img-top
       style="max-width: 20rem;"
-      class="bg-secondary text-light"
-
-      >
+      header-class="header-bg-variant"
+       body-class='cardBody'
+       header-text-variant="cardHeader"
+       align="center"
+    >
       <template v-slot:header>
-        <h4 class="mb-0">{{capital_letter(gardenItem.common_name)}}</h4>
+        <h4 class="cardHeader">{{capital_letter(gardenItem.common_name)}}</h4>
       </template>
       <b-card-body>
         <b-card-text  >
@@ -20,16 +22,17 @@
             Today my plant: {{gardenItem.status}}
           </div>
         </b-card-text>
+        <div class="">
+          <b-form-select  id="status" for="status" v-on:change="handleChange" text="Update plant status to:"v-model="status" class="mb-3"
+          :options="options">
+
+        </b-form-select>
+      </div>
+
+      <b-button variant="outline-secondary" v-on:click="getToDetails" >Plant Details</b-button>
+      <b-button variant="outline-danger" v-on:click="handleDelete">Remove From Garden</b-button>
       </b-card-body>
-      <div class="">
-        <b-form-select  id="status" for="status" v-on:change="handleChange" text="Update plant status to:"v-model="status" class="mb-3"
-        :options="options">
 
-      </b-form-select>
-    </div>
-
-    <b-button variant="light"  v-on:click="getToDetails" >Plant Details</b-button>
-    <b-button variant="light" v-on:click="handleDelete">Remove From Garden</b-button>
   </b-card>
 </div>
 <!-- If the plant has no images, show a placeholder instead -->
@@ -39,10 +42,12 @@
   img-alt="a rubber plant placeholder image"
   img-top
   style="max-width: 20rem;"
-  class="bg-secondary text-light"
+      header-class="header-bg-variant"
+           body-class='cardBody'
+           header-text-variant="cardHeader"
   >
   <template v-slot:header>
-    <h4 class="mb-0">{{gardenItem.common_name}}</h4>
+    <h4 class="cardHeader">{{gardenItem.common_name}}</h4>
   </template>
   <b-card-body>
     <b-card-text >
@@ -61,8 +66,8 @@
   </b-form-select>
 </div>
 
-<b-button variant="light" v-on:click="getToDetails" >Plant Details</b-button>
-<b-button variant="light" v-on:click="handleDelete">Remove From Garden</b-button>
+<b-button variant="outline-secondary" v-on:click="getToDetails" >Plant Details</b-button>
+<b-button variant="outline-danger" v-on:click="handleDelete">Remove From Garden</b-button>
 </b-card>
 </div>
 <!-- Show status if exists -->
@@ -133,6 +138,7 @@ export default {
 
 <style lang="scss" scoped>
 
-@import '../../assets/css/gardenStyles.scss';
+
+@import '../../assets/css/coreStyles.scss';
 
 </style>

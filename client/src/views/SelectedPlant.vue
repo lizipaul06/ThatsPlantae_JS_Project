@@ -1,8 +1,7 @@
 <template lang="html">
   <div>
-  <h1> plant details </h1>
-   <plant-detail   :plantDetailed="this.$route.params.plantDetail">   </plant-detail>
- </div>
+    <plant-detail   :plantDetailed="this.$route.params.plantDetail">   </plant-detail>
+  </div>
 </template>
 
 <script>
@@ -20,15 +19,12 @@ export default {
     }
   },
   components: {
-        "plant-detail": PlantDetail,
+    "plant-detail": PlantDetail,
 
   },
-  mounted(){
-      PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
 
-
-  }
 }
+
 </script>
 
 <style lang="scss" scoped>

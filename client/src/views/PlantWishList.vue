@@ -8,12 +8,12 @@ import { eventBus } from '../main.js';
 export default {
   name: "PlantWishList",
   components:{
-        "wish-list": WishList,
+    "wish-list": WishList,
   }
 
 }
 </script>
 
 <style lang="scss" scoped>
-  @import '../assets/css/coreStyles.scss';
+@import '../assets/css/coreStyles.scss';
 </style>

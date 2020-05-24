@@ -16,13 +16,7 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-body {
-  background-image: url(/images/background2.jpg);
-  background-size: cover;
-  /* background-repeat: repeat; */
 
-  font-family: "Simonetta";
-}
 
 
 input {
@@ -39,30 +33,56 @@ img {
   align-content: center;
   padding: 25px
 }
+.cardHeader{
+   color: black !important;
+}
 
 #title {
   display: flex;
   justify-content: center;
-  color: white;
+  color: #6FB3B8;
   font-size: 70px;
   font-family: Fredericka the Great;
   text-shadow: 2px 2px grey;
 }
 
 
-
 .body {
-  font-size: 30px;
-  color: white;
+  font-size: 20px;
+  color: #6FB3B8;
   align-items: center;
   text-align: center;
+background-color: #F6F6F2;
+width: 100%;
+min-height: 100vh;
+  /* background-repeat: repeat; */
+
+  font-family: "Simonetta";
+}
+
+.navbar{
+  background-color: #388087;
+
+
+}
+
+.header-bg-variant{
+  background-color: #C2EDCE !important;
+
+
+}
+
+.cardBody{
+  color: #388087 ;
+    font-family: "Simonetta";
+    font-size: 20px;
 }
 
 #garden{
   width: 700px;
 }
 
-
+a{color: #F6F6F2!important}
 
 
 

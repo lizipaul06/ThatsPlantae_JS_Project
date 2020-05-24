@@ -62,17 +62,17 @@ export default {
       eventBus.$emit('plant-selected', this.selectedPlant);
     },
 
-      capital_letter(str){
-        str = str.split(" ");
+    capital_letter(str){
+      str = str.split(" ");
 
-        for (var i = 0, x = str.length; i < x; i++) {
-            str[i] = str[i][0].toUpperCase() + str[i].substr(1);
-        }
+      for (var i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+      }
 
-        return str.join(" ");
-        }
+      return str.join(" ");
     }
   }
+}
 
 //
 //
@@ -80,6 +80,6 @@ export default {
 
 <style lang="scss" scoped>
 
-  @import '../assets/css/coreStyles.scss';
+@import '../assets/css/coreStyles.scss';
 
 </style>

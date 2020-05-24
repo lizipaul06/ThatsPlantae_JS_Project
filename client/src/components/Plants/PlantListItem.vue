@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="plantlistitem">
+  <div >
     <p id="common_name">{{capital_letter(plant.common_name) }}</p>
     <p id="scientific_name">{{capital_letter(plant.scientific_name) }}</p>
   </div>

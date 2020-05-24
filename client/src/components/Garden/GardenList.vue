@@ -1,15 +1,15 @@
 <template lang="html">
   <div class="">
-    <div class="fave-plant-list">
+    <b-card-group deck>
       <garden-item  v-for="(gardenItem, index) in myPlants"  :gardenItem="gardenItem" :key="index"/>
-    </div>
+    </b-card-group >
   </div>
 
 </template>
 
 <script>
 import { eventBus } from '../../main.js';
-  import PlantService from '../../services/PlantService.js';
+import PlantService from '../../services/PlantService.js';
 import GardenItem from './GardenItem.vue'
 
 export default {
@@ -28,23 +28,15 @@ export default {
 
     // this.owned();
     // when a plant from the list is added, push this to the myPlants array
-    eventBus.$on('plant-added', plant =>
-    this.myPlants.push(plant)
-  );
-  eventBus.$on('plant-owned', plant =>
-  this.myPlants.push(plant).then(
-    this.fetchData())
-  );
+    eventBus.$on('plant-added', plant => this.myPlants.push(plant));
+  eventBus.$on('plant-owned', plant => this.myPlants.push(plant).then( this.fetchData()));
 
-  eventBus.$on("status-changed", () =>{
-    this.fetchData()
-  })
+  eventBus.$on("status-changed", () =>{  this.fetchData()})
 
   // when a plant from the garden is deleted, slice this out of myPlants array
   eventBus.$on('plant-deleted', (id) => {
     let index = this.myPlants.findIndex(gardenItem => gardenItem._id === id)
-    this.myPlants.splice(index, 1)
-  });
+    this.myPlants.splice(index, 1)});
 
 
 },
@@ -52,8 +44,8 @@ methods: {
   // whenever the page loads, retrieve my fave plants from the garden db collection
   fetchData(){
     PlantService.getMyPlants()
-    .then(favePlants => this.myPlants = favePlants.filter(plant => plant.owned == true));
-    console.log(favePlants)
+    .then(myPlants => this.myPlants = myPlants.filter(plant => plant.owned == true));
+
   }
 }
 }
@@ -62,6 +54,6 @@ methods: {
 
 <style lang="scss" scoped>
 
-  @import '../../assets/css/gardenStyles.scss';
+@import '../../assets/css/gardenStyles.scss';
 
 </style>

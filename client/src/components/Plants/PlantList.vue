@@ -1,12 +1,16 @@
 <template lang="html">
-  <form v-on:submit.prevent>
-    <select id="dropDownPlant" v-on:change="handleChange" v-model="selectedPlant">
-      <option disabled value="Select a Plant"> Select a Plant </option>
+  <b-nav-form v-on:submit.prevent>
+    <b-form-select
+      size="lg" class="m-2"
+          variant="outline-secondary"
 
-        <option v-if="plant.common_name" v-for="(plant, index) in plantData" :plant="plant"
+      text="select a plant"
+       v-on:change="handleChange" v-model="selectedPlant">
+      <option v-if="plant.common_name" v-for="(plant, index) in plantData" :plant="plant"
         :value="plant" :key="index"> {{capital_letter(plant.common_name)}} </option>
-      </select>
-    </form>
+      </b-form-select>
+
+    </b-nav-form>
 </template>
 
 <script>
@@ -38,10 +42,19 @@ export default {
 
       return str.join(" ");
       }
+},
+computed: {
+  sortedArray: function() {
+    function compare(a, b) {
+      if (a.common_name < b.common_name)
+        return -1;
+      if (a.common_name > b.common_name)
+        return 1;
+      return 0;
+    }
 
-
-
-
+    return this.plantData.sort(compare);
+  }
 }
   }
 

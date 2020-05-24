@@ -2,6 +2,7 @@ import Home from './views/Home'
 import Garden from './views/Garden'
 import PlantWishList from './views/PlantWishList'
 import selectedPlant from './views/SelectedPlant'
+import GardenCanvas from './views/GardenCanvas'
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
@@ -15,7 +16,10 @@ Vue.use(Router)
 let router = new Router({
   routes: [
     { path: '/',
-     component: Home
+    name: 'home',
+     component: Home,
+     props: (route) => ({randomPlant: route.query.action})
+
    },
    { path: '/garden',
     component: Garden
@@ -27,6 +31,11 @@ let router = new Router({
   name: 'selectedplant',
   component: selectedPlant
  },
+ {path: '/gardenCanvas',
+ name: 'GardenCanvas',
+ component: GardenCanvas
+
+ }
 
   ]
 })
