@@ -96,7 +96,7 @@ export default {
         { value: 'needs fertilizer', text: 'needs fertilizer' },
         { value: 'needs more sun', text: 'needs more sun' },
         { value: 'needs less sun', text: 'needs less sun' },
-        { value: 'needs a hug', text: 'ineeds a hug' },
+        { value: 'needs a hug', text: 'needs a hug' },
         { value: 'has gone missing', text: 'has gone missing' },
         { value: 'has been eaten', text: 'has been eaten'},
 

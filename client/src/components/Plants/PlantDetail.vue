@@ -11,27 +11,27 @@
        header-text-variant="cardHeader"
       >
 
-        <h4 class="cardHeader">{{capitalLetter(this.$route.params.plantDetail.common_name)}}</h4>
+        <h4 class="cardHeader">{{capitalLetter(plantDetail.common_name)}}</h4>
 
       <b-card-body>
     <b-card-text>
-        <p> Scientific Name: {{capitalLetter(this.$route.params.plantDetail.scientific_name)}} </p>
-        <p>Family: {{this.$route.params.plantDetail.family_common_name}}</p>
+        <p> Scientific Name: {{capitalLetter(plantDetail.scientific_name)}} </p>
+        <p>Family: {{plantDetail.family_common_name}}</p>
         <p>Growing Requirements</p>
-        <p>Annual Rainfall: {{this.$route.params.plantDetail.main_species.growth.precipitation_minimum.inches}}in - {{this.$route.params.plantDetail.main_species.growth.precipitation_maximum.inches}}in</p>
-        <p>Soil ph: {{this.$route.params.plantDetail.main_species.growth.ph_minimum}} - {{this.$route.params.plantDetail.main_species.growth.ph_maximum}}</p>
-        <p>Minimum Temperature: {{this.$route.params.plantDetail.main_species.growth.temperature_minimum.deg_c.toFixed(2)}}°c</p>
-        <p>Shade Tolerance: {{this.$route.params.plantDetail.main_species.growth.shade_tolerance}}</p>
-        <p>Root Depth: {{this.$route.params.plantDetail.main_species.growth.root_depth_minimum.inches}}in</p>
-        <div v-if="this.$route.params.plantDetail.main_species.flower.color != null">
-          <p>Flower: {{this.$route.params.plantDetail.main_species.flower.color}}</p>
+        <p>Annual Rainfall: {{plantGrowth.precipitation_minimum.inches}}in - {{plantGrowth.precipitation_maximum.inches}}in</p>
+        <p>Soil ph: {{plantGrowth.ph_minimum}} - {{plantGrowth.ph_maximum}}</p>
+        <p>Minimum Temperature: {{plantGrowth.temperature_minimum.deg_c.toFixed(2)}}°c</p>
+        <p>Shade Tolerance: {{plantGrowth.shade_tolerance}}</p>
+        <p>Root Depth: {{plantGrowth.root_depth_minimum.inches}}in</p>
+        <div v-if="plantDetail.main_species.flower.color != null">
+          <p>Flower: {{plantDetail.main_species.flower.color}}</p>
         </div>
             </b-card-text>
           </b-card-body>
           </b-card>
       </b-col>
 
-      <b-col v-if="this.$route.params.plantDetail.images && this.$route.params.plantDetail.images.length > 0">
+      <b-col v-if="plantDetail.images && plantDetail.images.length > 0">
         <b-carousel
         id="carousel-1"
         v-model="slide"
@@ -73,6 +73,8 @@ export default {
   name: 'plant-detail',
   data() {
     return {
+      plantDetail: this.$route.params.plantDetail,
+      plantGrowth: this.$route.params.plantDetail.main_species.growth,
       slide: 0,
       sliding: null,
 

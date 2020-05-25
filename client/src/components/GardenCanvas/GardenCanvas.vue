@@ -7,8 +7,7 @@
         width: 210,
         height: 210,
         draggable: true,
-        x: 100,
-        y: 600
+      
 
       }"
       ></garden-image>
