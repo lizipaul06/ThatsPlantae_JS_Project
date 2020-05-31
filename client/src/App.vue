@@ -13,9 +13,10 @@
           <b-nav-item to="/gardenCanvas" > GardenCanvas</b-nav-item>
         </b-navbar-nav>
 
-        <plant-list ></plant-list>
-        <!-- <search :plantData="plantData" /> -->
+
+
       </b-navbar>
+      <plant-list ></plant-list>
     </div>
 
 
@@ -32,7 +33,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import PlantService from './services/PlantService.js';
 import { eventBus } from './main.js';
-import Search from './components/Search';
+
 import Home from './views/Home';
 import PlantList from './components/Plants/PlantList';
 require('@/assets/css/coreStyles.scss')
@@ -49,7 +50,6 @@ export default {
   },
   components: {
     "home": Home,
-    "search": Search,
     "plant-list": PlantList,
   },
   methods:{

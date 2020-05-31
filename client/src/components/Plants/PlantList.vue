@@ -2,9 +2,10 @@
  <div v-if="allPlants">
    <v-select
   label="common_name"
-     class="style-chooser"
+      class="style-chooser"
   @input="setPlant"
   :options="allPlants"
+  :filter="fuseSearch"
   :value="$store.state.selectedPlant"
 ></v-select>
 
@@ -14,6 +15,7 @@
 
 <script>
 
+import Fuse from 'fuse.js';
 import {eventBus} from '../../main.js'
 import plantHelper from '../../helpers.js'
 import { mapGetters, mapActions } from 'vuex';
@@ -38,7 +40,14 @@ export default {
       let plant = this.fetchPlant(value.id)
       this.$store.commit('setPlant',plant)
     },
-    capitalLetter: plantHelper.capitalLetter
+    capitalLetter: plantHelper.capitalLetter,
+    fuseSearch (options, search) {
+    const fuse = new Fuse(options, {
+      keys: ['common_name', 'family_common_name'],
+      shouldSort: true,
+    });
+    return search.length ? fuse.search(search) : fuse.list;
+  }
   },
 computed: {
   ...mapGetters(['allPlants', 'selectedPlant']),
@@ -82,18 +91,16 @@ watch:{
 .style-chooser .vs__search::placeholder,
 .style-chooser .vs__dropdown-toggle,
 .style-chooser .vs__dropdown-menu {
-  background: 'white';
-  border: 'bold';
+  background: #dfe5fb;
+  border: none;
   color: #394066;
   text-transform: lowercase;
   font-variant: small-caps;
-  width: auto
 }
 
 .style-chooser .vs__clear,
 .style-chooser .vs__open-indicator {
-  fill: 'white';
-
+  fill: #394066;
 }
   @import '../../assets/css/plantListStyles.scss';
 </style>
