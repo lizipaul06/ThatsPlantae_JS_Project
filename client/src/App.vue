@@ -13,7 +13,7 @@
           <b-nav-item to="/gardenCanvas" > GardenCanvas</b-nav-item>
         </b-navbar-nav>
 
-        <plant-list :plantData="plantData"></plant-list>
+        <plant-list ></plant-list>
         <!-- <search :plantData="plantData" /> -->
       </b-navbar>
     </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import PlantService from './services/PlantService.js';
 import { eventBus } from './main.js';
 import Search from './components/Search';
@@ -41,10 +42,7 @@ export default {
   name: 'app',
   data(){
     return{
-      plantData: [],
       randomPlant: null,
-      selectedPlant: null,
-      plantDetailed: null,
       random: null,
 
     }
@@ -55,27 +53,18 @@ export default {
     "plant-list": PlantList,
   },
   methods:{
+    ...mapActions(['fetchPlants']),
     randomSelect(){
-      let plant = this.plantData[Math.floor(Math.random()* this.plantData.length)]
-      PlantService.getPlant(plant.id).then(res => this.randomPlant = res)
+
 
     },
 
-
   },
-  beforeMount(){
-    PlantService.getPlants().then(plantData => this.plantData = plantData)
+  computed: mapGetters(['allPlants']),
+  created(){
+    this.fetchPlants();
   },
-  mounted(){
 
-
-    eventBus.$on('plant-selected', (plant) => {
-      this.selectedPlant = plant
-      PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
-    });
-
-
-  },
   updated(){
     this.randomSelect()
 
@@ -83,9 +72,7 @@ export default {
   },
 
   watch:{
-    plantDetailed() {
-      this.$router.push({name:'selectedplant', params:{plantDetail: this.plantDetailed}},)
-    },
+
     randomPlant(){
       eventBus.$emit('random-plant', this.randomPlant)
     }

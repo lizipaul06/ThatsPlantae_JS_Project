@@ -119,7 +119,8 @@ export default {
       .then(() => eventBus.$emit('status-changed'))
     },
     getToDetails(){
-      this.$router.push({name:'selectedplant', params:{plantDetail: this.gardenItem}},)
+          this.$store.commit('setPlant',this.gardenItem)
+      this.$router.push({name:'selectedplant'},)
     },
     capitalLetter: plantHelper.capitalLetter
   }

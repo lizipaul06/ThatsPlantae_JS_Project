@@ -9,10 +9,10 @@ const individualURL = 'http://localhost:9000/plant/'
 // API ROUTES
    //this function shall get us our plants(nae details)
    // from the front end server via the api
-   getPlants(){
-     return fetch(baseURL)
-     .then(res => res.json())
-   },
+   // getPlants(){
+   //   return fetch(baseURL)
+   //   .then(res => res.json())
+   // },
 
    // this function returns the detailed data for an individual plant
    // again from the front end server via api

@@ -1,42 +1,51 @@
 <template lang="html">
-  <b-nav-form v-on:submit.prevent>
-    <b-form-select
-      size="lg" class="m-2"
-          variant="outline-secondary"
+ <div v-if="allPlants">
+   <v-select
+  label="common_name"
+     class="style-chooser"
+  @input="setPlant"
+  :options="allPlants"
+  :value="$store.state.selectedPlant"
+></v-select>
 
-      text="select a plant"
-       v-on:change="handleChange" v-model="selectedPlant">
-      <option v-if="plant.common_name" v-for="(plant, index) in plantData" :plant="plant"
-        :value="plant" :key="index"> {{capitalLetter(plant.common_name)}} </option>
-      </b-form-select>
 
-    </b-nav-form>
+  </div>
 </template>
 
 <script>
 
 import {eventBus} from '../../main.js'
 import plantHelper from '../../helpers.js'
-
+import { mapGetters, mapActions } from 'vuex';
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css';
 export default {
   name: "plant-list",
-  props: ['plantData'],
   data(){
     return{
-      "selectedPlant": null,
+
 
     }
   },
-
-
+  components: {
+    "v-select": vSelect
+  },
 
   methods: {
-    handleChange(){
-      eventBus.$emit('plant-selected', this.selectedPlant);
+    ...mapActions(['fetchPlants', 'fetchPlant']),
+
+    setPlant(value){
+      let plant = this.fetchPlant(value.id)
+      this.$store.commit('setPlant',plant)
     },
     capitalLetter: plantHelper.capitalLetter
-},
+  },
 computed: {
+  ...mapGetters(['allPlants', 'selectedPlant']),
+    store() {
+         return this.$store.state
+       },
+
   sortedArray: function() {
     function compare(a, b) {
       if (a.common_name < b.common_name)
@@ -48,13 +57,43 @@ computed: {
 
     return this.plantData.sort(compare);
   }
+},
+created(){
+  this.fetchPlants()
+
+
+
+},
+watch:{
+  selectedPlant() {
+    this.$router.push({name:'selectedplant'})
+  },
+
+
+
 }
-  }
+}
+
 
 
 </script>
 
 <style lang="scss" scoped>
+.style-chooser .vs__search::placeholder,
+.style-chooser .vs__dropdown-toggle,
+.style-chooser .vs__dropdown-menu {
+  background: 'white';
+  border: 'bold';
+  color: #394066;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  width: auto
+}
 
+.style-chooser .vs__clear,
+.style-chooser .vs__open-indicator {
+  fill: 'white';
+
+}
   @import '../../assets/css/plantListStyles.scss';
 </style>

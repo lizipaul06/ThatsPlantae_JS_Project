@@ -49,7 +49,8 @@ export default {
       .then(res => eventBus.$emit('plant-owned', this.plant._id))
     },
     getToDetails(){
-      this.$router.push({name:'selectedplant', params:{plantDetail: this.plant}},)
+            this.$store.commit('setPlant',this.plant)
+      this.$router.push({name:'selectedplant'},)
     },
     capitalLetter: plantHelper.capitalLetter
   }

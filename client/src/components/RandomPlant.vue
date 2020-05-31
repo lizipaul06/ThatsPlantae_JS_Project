@@ -1,5 +1,5 @@
 <template lang="html">
-  <div v-if="randomPlant" id="randomPlant">
+  <div v-if="allPlants" id="randomPlant">
 
     <b-col  v-if="randomPlant.images && randomPlant.images.length > 0">
       <h2>Your Plant Of The Day is: {{capitalLetter(randomPlant.common_name)}}</h2>
@@ -33,10 +33,10 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import plantHelper from '../helpers.js'
 export default {
   name: "random-plant",
-  props: ['randomPlant'],
   data() {
     return {
       slide: 0,
@@ -48,9 +48,22 @@ export default {
   methods:{
     capitalLetter: plantHelper.capitalLetter,
     onSlideStart: plantHelper.onSlideStart,
-    onSlideEnd: plantHelper.onSlideEnd
+    onSlideEnd: plantHelper.onSlideEnd,
+  ...mapActions(['fetchRandomPlant', 'fetchPlants'])
+},
+created(){
+  this.fetchPlants()
 
-  }
+},
+mounted(){
+  plant = this.$store.state.allPlants[Math.floor(Math.random()* this.$store.state.allPlants.length)],
+  random = this.fetchRandomPlant(plant.id),
+      this.$store.commit('setRandomPlant',random)
+},
+computed: {
+    ...mapGetters(['randomPlant', 'allPlants']),
+
+}
 }
 </script>
 

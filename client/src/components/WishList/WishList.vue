@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="fave-plant-list">
-    <wish-item  v-for="plant in wishlist"  :plant="plant"/>
+    <wish-item  v-for="plant in wishlistPlants"  :plant="plant"/>
   </div>
 </template>
 
@@ -9,12 +9,13 @@
 import { eventBus } from '../../main.js';
 import PlantService from '../../services/PlantService.js';
 import WishItem from './WishItem.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'wish-list',
   data() {
     return {
-      wishlist: []
+
     };
   },
   components: {
@@ -37,10 +38,14 @@ export default {
 
 },
 methods: {
-  fetchData(){
-    PlantService.getMyPlants()
-    .then(favePlants => this.wishlist = favePlants.filter(plant => plant.owned == false));
-  }
+
+},
+computed:{
+  ...mapGetters(['wishlistPlants']),
+
+},
+created(){
+    this.fetchGardenPlants();
 }
 }
 </script>

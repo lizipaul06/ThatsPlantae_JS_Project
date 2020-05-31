@@ -5,22 +5,20 @@
       Drag the plants from top left to arrange your garden however you choose.<br>
       Watch out for that pesky snail!
     </div>
-    <garden-canvas :urls="plantUrls" id="canvas"/>
+    <garden-canvas  id="canvas"/>
   </div>
 
 </template>
 
 <script>
-import { eventBus } from '../../main.js';
-import PlantService from '../../services/PlantService.js';
-import GardenCanvas from './GardenCanvas.vue'
 
+import GardenCanvas from './GardenCanvas.vue'
 export default {
   name: 'garden-container',
 
   data() {
     return {
-      plantUrls: []
+
 
     }
   },
@@ -28,16 +26,6 @@ export default {
     'garden-canvas': GardenCanvas
   },
 
-  mounted(){
-    this.fetchUrls();
-    eventBus.$on('owned-plants', plants => this.plantsOwned = plants)
-},
-methods: {
-  fetchUrls(){
-    PlantService.getMyPlants()
-    .then(plants => this.plantUrls =plants.map(plant => plant.images[0]));
-  }
-}
 }
 
 </script>

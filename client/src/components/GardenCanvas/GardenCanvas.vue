@@ -1,13 +1,13 @@
 <template>
   <v-stage ref="stage" :config="stageSize" class="arrange">
     <v-layer ref="layer">
-      <garden-image  v-for="url in urls" :key="url"
+      <garden-image  v-for="(url, index) in plantUrls" :key="index"
         :config="{
         src: url,
         width: 210,
         height: 210,
         draggable: true,
-      
+
 
       }"
       ></garden-image>
@@ -26,7 +26,7 @@
 <script>
 const imageurl = require("../../../public/images/snail.png");
 import GardenImage from "./GardenImage.vue";
-
+import { mapGetters, mapActions } from 'vuex';
 export default {
   components: {
     "garden-image": GardenImage
@@ -48,7 +48,15 @@ export default {
       // set image only when it is loaded
       this.image = image;
     };
-  }
+        this.fetchGardenPlants()
+  },
+  methods: {
+  ...mapActions(['fetchGardenPlants']),
+  },
+  computed: {
+    ...mapGetters(['plantUrls']),
+  },
+
 };
 </script>
 
