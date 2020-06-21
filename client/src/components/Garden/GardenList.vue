@@ -23,7 +23,7 @@ export default {
   },
 
   mounted(){
-
+    console.log(this.ownedGardenPlants)
     this.fetchGardenPlants();
 
     // this.owned();
@@ -32,11 +32,6 @@ export default {
   eventBus.$on('plant-owned', plant => this.myPlants.push(plant).then( this.fetchGardenPlants()));
 
   eventBus.$on("status-changed", () =>{  this.fetchGardenPlants()})
-
-  // when a plant from the garden is deleted, slice this out of myPlants array
-  eventBus.$on('plant-deleted', (id) => {
-    let index = this.myPlants.findIndex(gardenItem => gardenItem._id === id)
-    this.myPlants.splice(index, 1)});
 
    eventBus.$emit('owned-plants', this.myPlants)
 

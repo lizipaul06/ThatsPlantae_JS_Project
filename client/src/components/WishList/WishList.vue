@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="fave-plant-list">
-    <wish-item  v-for="plant in wishlistPlants"  :plant="plant"/>
+    <wish-item  v-for="(plant, index) in wishlistPlants"  :key="index" :plant="plant"/>
   </div>
 </template>
 
@@ -22,23 +22,11 @@ export default {
     'wish-item': WishItem
   },
   mounted(){
-    this.fetchData()
 
-    eventBus.$on('plant-added-wishlist', plant =>
-    this.wishlist.push(plant)
-  );
-  eventBus.$on('wish-item-deleted', (id) => {
-    let index = this.wishlist.findIndex(plant => plant._id === id)
-    this.wishlist.splice(index, 1)
-  });
-  eventBus.$on("plant-owned", (id) =>{
-    let index = this.wishlist.findIndex(plant => plant._id === id)
-    this.wishlist.splice(index, 1)
-  })
 
 },
 methods: {
-
+  ...mapActions(['fetchGardenPlants'])
 },
 computed:{
   ...mapGetters(['wishlistPlants']),

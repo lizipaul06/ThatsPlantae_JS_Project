@@ -75,9 +75,11 @@ created(){
 },
 watch:{
   selectedPlant() {
-    this.$router.push({name:'selectedplant'})
-  },
+    const path = {name:'selectedplant'}
+if (this.$route.path !== path) {this.$router.push(path)
 
+  }
+}
 
 
 }
@@ -88,19 +90,6 @@ watch:{
 </script>
 
 <style lang="scss" scoped>
-.style-chooser .vs__search::placeholder,
-.style-chooser .vs__dropdown-toggle,
-.style-chooser .vs__dropdown-menu {
-  background: #dfe5fb;
-  border: none;
-  color: #394066;
-  text-transform: lowercase;
-  font-variant: small-caps;
-}
 
-.style-chooser .vs__clear,
-.style-chooser .vs__open-indicator {
-  fill: #394066;
-}
   @import '../../assets/css/plantListStyles.scss';
 </style>

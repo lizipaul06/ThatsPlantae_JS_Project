@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <plant-detail   :plantDetailed="this.$route.params.plantDetail">   </plant-detail>
+    <plant-detail >   </plant-detail>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     "plant-detail": PlantDetail,
 
   },
-  
+
 
 }
 

@@ -5,13 +5,15 @@ const state = {
 
   ],
   selectedPlant: {},
-  randomPlant: {}
+  randomPlant: {},
+  gardenPlant: {}
 };
 
 const getters = {
   allPlants: (state) => state.plants,
   selectedPlant: (state) => state.selectedPlant,
-  randomPlant: state => state.randomPlant
+  randomPlant: state => state.randomPlant,
+  gardenPlant: state => state.gardenPlant
 }
 
 
@@ -23,6 +25,10 @@ const actions = {
   async fetchPlant({commit}, id){
     const response = await axios.get('http://localhost:9000/plant/' + id)
     commit('setPlant', response.data)},
+
+    async fetchPlantDetailsGarden({commit}, id){
+      const response = await axios.get('http://localhost:9000/plant/' + id)
+      commit('setPlantDetails', response.data)},
 
  async fetchRandomPlant({commit}, id){
    const response = await axios.get('http://localhost:9000/plant/' + id)
@@ -37,7 +43,8 @@ const actions = {
 const mutations = {
   setPlants: (state, plants) => (state.plants = plants),
   setPlant: (state, selectedPlant) => (state.selectedPlant = selectedPlant),
-  setRandomPlant: (state, randomPlant) => (state.randomPlant = randomPlant)
+  setRandomPlant: (state, randomPlant) => (state.randomPlant = randomPlant),
+  setPlantDetails: (state, gardenPlant) => (state.gardenPlant = gardenPlant)
 }
 
 export default{

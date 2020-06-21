@@ -30,7 +30,7 @@
       </div>
 
       <b-button variant="outline-secondary" v-on:click="getToDetails" >Plant Details</b-button>
-      <b-button variant="outline-danger" v-on:click="handleDelete">Remove From Garden</b-button>
+      <b-button variant="outline-danger" @click="deletePlant(gardenItem._id)">Remove From Garden</b-button>
     </b-card-body>
 
   </b-card>
@@ -59,15 +59,15 @@
   </b-card-body>
   <div class="">
 
-    <b-form-select  id="status" for="status" v-on:change="handleChange" text="Update plant status to:"v-model="status" class="mb-3"
+    <b-form-select  id="status" for="status" @change="handleChange" text="Update plant status to:"v-model="status" class="mb-3"
     :options="options">
 
 
   </b-form-select>
 </div>
 
-<b-button variant="outline-secondary" v-on:click="getToDetails" >Plant Details</b-button>
-<b-button variant="outline-danger" v-on:click="handleDelete">Remove From Garden</b-button>
+<b-button variant="outline-secondary" @click="getToDetails" >Plant Details</b-button>
+<b-button variant="outline-danger" @click="deletePlant(gardenItem._id)">Remove From Garden</b-button>
 </b-card>
 </div>
 
@@ -79,7 +79,7 @@
 import plantHelper from '../../helpers.js'
 import PlantService from '../../services/PlantService.js';
 import { eventBus } from '../../main.js';
-
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: "garden-item",
   data(){
@@ -105,25 +105,35 @@ export default {
   },
   props: ['gardenItem'],
   methods:{
-    handleDelete(){
-      PlantService.deletePlant(this.gardenItem._id)
-      .then(() => eventBus.$emit("plant-deleted", this.gardenItem._id))
-    },
+    ...mapActions(["deletePlant", "updatePlant", "fetchPlantDetailsGarden"]),
+
 
     handleChange(){
-      const update = {
-        status: this.status
-      }
 
-      PlantService.updatePlant(this.gardenItem._id, update)
-      .then(() => eventBus.$emit('status-changed'))
+       this.gardenItem.status = this.status
+       this.updatePlant(this.gardenItem)
     },
     getToDetails(){
           this.$store.commit('setPlant',this.gardenItem)
       this.$router.push({name:'selectedplant'},)
     },
     capitalLetter: plantHelper.capitalLetter
-  }
+  },
+  mounted(){
+
+},
+computed:{
+  ...mapGetters(['gardenPlant','allPlants']),
+    store() {
+         return this.$store.state
+       }
+},
+created(){
+  this.fetchPlantDetailsGarden(this.gardenItem.id)
+
+
+
+}
 }
 
 </script>

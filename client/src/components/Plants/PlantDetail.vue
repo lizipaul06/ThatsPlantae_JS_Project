@@ -1,5 +1,5 @@
 <template lang="html">
-  <b-container>
+  <b-container v-if="selectedPlant">
 
     <b-row>
       <b-col>
@@ -26,6 +26,8 @@
         <div v-if="selectedPlant.main_species.flower.color != null">
           <p>Flower: {{selectedPlant.main_species.flower.color}}</p>
         </div>
+        <b-button variant="outline-success" v-on:click="addToMyGarden">Grow In My Garden</b-button>
+          <b-button  variant="outline-success" v-on:click="addToWishList">Add to Wish List</b-button >
             </b-card-text>
           </b-card-body>
           </b-card>
@@ -56,8 +58,7 @@
 
     </div>
 
-  <b-button variant="outline-success" v-on:click="addToMyGarden">Grow In My Garden</b-button>
-    <b-button  variant="outline-success" v-on:click="addToWishList">Add to Wish List</b-button >
+
   </b-col>
 
 </b-row>
@@ -68,7 +69,7 @@
 import {eventBus} from '../../main.js'
 import PlantService from '../../services/PlantService.js'
 import plantHelper from '../../helpers.js'
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'plant-detail',
@@ -81,19 +82,21 @@ export default {
     }
   },
   methods:{
+    ...mapMutations(['newPlant']),
+    ...mapActions(['fetchGardenPlants']),
     onSlideStart: plantHelper.onSlideStart,
     onSlideEnd: plantHelper.onSlideEnd,
     capitalLetter: plantHelper.capitalLetter,
-    addToMyGarden: function(){
-      selectedPlant.owned = true;
-      PlantService.postPlant(selectedPlant)
-      .then((res) => eventBus.$emit("plant-added", res))
-
+    addToMyGarden(){
+      this.selectedPlant.owned = true;
+      console.log(this.selectedPlant)
+      this.newPlant(this.selectedPlant)
+      this.fetchGardenPlants()
     },
-    addToWishList: function(){
-      selectedPlant.owned = false;
-      PlantService.postPlant(selectedPlant.plantDetail)
-      .then((res) => eventBus.$emit("plant-added-wishlist", res))
+    addToWishList: function(selectedPlant){
+      this.selectedPlant.owned = false;
+      console.log(this.selectedPlant)
+      this.newPlant(this.selectedPlant)
     },
 
 

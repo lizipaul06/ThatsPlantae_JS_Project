@@ -17,7 +17,7 @@
         <p  class="font-italic">  Scientific Name: {{capitalLetter(plant.scientific_name)}} </p>
       </b-card-text>
       <b-button variant="outline-secondary"  v-on:click="getToDetails" >Plant Details</b-button>
-      <b-button variant="outline-danger" v-on:click="deleteItem">Remove From WishList</b-button>
+      <b-button variant="outline-danger" v-on:click="deletePlant(plant._id)">Remove From WishList</b-button>
       <b-button variant="outline-success" v-on:click="updateOwned">Add To Garden</b-button>
     </b-card-body>
 
@@ -33,20 +33,17 @@
 import PlantService from '../../services/PlantService.js';
 import { eventBus } from '../../main.js';
 import plantHelper from '../../helpers.js'
-
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: "wish-item",
   props: ['plant'],
   methods:{
-    deleteItem(){
-      PlantService.deletePlant(this.plant._id)
-      .then(() =>  eventBus.$emit('wish-item-deleted', this.plant._id))
-    },
+      ...mapActions(['deletePlant', 'fetchGardenPlants', 'updatePlant']),
+
     updateOwned(){
-      const wish = {owned: true
-      }
-      PlantService.updatePlant(this.plant._id, wish)
-      .then(res => eventBus.$emit('plant-owned', this.plant._id))
+      this.plant.owned = true
+       const updatedPlant = this.plant
+      this.updatePlant(updatedPlant)
     },
     getToDetails(){
             this.$store.commit('setPlant',this.plant)

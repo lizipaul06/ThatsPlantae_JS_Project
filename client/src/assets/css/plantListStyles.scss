@@ -1,4 +1,4 @@
-
+$vs-component-line-height: 1.4 !default;
 
 select{
   width:300px;
@@ -29,3 +29,8 @@ img {
 button {
   margin-top: 10px;
 }
+$vs-colors: (
+
+        light: rgba(60, 60, 60, 0.5),
+
+) !default;
