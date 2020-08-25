@@ -1,25 +1,22 @@
 const token = require("./token.js");
-const express = require("express");
-const graphqlHTTP = require('express-graphql');
-const { makeExecutableSchema } = require('graphql');
-const fetch = require('node-fetch');
-const cors = require('cors');
-const parser = require('body-parser');
+const apolloServerExpress = require("apollo-server");
+const {ApolloServer} = apolloServerExpress;
 const schema = require('./schema.js');
 
 
+const GRAPHQL_PORT = process.env.GRAPHQL_PORT || 4000;
 
-const app = express();
-app.use('/graphql', graphqlHTTP({
-  schema,
-  graphiql: true,
-}))
-app.use(parser.json());
-app.use(cors());
-
-
-const PORT = process.env.PORT || 9000;
-
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+const server = new ApolloServer({
+  schema
 });
+
+
+
+async function run(){
+  const {url} = await server.listen(GRAPHQL_PORT);
+  console.log(`***** SERVER READY AT ${url} ********`)
+}
+
+
+
+run();

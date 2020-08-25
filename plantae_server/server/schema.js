@@ -35,6 +35,7 @@ const FlowerType = new GraphQLObjectType({
   })
 })
 
+
 const MainSpeciesType = new GraphQLObjectType({
   name: 'MainSpecies',
   fields: () =>({
@@ -55,7 +56,9 @@ const PlantType = new GraphQLObjectType({
     {
       common_name: {type: GraphQLString},
       id: {type: GraphQLInt},
-      link: {type: GraphQLString}
+      link: {type: GraphQLString},
+      family_common_name: {type: GraphQLString},
+            slug:{type: GraphQLString}
     })
 })
 
@@ -67,7 +70,8 @@ const PlantDetailType = new GraphQLObjectType({
       id: {type: GraphQLInt},
       main_species: {type: MainSpeciesType},
           image_url: {type: GraphQLString},
-      duration: {type: GraphQLString}
+      duration: {type: GraphQLString},
+      slug:{type: GraphQLString}
     })
 })
 
@@ -82,10 +86,42 @@ const RootQuery = new GraphQLObjectType({
   plants: {
     type: new GraphQLList(PlantType),
     resolve(parent, args){
-      return axios.get(`${BASE_URL}/${TOKEN}&page=1&complete_data=true&page_size=1953`)
-      .then( res => res.data.data);
-    }
+
+const getUsers = async function(pageNo = 1) {
+
+let actualUrl =`${BASE_URL}${TOKEN}&filter_not[edible_part]&&filter_not[image_url]=null&&filter_not[common_name]=null&&order[common_name]=asc&page=${pageNo}`
+ var apiResults= await axios.get(actualUrl)
+.then(res=> res.data.data);
+
+return apiResults;
+
+}
+
+const getEntireUserList = async function(pageNo = 1) {
+  const results = await getUsers(pageNo);
+
+  console.log("Retreiving data from API for page : " + pageNo);
+  if (pageNo < 6) {
+    return results.concat(await getEntireUserList(pageNo+1));
+  } else {
+      // console.log(results)
+    return results;
+
+  }
+};
+
+
+
+    const entireList= getEntireUserList();
+    return entireList
+
+}
+    //
+    //   return axios.get(`${BASE_URL}/${TOKEN}&page=1&complete_data=true&page_size=1953`)
+    //   .then( res => res.data.data);
+    // }
   },
+//trefle.io/api/v1/plants/XgX9f2jJkjLUOIZpht4FiqGeQ610go07jk_QV_nstwg&page=1&complete_data=true&page_size=1953
   //
   // plant: {
   //    type: PlantType,
@@ -94,11 +130,11 @@ const RootQuery = new GraphQLObjectType({
    plantDetail:{
      type: PlantDetailType,
      args: {
-       id:{ type: new GraphQLNonNull(GraphQLString)}
+       slug:{ type: new GraphQLNonNull(GraphQLString)}
      },
      resolve: ( _, args) => {
-       let {id} = args
-       return axios.get(`${BASE_URL}/${id}/${TOKEN}`)
+       let {slug} = args
+       return axios.get(`${BASE_URL}/${slug}/${TOKEN}`)
        .then(response => response.data.data)
      }
      }
@@ -107,6 +143,7 @@ const RootQuery = new GraphQLObjectType({
 
 
 }
+
 })
 
 
