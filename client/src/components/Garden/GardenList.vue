@@ -28,12 +28,8 @@ export default {
 
     // this.owned();
     // when a plant from the list is added, push this to the myPlants array
-    eventBus.$on('plant-added', plant => this.myPlants.push(plant));
-  eventBus.$on('plant-owned', plant => this.myPlants.push(plant).then( this.fetchGardenPlants()));
 
-  eventBus.$on("status-changed", () =>{  this.fetchGardenPlants()})
 
-   eventBus.$emit('owned-plants', this.myPlants)
 
 },
 methods: {

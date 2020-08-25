@@ -82,27 +82,29 @@ export default {
     }
   },
   methods:{
-    ...mapMutations(['newPlant']),
-    ...mapActions(['fetchGardenPlants']),
+    ...mapActions(['fetchGardenPlants','updatePlantOwned']),
     onSlideStart: plantHelper.onSlideStart,
     onSlideEnd: plantHelper.onSlideEnd,
     capitalLetter: plantHelper.capitalLetter,
     addToMyGarden(){
+      console.log(this.allPlants)
       this.selectedPlant.owned = true;
       console.log(this.selectedPlant)
-      this.newPlant(this.selectedPlant)
+
+      this.updatePlantOwned(this.selectedPlant)
       this.fetchGardenPlants()
     },
     addToWishList: function(selectedPlant){
       this.selectedPlant.owned = false;
       console.log(this.selectedPlant)
-      this.newPlant(this.selectedPlant)
+      this.updatePlantOwned(this.selectedPlant)
     },
 
 
   },
   computed: {
-    ...mapGetters(['selectedPlant'])
+    ...mapGetters(['selectedPlant', 'allPlants'])
+
   }
   // mounted(){
   //   eventBus.$on('plant-selected', (plant) => {

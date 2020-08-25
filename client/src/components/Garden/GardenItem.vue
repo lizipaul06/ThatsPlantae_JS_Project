@@ -105,13 +105,13 @@ export default {
   },
   props: ['gardenItem'],
   methods:{
-    ...mapActions(["deletePlant", "updatePlant", "fetchPlantDetailsGarden"]),
+    ...mapActions(["deletePlant", "updatePlantStatus", "fetchPlantDetailsGarden"]),
 
 
     handleChange(){
 
        this.gardenItem.status = this.status
-       this.updatePlant(this.gardenItem)
+       this.updatePlantStatus(this.gardenItem)
     },
     getToDetails(){
           this.$store.commit('setPlant',this.gardenItem)
