@@ -38,7 +38,10 @@
           </b-card-body>
           </b-card>
       </b-col>
-
+             <b-col v-if="selectedPlant.image_url">
+      <img :src="selectedPlant.image_url" width="200" height="200" alt="plant"  class="d-block img-fluid w-100"
+      >
+        </b-col>
       <!-- <b-col v-if="selectedPlant.image_url">
         <b-carousel
         id="carousel-1"
@@ -93,19 +96,19 @@ export default {
     onSlideStart: plantHelper.onSlideStart,
     onSlideEnd: plantHelper.onSlideEnd,
     capitalLetter: plantHelper.capitalLetter,
-    // addToMyGarden(){
-    //   console.log(this.allPlants)
-    //   this.selectedPlant.owned = true;
-    //   console.log(this.selectedPlant)
-    //
-    //   this.updatePlantOwned(this.selectedPlant)
-    //   this.fetchGardenPlants()
-    // },
-    // addToWishList: function(selectedPlant){
-    //   this.selectedPlant.owned = false;
-    //   console.log(this.selectedPlant)
-    //   this.updatePlantOwned(this.selectedPlant)
-    // },
+    addToMyGarden(){
+      console.log(this.allPlants)
+      this.selectedPlant.owned = true;
+      console.log(this.selectedPlant)
+
+      this.updatePlantOwned(this.selectedPlant)
+      this.fetchGardenPlants()
+    },
+    addToWishList: function(selectedPlant){
+      this.selectedPlant.owned = false;
+      console.log(this.selectedPlant)
+      this.updatePlantOwned(this.selectedPlant)
+    },
 
 
   },

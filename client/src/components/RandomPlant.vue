@@ -1,9 +1,9 @@
 <template lang="html">
-  <div v-if="allPlants" id="randomPlant">
+  <div v-if="randomPlant" id="randomPlant">
 
-    <b-col  v-if="randomPlant.images && randomPlant.images.length > 0">
-      <h2>Your Plant Of The Day is: {{capitalLetter(randomPlant.common_name)}}</h2>
-      <b-carousel
+    <!-- <b-col  v-if="randomPlant.images && randomPlant.images.length > 0"> -->
+      <h2>Your Plant Of The Day is: {{randomPlant.common_name}}</h2>
+      <!-- <b-carousel
       id="carousel-1"
       v-model="slide"
       :interval="4000"
@@ -22,10 +22,10 @@
           </template>
         </b-carousel-slide>
       </div>
-    </b-carousel>
+    </b-carousel> -->
 
 
-  </b-col>
+  <!-- </b-col> -->
 </div>
 
 
@@ -41,6 +41,7 @@ export default {
     return {
       slide: 0,
       sliding: null,
+      plant: ""
 
     }
   },
@@ -49,19 +50,35 @@ export default {
     capitalLetter: plantHelper.capitalLetter,
     onSlideStart: plantHelper.onSlideStart,
     onSlideEnd: plantHelper.onSlideEnd,
-  ...mapActions(['fetchRandomPlant', 'fetchPlants'])
+  ...mapActions(['fetchRandomPlant', 'fetchPlants']),
+  randomPlant(){
+    let  number = Math.floor(Math.random()*this.allPlants.length)
+    if(number == 0){
+      return number = 1
+    }
+    let plant = this.allPlants[number]
+    console.log(plant.slug)
+     let randomPlant = this.fetchRandomPlant(plant.slug)
+    return randomPlant
+
+  }
 },
 created(){
   this.fetchPlants()
 
 },
 mounted(){
-  plant = this.$store.state.allPlants[Math.floor(Math.random()* this.$store.state.allPlants.length)],
-  random = this.fetchRandomPlant(plant.id),
-      this.$store.commit('setRandomPlant',random)
+    this.fetchPlants()
+     this.randomPlant()
+
+  //  console.log(this.plant.slug)
+  // this.random = this.fetchRandomPlant(this.plant.slug),
+  // console.log(this.random)
+  //     this.$store.commit('setRandomPlant',this.random)
 },
 computed: {
     ...mapGetters(['randomPlant', 'allPlants']),
+
 
 }
 }
