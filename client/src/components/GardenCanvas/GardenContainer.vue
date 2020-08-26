@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
 import GardenCanvas from './GardenCanvas.vue'
 export default {
   name: 'garden-container',
@@ -27,10 +26,8 @@ export default {
   },
 
 }
-
 </script>
 
 <style lang="scss" scoped>
-
-  @import '../../assets/css/canvasStyles.scss';
+@import '../../assets/css/canvasStyles.scss';
 </style>

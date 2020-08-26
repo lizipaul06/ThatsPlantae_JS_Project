@@ -5,7 +5,7 @@ import garden from './modules/garden';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules:{
+  modules: {
     plants,
     garden
   }

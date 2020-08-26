@@ -1,5 +1,5 @@
-<template lang="html">
-  <b-container >
+å<template lang="html">
+  <b-container v-if="selectedPlant">
 
     <b-row>
       <b-col>
@@ -32,8 +32,8 @@
         </div>
 
 
-        <b-button variant="outline-success" v-on:click="addToMyGarden">Grow In My Garden</b-button>
-          <b-button  variant="outline-success" v-on:click="addToWishList">Add to Wish List</b-button >
+        <b-button variant="outline-success" v-on:click="addToMyGarden(selectedPlant)">Grow In My Garden</b-button>
+          <b-button  variant="outline-success" v-on:click="addToWishList(selectedPlant)">Add to Wish List</b-button >
             </b-card-text>
           </b-card-body>
           </b-card>
@@ -75,10 +75,16 @@
 </template>
 
 <script>
-import {eventBus} from '../../main.js'
+import {
+  eventBus
+} from '../../main.js'
 import PlantService from '../../services/PlantService.js'
 import plantHelper from '../../helpers.js'
-import { mapGetters, mapActions, mapMutations } from 'vuex';
+import {
+  mapGetters,
+  mapActions,
+  mapMutations
+} from 'vuex';
 
 export default {
   name: 'plant-detail',
@@ -91,23 +97,23 @@ export default {
 
     }
   },
-  methods:{
-    ...mapActions(['fetchPlant','updatePlantOwned']),
+  methods: {
+    ...mapActions(['fetchPlant', 'updatePlantOwned', 'fetchGardenPlants']),
     onSlideStart: plantHelper.onSlideStart,
     onSlideEnd: plantHelper.onSlideEnd,
     capitalLetter: plantHelper.capitalLetter,
-    addToMyGarden(){
+    addToMyGarden(selectedPlant) {
       console.log(this.allPlants)
-      this.selectedPlant.owned = true;
+      selectedPlant.owned = true;
       console.log(this.selectedPlant)
 
-      this.updatePlantOwned(this.selectedPlant)
+      this.updatePlantOwned(selectedPlant)
       this.fetchGardenPlants()
     },
-    addToWishList: function(selectedPlant){
-      this.selectedPlant.owned = false;
-      console.log(this.selectedPlant)
-      this.updatePlantOwned(this.selectedPlant)
+    addToWishList: function(selectedPlant) {
+      selectedPlant.owned = false;
+      console.log(selectedPlant)
+      this.updatePlantOwned(selectedPlant)
     },
 
 
@@ -115,10 +121,11 @@ export default {
   computed: {
     ...mapGetters(['selectedPlant', 'allPlants']),
 
-  },
-  created(){
-    this.fetchPlant()
 
+  },
+  created() {
+
+    this.fetchPlant()
 
 
   },
@@ -135,7 +142,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import '../../assets/css/plantListStyles.scss';
-
 </style>

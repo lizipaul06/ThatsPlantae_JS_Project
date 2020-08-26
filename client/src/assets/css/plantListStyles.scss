@@ -1,18 +1,17 @@
 $vs-component-line-height: 1.4 !default;
 
-select{
-  width:300px;
+select {
+  width: 300px;
 }
 
-.flex{
+.flex {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
 }
 
-div.plantDetail{
+div.plantDetail {
   /* display: flex;
   flex-direction: column; */
   margin: auto;
@@ -30,7 +29,6 @@ button {
   margin-top: 10px;
 }
 $vs-colors: (
-
-        light: rgba(60, 60, 60, 0.5),
-
-) !default;
+  light: rgba(60, 60, 60, 0.5),
+)
+!default;

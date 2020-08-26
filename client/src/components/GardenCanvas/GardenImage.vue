@@ -1,12 +1,10 @@
 <template>
-  <v-rect
-    :config="{
+<v-rect :config="{
       fillPatternImage: image,
       fillPatternScaleX: config.width?config.width/width:1,
       fillPatternScaleY: config.height?config.height/height:1,
       ...config
-    }"
-  ></v-rect>
+    }"></v-rect>
 </template>
 
 <script>

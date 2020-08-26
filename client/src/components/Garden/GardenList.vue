@@ -8,21 +8,25 @@
 </template>
 
 <script>
-import { eventBus } from '../../main.js';
+import {
+  eventBus
+} from '../../main.js';
 import PlantService from '../../services/PlantService.js';
 import GardenItem from './GardenItem.vue'
-import { mapGetters, mapActions } from 'vuex';
+import {
+  mapGetters,
+  mapActions
+} from 'vuex';
 export default {
   name: 'garden-list',
   data() {
-    return {
-    }
+    return {}
   },
   components: {
     'garden-item': GardenItem
   },
 
-  mounted(){
+  mounted() {
     console.log(this.ownedGardenPlants)
     this.fetchGardenPlants();
 
@@ -31,24 +35,22 @@ export default {
 
 
 
-},
-methods: {
-  // whenever the page loads, retrieve my fave plants from the garden db collection
-...mapActions(['fetchGardenPlants']),
+  },
+  methods: {
+    // whenever the page loads, retrieve my fave plants from the garden db collection
+    ...mapActions(['fetchGardenPlants']),
 
-},
-created(){
-  this.fetchGardenPlants()
-},
-  computed:{
+  },
+  created() {
+    this.fetchGardenPlants()
+  },
+  computed: {
     ...mapGetters(['ownedGardenPlants']),
 
-}
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
 @import '../../assets/css/gardenStyles.scss';
-
 </style>

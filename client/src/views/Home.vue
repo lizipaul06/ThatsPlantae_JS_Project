@@ -13,17 +13,18 @@
 </template>
 
 <script>
-
 import PlantService from '../services/PlantService.js';
-import { eventBus } from '../main.js';
+import {
+  eventBus
+} from '../main.js';
 import RandomPlant from '../components/RandomPlant';
 
 
 
 export default {
-  name:'Home',
-  data(){
-    return{
+  name: 'Home',
+  data() {
+    return {
       randomPlant: null,
 
 
@@ -34,7 +35,7 @@ export default {
 
   },
 
-  mounted(){
+  mounted() {
     eventBus.$on('random-plant', (plant) => this.randomPlant = plant)
     eventBus.$on('plant-selected', (plant) => {
       this.selectedPlant = plant
@@ -42,15 +43,19 @@ export default {
     });
 
   },
-  watch:{
+  watch: {
 
     plantDetailed() {
-      this.$router.push({name:'selectedplant', params:{plantDetail: this.plantDetailed}},)
+      this.$router.push({
+        name: 'selectedplant',
+        params: {
+          plantDetail: this.plantDetailed
+        }
+      }, )
     },
 
   }
 }
-
 </script>
 
 <style lang="scss" scoped>

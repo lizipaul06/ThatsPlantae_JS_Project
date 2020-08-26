@@ -1,8 +1,9 @@
-.arrange {  background-image: url(/images/lawn.jpg);
+.arrange {
+  background-image: url("/images/lawn.jpg");
   background-size: cover;
 }
 
-.fave-plant-list{
+.fave-plant-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

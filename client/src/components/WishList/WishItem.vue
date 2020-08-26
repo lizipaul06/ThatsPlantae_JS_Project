@@ -31,23 +31,30 @@
 
 <script>
 import PlantService from '../../services/PlantService.js';
-import { eventBus } from '../../main.js';
+import {
+  eventBus
+} from '../../main.js';
 import plantHelper from '../../helpers.js'
-import { mapGetters, mapActions } from 'vuex';
+import {
+  mapGetters,
+  mapActions
+} from 'vuex';
 export default {
   name: "wish-item",
   props: ['plant'],
-  methods:{
-      ...mapActions(['deletePlant', 'fetchGardenPlants', 'updatePlant']),
+  methods: {
+    ...mapActions(['deletePlant', 'fetchGardenPlants', 'updatePlant']),
 
-    updateOwned(){
+    updateOwned() {
       this.plant.owned = true
-       const updatedPlant = this.plant
+      const updatedPlant = this.plant
       this.updatePlant(updatedPlant)
     },
-    getToDetails(){
-            this.$store.commit('setPlant',this.plant)
-      this.$router.push({name:'selectedplant'},)
+    getToDetails() {
+      this.$store.commit('setPlant', this.plant)
+      this.$router.push({
+        name: 'selectedplant'
+      }, )
     },
     capitalLetter: plantHelper.capitalLetter
   }

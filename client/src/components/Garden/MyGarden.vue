@@ -6,7 +6,9 @@
 </template>
 
 <script>
-import { eventBus } from '../../main.js';
+import {
+  eventBus
+} from '../../main.js';
 import GardenList from './GardenList.vue'
 export default {
   name: 'my-garden',

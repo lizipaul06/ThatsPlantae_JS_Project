@@ -1,37 +1,38 @@
 <template>
-  <v-stage ref="stage" :config="stageSize" class="arrange">
-    <v-layer ref="layer">
-      <garden-image  v-for="(url, index) in plantUrls" :key="index"
-        :config="{
+<v-stage ref="stage" :config="stageSize" class="arrange">
+  <v-layer ref="layer">
+    <garden-image v-for="(url, index) in plantUrls" :key="index" :config="{
         src: url,
         width: 210,
         height: 210,
         draggable: true,
 
 
-      }"
-      ></garden-image>
-      <v-image :config="{
+      }"></garden-image>
+    <v-image :config="{
         image: image,
         draggable: true,
         width:100,
         height: 60,
         x: 100,
         y: 600
-        }"/>
-    </v-layer>
-  </v-stage>
+        }" />
+  </v-layer>
+</v-stage>
 </template>
 
 <script>
 const imageurl = require("../../../public/images/snail.png");
 import GardenImage from "./GardenImage.vue";
-import { mapGetters, mapActions } from 'vuex';
+import {
+  mapGetters,
+  mapActions
+} from 'vuex';
 export default {
   components: {
     "garden-image": GardenImage
   },
-  props:['urls'],
+  props: ['urls'],
   data() {
     return {
       stageSize: {
@@ -48,10 +49,10 @@ export default {
       // set image only when it is loaded
       this.image = image;
     };
-        this.fetchGardenPlants()
+    this.fetchGardenPlants()
   },
   methods: {
-  ...mapActions(['fetchGardenPlants']),
+    ...mapActions(['fetchGardenPlants']),
   },
   computed: {
     ...mapGetters(['plantUrls']),
@@ -62,6 +63,5 @@ export default {
 
 
 <style media="screen">
-  @import '../../assets/css/canvasStyles.scss';
-
+@import '../../assets/css/canvasStyles.scss';
 </style>

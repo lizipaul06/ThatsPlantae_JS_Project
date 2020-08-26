@@ -1,22 +1,24 @@
-.fave-plant-list{
+.fave-plant-list {
   display: flex;
   flex-wrap: wrap;
-
 }
 
-.plant{
+.plant {
   display: flex;
   flex-direction: column;
   padding: 5px;
   align-items: center;
   font-size: 25px;
 }
-.plant-title{
+
+.plant-title {
   font-size: 30px;
 }
+
 img {
   height: 275px;
 }
+
 button {
   margin-top: 10px;
 }

@@ -95,6 +95,7 @@ const getEntireUserList = async function(pageNo = 1) {
        slug:{ type: new GraphQLNonNull(GraphQLString)}
      },
      resolve: ( _, args) => {
+
        let {slug} = args
        return axios.get(`${BASE_URL}/${slug}/${TOKEN}`)
        .then(response => response.data.data)

@@ -1,20 +1,19 @@
 <template>
-  <div >
-    <v-stage ref="stage" :config="stageSetup" class="arrange">
-      <v-layer ref="layer">
-        <v-image :config="{
+<div>
+  <v-stage ref="stage" :config="stageSetup" class="arrange">
+    <v-layer ref="layer">
+      <v-image :config="{
           image: image,
           draggable: true,
           width:200,
           height: 120
-          }"/>
-        </v-layer>
-      </v-stage>
-  </div>
+          }" />
+    </v-layer>
+  </v-stage>
+</div>
 </template>
 
 <script>
-
 const imageurl = require("../../../public/images/snail.png");
 export default {
   data() {
@@ -40,6 +39,5 @@ export default {
 </script>
 
 <style media="screen">
-
-  @import '../../assets/css/canvasStyles.scss';
+@import '../../assets/css/canvasStyles.scss';
 </style>

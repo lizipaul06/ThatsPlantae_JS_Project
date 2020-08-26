@@ -2,22 +2,18 @@ use garden;
 
 db.dropDatabase();
 
-db.plants.insertMany([
-  {
-    "varieties": [
-      {
+db.plants.insertMany([{
+    "varieties": [{
         "year": null,
         "type": "var",
         "synonym": false,
         "status": "Unknown",
-        "sources": [
-          {
-            "species_id": 149927,
-            "source_url": "https://plants.usda.gov",
-            "name": "USDA",
-            "last_update": "2019-01-11T10:36:42.092963"
-          }
-        ],
+        "sources": [{
+          "species_id": 149927,
+          "source_url": "https://plants.usda.gov",
+          "name": "USDA",
+          "last_update": "2019-01-11T10:36:42.092963"
+        }],
         "slug": "liatris-pycnostachya-var-lasiophylla",
         "scientific_name": "Liatris pycnostachya var. lasiophylla",
         "main_species_id": 149926,
@@ -35,14 +31,12 @@ db.plants.insertMany([
         "type": "var",
         "synonym": false,
         "status": "Unknown",
-        "sources": [
-          {
-            "species_id": 149928,
-            "source_url": "https://plants.usda.gov",
-            "name": "USDA",
-            "last_update": "2019-01-11T10:36:42.232873"
-          }
-        ],
+        "sources": [{
+          "species_id": 149928,
+          "source_url": "https://plants.usda.gov",
+          "name": "USDA",
+          "last_update": "2019-01-11T10:36:42.232873"
+        }],
         "slug": "liatris-pycnostachya-var-pycnostachya",
         "scientific_name": "Liatris pycnostachya var. pycnostachya",
         "main_species_id": 149926,
@@ -97,14 +91,12 @@ db.plants.insertMany([
         "c_n_ratio": "Medium",
         "bloat": "None"
       },
-      "sources": [
-        {
-          "species_id": 149926,
-          "source_url": "https://plants.usda.gov",
-          "name": "USDA",
-          "last_update": "2019-01-11T10:36:41.926805"
-        }
-      ],
+      "sources": [{
+        "species_id": 149926,
+        "source_url": "https://plants.usda.gov",
+        "name": "USDA",
+        "last_update": "2019-01-11T10:36:41.926805"
+      }],
       "soils_adaptation": {
         "medium": true,
         "fine": true,
@@ -151,8 +143,7 @@ db.plants.insertMany([
       "native_status": "L48(N)",
       "main_species_id": null,
       "is_main_species": true,
-      "images": [
-        {
+      "images": [{
           "url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Liatris_pycnostachya_var._pycnostachya.jpg"
         },
         {
@@ -225,8 +216,7 @@ db.plants.insertMany([
       "bibliography": null,
       "author": null
     },
-    "images": [
-      {
+    "images": [{
         "url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Liatris_pycnostachya_var._pycnostachya.jpg"
       },
       {
@@ -241,20 +231,17 @@ db.plants.insertMany([
       "link": "http://trefle.io/api/genuses/4149",
       "id": 4149
     },
-    "forms": [
-      {
+    "forms": [{
         "year": null,
         "type": "form",
         "synonym": false,
         "status": "Accepted",
-        "sources": [
-          {
-            "species_id": 261061,
-            "source_url": "http://www.tropicos.org",
-            "name": "Tropicos",
-            "last_update": "2019-01-12T07:32:31.942760"
-          }
-        ],
+        "sources": [{
+          "species_id": 261061,
+          "source_url": "http://www.tropicos.org",
+          "name": "Tropicos",
+          "last_update": "2019-01-12T07:32:31.942760"
+        }],
         "slug": "liatris-pycnostachya-fo-hubrichti",
         "scientific_name": "Liatris pycnostachya fo. hubrichti",
         "main_species_id": 149926,
@@ -272,14 +259,12 @@ db.plants.insertMany([
         "type": "form",
         "synonym": false,
         "status": "Accepted",
-        "sources": [
-          {
-            "species_id": 261062,
-            "source_url": "http://www.tropicos.org",
-            "name": "Tropicos",
-            "last_update": "2019-01-12T07:32:32.631938"
-          }
-        ],
+        "sources": [{
+          "species_id": 261062,
+          "source_url": "http://www.tropicos.org",
+          "name": "Tropicos",
+          "last_update": "2019-01-12T07:32:32.631938"
+        }],
         "slug": "liatris-pycnostachya-fo-pycnostachya",
         "scientific_name": "Liatris pycnostachya fo. pycnostachya",
         "main_species_id": 149926,
@@ -316,7 +301,7 @@ db.plants.insertMany([
       "link": "http://trefle.io/api/division_classes/1",
       "id": 1
     },
-    "owned":true
+    "owned": true
   },
   {
     "varieties": [],
@@ -356,14 +341,12 @@ db.plants.insertMany([
         "c_n_ratio": "Medium",
         "bloat": "None"
       },
-      "sources": [
-        {
-          "species_id": 182532,
-          "source_url": "https://plants.usda.gov",
-          "name": "USDA",
-          "last_update": "2019-01-11T12:02:00.292244"
-        }
-      ],
+      "sources": [{
+        "species_id": 182532,
+        "source_url": "https://plants.usda.gov",
+        "name": "USDA",
+        "last_update": "2019-01-11T12:02:00.292244"
+      }],
       "soils_adaptation": {
         "medium": true,
         "fine": null,
@@ -479,36 +462,32 @@ db.plants.insertMany([
     "cultivars": [],
     "common_name": "eggplant",
     "class": null,
-    "owned":false
+    "owned": false
   },
   {
-    "varieties": [
-      {
-        "year": null,
-        "type": "var",
-        "synonym": false,
-        "status": "Unknown",
-        "sources": [
-          {
-            "species_id": 162792,
-            "source_url": "https://plants.usda.gov",
-            "name": "USDA",
-            "last_update": "2019-01-11T11:05:00.958467"
-          }
-        ],
-        "slug": "paspalum-dilatatum-var-pauciciliatum",
-        "scientific_name": "Paspalum dilatatum var. pauciciliatum",
-        "main_species_id": 162791,
-        "link": "http://trefle.io/api/plants/162792",
-        "is_main_species": false,
-        "id": 162792,
-        "family_common_name": "Grass family",
-        "complete_data": true,
-        "common_name": "dallisgrass",
-        "bibliography": null,
-        "author": null
-      }
-    ],
+    "varieties": [{
+      "year": null,
+      "type": "var",
+      "synonym": false,
+      "status": "Unknown",
+      "sources": [{
+        "species_id": 162792,
+        "source_url": "https://plants.usda.gov",
+        "name": "USDA",
+        "last_update": "2019-01-11T11:05:00.958467"
+      }],
+      "slug": "paspalum-dilatatum-var-pauciciliatum",
+      "scientific_name": "Paspalum dilatatum var. pauciciliatum",
+      "main_species_id": 162791,
+      "link": "http://trefle.io/api/plants/162792",
+      "is_main_species": false,
+      "id": 162792,
+      "family_common_name": "Grass family",
+      "complete_data": true,
+      "common_name": "dallisgrass",
+      "bibliography": null,
+      "author": null
+    }],
     "sub_species": [],
     "scientific_name": "Paspalum dilatatum",
     "order": null,
@@ -545,14 +524,12 @@ db.plants.insertMany([
         "c_n_ratio": "Medium",
         "bloat": "None"
       },
-      "sources": [
-        {
-          "species_id": 162791,
-          "source_url": "https://plants.usda.gov",
-          "name": "USDA",
-          "last_update": "2019-01-11T11:05:00.795874"
-        }
-      ],
+      "sources": [{
+        "species_id": 162791,
+        "source_url": "https://plants.usda.gov",
+        "name": "USDA",
+        "last_update": "2019-01-11T11:05:00.795874"
+      }],
       "soils_adaptation": {
         "medium": true,
         "fine": true,
@@ -599,8 +576,7 @@ db.plants.insertMany([
       "native_status": "L48(I)HI(I)PR(I)",
       "main_species_id": null,
       "is_main_species": true,
-      "images": [
-        {
+      "images": [{
           "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Paspalum_dilatatum1.jpg"
         },
         {
@@ -673,8 +649,7 @@ db.plants.insertMany([
       "bibliography": null,
       "author": null
     },
-    "images": [
-      {
+    "images": [{
         "url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Paspalum_dilatatum1.jpg"
       },
       {
@@ -697,7 +672,7 @@ db.plants.insertMany([
     "cultivars": [],
     "common_name": "dallisgrass",
     "class": null,
-    "owned":true
+    "owned": true
   },
 
 ]);

@@ -5,7 +5,7 @@ module.exports = {
   onSlideEnd(slide) {
     this.sliding = false
   },
-  capitalLetter(str){
+  capitalLetter(str) {
     str = str.split(" ");
 
     for (var i = 0, x = str.length; i < x; i++) {

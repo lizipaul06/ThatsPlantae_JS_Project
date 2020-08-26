@@ -14,17 +14,21 @@
 </template>
 
 <script>
-
 import Fuse from 'fuse.js';
-import {eventBus} from '../../main.js'
+import {
+  eventBus
+} from '../../main.js'
 import plantHelper from '../../helpers.js'
-import { mapGetters, mapActions } from 'vuex';
+import {
+  mapGetters,
+  mapActions
+} from 'vuex';
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 export default {
   name: "plant-list",
-  data(){
-    return{
+  data() {
+    return {
 
 
     }
@@ -36,51 +40,50 @@ export default {
   methods: {
     ...mapActions(['fetchPlants', 'fetchPlant']),
 
-    setPlant(value){
+    setPlant(value) {
       console.log(value)
       let plant = this.fetchPlant(value.slug)
-      this.$store.commit('setPlant',plant)
+      this.$store.commit('setPlant', plant)
     },
     capitalLetter: plantHelper.capitalLetter,
-    fuseSearch (options, search) {
-    const fuse = new Fuse(options, {
-      keys: ['common_name', 'family_common_name'],
-      shouldSort: true,
-    });
-    return search.length ? fuse.search(search) : fuse.list;
-  }
+    fuseSearch(options, search) {
+      const fuse = new Fuse(options, {
+        keys: ['common_name', 'family_common_name'],
+        shouldSort: true,
+      });
+      return search.length ? fuse.search(search) : fuse.list;
+    }
   },
-computed: {
-  ...mapGetters(['allPlants', 'selectedPlant']),
+  computed: {
+    ...mapGetters(['allPlants', 'selectedPlant']),
     store() {
-         return this.$store.state
-       },
+      return this.$store.state
+    },
 
 
-},
-created(){
-  this.fetchPlants()
+  },
+  created() {
+    this.fetchPlants()
 
 
 
-},
-watch:{
-  selectedPlant() {
-    const path = {name:'selectedplant'}
-if (this.$route.path !== path) {this.$router.push(path)
+  },
+  watch: {
+    selectedPlant() {
+      const path = {
+        name: 'selectedplant'
+      }
+      if (this.$route.path !== path) {
+        this.$router.push(path)
+
+      }
+    }
+
 
   }
 }
-
-
-}
-}
-
-
-
 </script>
 
 <style lang="scss" scoped>
-
-  @import '../../assets/css/plantListStyles.scss';
+@import '../../assets/css/plantListStyles.scss';
 </style>

@@ -2,12 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueKonva from 'vue-konva'
 import VueFuse from 'vue-fuse'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import {
+  BootstrapVue,
+  IconsPlugin
+} from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 import store from './store';
-import { createProvider } from './vue-apollo'
+import {
+  createProvider
+} from './vue-apollo'
 
 
 // Install BootstrapVue

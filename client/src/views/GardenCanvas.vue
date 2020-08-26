@@ -7,12 +7,12 @@ import GardenContainer from '../components/GardenCanvas/GardenContainer'
 import Canvas from '../components/GardenCanvas/GardenCanvas'
 export default {
   name: "GardenCanvas",
-  data(){
-    return{
+  data() {
+    return {
       snailHidden: true
     }
   },
-  components:{
+  components: {
     "canvas-component": Canvas,
     "garden-container": GardenContainer
   }

@@ -1,15 +1,19 @@
-<template lang="html">
+å<template lang="html">
   <div class="fave-plant-list">
     <wish-item  v-for="(plant, index) in wishlistPlants"  :key="index" :plant="plant"/>
   </div>
 </template>
 
 <script>
-
-import { eventBus } from '../../main.js';
+import {
+  eventBus
+} from '../../main.js';
 import PlantService from '../../services/PlantService.js';
 import WishItem from './WishItem.vue';
-import { mapGetters, mapActions } from 'vuex';
+import {
+  mapGetters,
+  mapActions
+} from 'vuex';
 
 export default {
   name: 'wish-list',
@@ -21,20 +25,20 @@ export default {
   components: {
     'wish-item': WishItem
   },
-  mounted(){
+  mounted() {
 
 
-},
-methods: {
-  ...mapActions(['fetchGardenPlants'])
-},
-computed:{
-  ...mapGetters(['wishlistPlants']),
+  },
+  methods: {
+    ...mapActions(['fetchGardenPlants'])
+  },
+  computed: {
+    ...mapGetters(['wishlistPlants']),
 
-},
-created(){
+  },
+  created() {
     this.fetchGardenPlants();
-}
+  }
 }
 </script>
 

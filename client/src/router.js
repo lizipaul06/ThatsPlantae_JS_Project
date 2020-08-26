@@ -14,28 +14,34 @@ Vue.use(Router)
 // `Vue.extend()`, or just a component options object.
 // We'll talk about nested routes later.
 let router = new Router({
-  routes: [
-    { path: '/',
-    name: 'home',
-     component: Home,
-     props: (route) => ({randomPlant: route.query.action})
+  routes: [{
+      path: '/',
+      name: 'home',
+      component: Home,
+      props: (route) => ({
+        randomPlant: route.query.action
+      })
 
-   },
-   { path: '/garden',
-    component: Garden
-  },
-  { path: '/wishlist',
-   component: PlantWishList
- },
- { path: '/selectedplant',
-  name: 'selectedplant',
-  component: selectedPlant
- },
- {path: '/gardenCanvas',
- name: 'GardenCanvas',
- component: GardenCanvas
+    },
+    {
+      path: '/garden',
+      component: Garden
+    },
+    {
+      path: '/wishlist',
+      component: PlantWishList
+    },
+    {
+      path: '/selectedplant',
+      name: 'selectedplant',
+      component: selectedPlant
+    },
+    {
+      path: '/gardenCanvas',
+      name: 'GardenCanvas',
+      component: GardenCanvas
 
- }
+    }
 
   ]
 })

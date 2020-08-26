@@ -1,6 +1,8 @@
 const token = require("./token.js");
 const apolloServerExpress = require("apollo-server");
-const {ApolloServer} = apolloServerExpress;
+const {
+  ApolloServer
+} = apolloServerExpress;
 const schema = require('./schema.js');
 
 
@@ -12,8 +14,10 @@ const server = new ApolloServer({
 
 
 
-async function run(){
-  const {url} = await server.listen(GRAPHQL_PORT);
+async function run() {
+  const {
+    url
+  } = await server.listen(GRAPHQL_PORT);
   console.log(`***** SERVER READY AT ${url} ********`)
 }
 

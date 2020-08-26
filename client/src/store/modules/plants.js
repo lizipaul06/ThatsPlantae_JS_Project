@@ -21,9 +21,11 @@ const getters = {
 
 
 const actions = {
-  async fetchPlants({commit}){
+  async fetchPlants({
+    commit
+  }) {
     const response = await graphqlClient.query({
-      query: gql`
+      query: gql `
           query{
        plants{
         id
@@ -34,123 +36,138 @@ const actions = {
     });
     commit('setPlants', response.data.plants)
 
-},
-  async fetchPlant({commit}, slug){
-      const response = await graphqlClient.query({
-    query: gql`
+  },
+  async fetchPlant({
+    commit
+  }, slug) {
+    const response = await graphqlClient.query({
+      query: gql `
       query PlantDetail($slug: String!) {
         plantDetail(slug: $slug) {
           slug
-common_name
-id
-main_species {
-growth{
-precipitation_minimum{
-inches
-}
-precipitation_maximum{
-inches
-}
-ph_minimum
-ph_maximum
-shade_tolerance
-root_depth_minimum{
-inches
-}
-}
-flower{
-color
-}
-},
-image_url
-duration
+          common_name
+          id
+          main_species {
+            growth {
+              precipitation_minimum {
+                inches
+              }
+              precipitation_maximum {
+                inches
+              }
+              ph_minimum
+              ph_maximum
+              shade_tolerance
+              root_depth_minimum {
+                inches
+              }
+            }
+            flower {
+              color
+            }
+          },
+          image_url
+          duration
         }
-      }`,
-                  variables:{slug: slug},
+      }
+      `,
+      variables: {
+        slug: slug
+      },
     });
     commit('setPlant', response.data.plantDetail)
   },
 
 
-      async fetchPlantDetailsGarden({ commit }, slug) {
-        const response = await graphqlClient.query({
-          // It is important to not use the
-          // ES6 template syntax for variables
-          // directly inside the `gql` query,
-          // because this would make it impossible
-          // for Babel to optimize the code.
-          query: gql`
+  async fetchPlantDetailsGarden({
+    commit
+  }, slug) {
+    const response = await graphqlClient.query({
+      // It is important to not use the
+      // ES6 template syntax for variables
+      // directly inside the `gql` query,
+      // because this would make it impossible
+      // for Babel to optimize the code.
+      query: gql `
             query PlantDetail($slug: String!) {
-              plantDetail(slug:$slug) {
-                slug
-common_name
-id
-main_species {
-growth{
-  precipitation_minimum{
-    inches
-  }
-  precipitation_maximum{
-  inches
-}
-  ph_minimum
-  ph_maximum
-  shade_tolerance
-  root_depth_minimum{
-    inches
-  }
-}
-flower{
-  color
-}
+                plantDetail(slug: $slug) {
+                  slug
+                  common_name
+                  id
+                  main_species {
+                    growth {
+                      precipitation_minimum {
+                        inches
+                      }
+                      precipitation_maximum {
+                        inches
+                      }
+                      ph_minimum
+                      ph_maximum
+                      shade_tolerance
+                      root_depth_minimum {
+                        inches
+                      }
+                    }
+                    flower {
+                      color
+                    }
 
-  image_url
-duration
-              }
-            }`,
-            variables:{slug: slug},
-          });
-          console.log(response)
-          commit('setPlant', response.data)
-       },
+                    image_url
+                    duration
+                  }
+                }
+                `,
+      variables: {
+        slug: slug
+      },
+    });
+    console.log(response)
+    commit('setPlant', response.data)
+  },
 
- async fetchRandomPlant({commit}, slug){
-   const response = await graphqlClient.query({
- query: gql`
+  async fetchRandomPlant({
+    commit
+  }, slug) {
+    const response = await graphqlClient.query({
+      query: gql `
    query PlantDetail($slug: String!) {
      plantDetail(slug: $slug) {
        slug
-common_name
-id
-main_species {
-growth{
-precipitation_minimum{
-inches
-}
-precipitation_maximum{
-inches
-}
-ph_minimum
-ph_maximum
-shade_tolerance
-root_depth_minimum{
-inches
-}
-}
-flower{
-color
-}
-},
-image_url
-duration
+       common_name
+       id
+       main_species {
+         growth {
+           precipitation_minimum {
+             inches
+           }
+           precipitation_maximum {
+             inches
+           }
+           ph_minimum
+           ph_maximum
+           shade_tolerance
+           root_depth_minimum {
+             inches
+           }
+         }
+         flower {
+           color
+         }
+       },
+       image_url
+       duration
      }
-   }`,
-               variables:{slug: slug},
- });
+   }
+   `,
+      variables: {
+        slug: slug
+      },
+    });
 
-
-   commit('setRandomPlant', response.data.plantDetail)
-}
+    console.log(response.data.plantDetail)
+    commit('setRandomPlant', response.data.plantDetail)
+  }
 }
 
 
@@ -166,7 +183,7 @@ const mutations = {
   setPlantDetails: (state, gardenPlant) => (state.gardenPlant = gardenPlant)
 }
 
-export default{
+export default {
   state,
   getters,
   actions,

@@ -14,11 +14,10 @@ import MyGarden from '../components/Garden/MyGarden.vue'
 export default {
   name: "Garden",
 
-  data(){
-    return{
-    }
+  data() {
+    return {}
   },
-  components:{
+  components: {
     "my-garden": MyGarden,
 
   }

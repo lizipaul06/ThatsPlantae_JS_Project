@@ -1,11 +1,18 @@
-const {GraphQLObjectType,GraphQLString, GraphQLInt, GraphQLList} = require('graphql');
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLInt,
+  GraphQLList
+} = require('graphql');
 const GrowthType = require('./GrowthType')
 
 
 const FlowerType = new GraphQLObjectType({
   name: 'Flower',
-  fields: () =>({
-    color: { type: new GraphQLList(GraphQLString)  }
+  fields: () => ({
+    color: {
+      type: new GraphQLList(GraphQLString)
+    }
   })
 })
 
@@ -14,9 +21,13 @@ const FlowerType = new GraphQLObjectType({
 
 const MainSpeciesType = new GraphQLObjectType({
   name: 'MainSpecies',
-  fields: () =>({
-    growth: {type: GrowthType},
-    flower: {type: FlowerType}
+  fields: () => ({
+    growth: {
+      type: GrowthType
+    },
+    flower: {
+      type: FlowerType
+    }
   })
 })
 
