@@ -2,6 +2,8 @@ const axios = require('axios')
 const {GraphQLObjectType, GraphQLString, GraphQLInt,GraphQLNonNull, GraphQLList, GraphQLSchema} = require('graphql');
 const TOKEN = require("./token.js");
 const BASE_URL = "https://trefle.io/api/v1/plants"
+const PlantType = require('./Types/PlantType.js');
+const PlantDetailType = require('./Types/PlantDetailType.js');
 
 const InchesType = new GraphQLObjectType({
   name: 'inches',
@@ -21,28 +23,10 @@ const GrowthType = new GraphQLObjectType({
   })
 })
 
-const ColorType = new GraphQLObjectType({
-  name: 'Color',
-    fields: () =>({
-      colors: {type: GraphQLString}
-    })
-})
-
-const FlowerType = new GraphQLObjectType({
-  name: 'Flower',
-  fields: () =>({
-    color: { type: new GraphQLList(GraphQLString)  }
-  })
-})
 
 
-const MainSpeciesType = new GraphQLObjectType({
-  name: 'MainSpecies',
-  fields: () =>({
-    growth: {type: GrowthType},
-    flower: {type: FlowerType}
-  })
-})
+
+
 const UrlType = new GraphQLObjectType({
   name: 'Url',
   fields: () =>({
@@ -50,30 +34,8 @@ const UrlType = new GraphQLObjectType({
   })
 })
 
-const PlantType = new GraphQLObjectType({
-  name: 'Plant',
-  fields: () => (
-    {
-      common_name: {type: GraphQLString},
-      id: {type: GraphQLInt},
-      link: {type: GraphQLString},
-      family_common_name: {type: GraphQLString},
-            slug:{type: GraphQLString}
-    })
-})
 
-const PlantDetailType = new GraphQLObjectType({
-  name: 'PlantDetail',
-  fields: () => (
-    {
-      common_name: {type: GraphQLString},
-      id: {type: GraphQLInt},
-      main_species: {type: MainSpeciesType},
-          image_url: {type: GraphQLString},
-      duration: {type: GraphQLString},
-      slug:{type: GraphQLString}
-    })
-})
+
 
 
 

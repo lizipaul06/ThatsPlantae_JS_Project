@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import router from './router'
 import store from './store';
+import { createProvider } from './vue-apollo'
 
 
 // Install BootstrapVue
@@ -25,6 +26,6 @@ new Vue({
   el: '#app',
   router,
   store,
+  apolloProvider: createProvider(),
   render: h => h(App)
-
 }).$mount("#app");

@@ -37,7 +37,8 @@ export default {
     ...mapActions(['fetchPlants', 'fetchPlant']),
 
     setPlant(value){
-      let plant = this.fetchPlant(value.id)
+      console.log(value)
+      let plant = this.fetchPlant(value.slug)
       this.$store.commit('setPlant',plant)
     },
     capitalLetter: plantHelper.capitalLetter,
@@ -55,17 +56,7 @@ computed: {
          return this.$store.state
        },
 
-  sortedArray: function() {
-    function compare(a, b) {
-      if (a.common_name < b.common_name)
-        return -1;
-      if (a.common_name > b.common_name)
-        return 1;
-      return 0;
-    }
 
-    return this.plantData.sort(compare);
-  }
 },
 created(){
   this.fetchPlants()
