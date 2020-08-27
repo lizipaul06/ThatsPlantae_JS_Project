@@ -42,6 +42,7 @@ export default {
 
   },
   created() {
+    this.fetchGardenPlants()
   },
   computed: {
     ...mapGetters(['ownedGardenPlants']),

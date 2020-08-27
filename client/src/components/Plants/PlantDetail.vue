@@ -11,22 +11,22 @@
        header-text-variant="cardHeader"
       >
 
-        <h4 class="cardHeader">{{capitalLetter(selectedPlant.common_name)}}</h4>
+        <h4 class="cardHeader">{{capitalLetter(selectedPlant.commonName)}}</h4>
 
       <b-card-body>
     <b-card-text>
-        <p> Scientific Name: {{capitalLetter(selectedPlant.scientific_name)}} </p>
-        <p>Family: {{selectedPlant.family_common_name}}</p>
+        <p> Scientific Name: {{capitalLetter(selectedPlant.scientificName)}} </p>
+        <p>Family: {{selectedPlant.familyCommonName}}</p>
         <p>Growing Requirements</p>
         <!-- <p v-if="selectedPlant.main_species.growth.precipitation_minimum.inches && selectedPlant.main_species.growth.precipitation_maximum.inches">Annual Rainfall: {{selectedPlant.main_species.growth.precipitation_minimum.inches}}in - {{selectedPlant.main_species.growth.precipitation_maximum.inches}}in</p> -->
 
-        <p>Soil ph: {{selectedPlant.main_species.growth.ph_minimum}} - {{selectedPlant.main_species.growth.ph_maximum}}</p>
+        <p>Soil ph: {{selectedPlant.mainSpecies.growth.phMinimum}} - {{selectedPlant.mainSpecies.growth.phMaximum}}</p>
         <!-- <p>Minimum Temperature: {{selectedPlant.main_species.growth.temperature_minimum.deg_c.toFixed(2)}}°c</p> -->
-      <p>Shade Tolerance: {{selectedPlant.main_species.growth.shade_tolerance}}</p>
+      <p>Shade Tolerance: {{selectedPlant.mainSpecies.growth.shadeTolerance}}</p>
         <!-- <p>Root Depth: {{selectedPlant.main_species.growth.root_depth_minimum.inches}}in</p> -->
-        <div v-if="selectedPlant.main_species.flower.color != null">
+        <div v-if="selectedPlant.mainSpecies.flower.color != null">
             <p>Flower Colors: </p>
-          <div v-for="color in selectedPlant.main_species.flower.color">
+          <div v-for="color in selectedPlant.mainSpecies.flower.color">
           <p>{{color}}</p>
         </div>
         </div>
@@ -38,8 +38,8 @@
           </b-card-body>
           </b-card>
       </b-col>
-             <b-col v-if="selectedPlant.image_url">
-      <img :src="selectedPlant.image_url" width="200" height="200" alt="plant"  class="d-block img-fluid w-100"
+             <b-col v-if="selectedPlant.imageUrl">
+      <img :src="selectedPlant.imageUrl" width="200" height="200" alt="plant"  class="d-block img-fluid w-100"
       >
         </b-col>
       <!-- <b-col v-if="selectedPlant.image_url">
@@ -98,21 +98,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['fetchPlant', 'updatePlantOwned', 'fetchGardenPlants']),
+    ...mapActions(['fetchPlant', 'updatePlantOwned', 'fetchGardenPlants','updatePlantWished']),
     onSlideStart: plantHelper.onSlideStart,
     onSlideEnd: plantHelper.onSlideEnd,
     capitalLetter: plantHelper.capitalLetter,
     addToMyGarden(selectedPlant) {
       selectedPlant = this.fetchPlant(selectedPlant.slug)
       selectedPlant.owned = true;
-      selectedPlant._id = selectedPlant
       this.updatePlantOwned(selectedPlant)
           this.fetchGardenPlants();
     },
-    addToWishList: function(selectedPlant) {
+    addToWishList(selectedPlant) {
+
+      // selectedPlant = this.fetchPlant(selectedPlant.slug)
       selectedPlant.owned = false;
-      console.log(selectedPlant)
-      this.updatePlantOwned(selectedPlant)
+        console.log(selectedPlant)
+      this.updatePlantWished(selectedPlant)
+          this.fetchGardenPlants();
     },
 
 

@@ -29,7 +29,7 @@ const actions = {
           query{
        plants{
         _id
-        common_name
+        commonName
         slug
       }
       }`,
@@ -40,44 +40,48 @@ const actions = {
   async fetchPlant({
     commit
   }, slug) {
+   console.log(slug)
     const response = await graphqlClient.query({
       query: gql `
       query plantDetail($slug: String!) {
         plantDetail(slug: $slug) {
           slug
-          common_name
+          commonName
           _id
-          scientific_name
-          family_common_name
-          main_species {
+          familyCommonName
+          scientificName
+          imageUrl
+          duration
+          mainSpecies {
             growth {
-              precipitation_minimum {
+              precipitationMinimum {
                 inches
               }
-              precipitation_maximum {
+              precipitationMaximum {
                 inches
               }
-              ph_minimum
-              ph_maximum
-              shade_tolerance
-              root_depth_minimum {
+              phMinimum
+              phMaximum
+              shadeTolerance
+              rootDepthMinimum {
                 inches
               }
             }
             flower {
               color
             }
-          },
-          image_url
-          duration
+
+
+
+          }
+          }
         }
-      }
       `,
       variables: {
         slug: slug
       },
     });
-    console.log(response.data.plantDetail)
+    console.log(response)
     commit('setPlant', response.data.plantDetail)
   },
 
@@ -96,22 +100,24 @@ const actions = {
             query plantDetail($slug: String!) {
                 plantDetail(slug: $slug) {
                   slug
-                  common_name
+                  commonName
                   _id
-                  family_common_name
-                    scientific_name
-                  main_species {
+                  familyCommonName
+                  scientificName
+                  imageUrl
+                  duration
+                  mainSpecies {
                     growth {
-                      precipitation_minimum {
+                      precipitationMinimum {
                         inches
                       }
-                      precipitation_maximum {
+                      precipitationMaximum {
                         inches
                       }
-                      ph_minimum
-                      ph_maximum
-                      shade_tolerance
-                      root_depth_minimum {
+                      phMinimum
+                      phMaximum
+                      shadeTolerance
+                      rootDepthMinimum {
                         inches
                       }
                     }
@@ -119,10 +125,11 @@ const actions = {
                       color
                     }
 
-                    image_url
-                    duration
+
+
                   }
                 }
+              }
                 `,
       variables: {
         slug: slug
@@ -140,9 +147,9 @@ const actions = {
    query plantDetail($slug: String!) {
      plantDetail(slug: $slug) {
        slug
-       common_name
+       commonName
        _id
-       image_url
+       imageUrl
      }
    }
    `,

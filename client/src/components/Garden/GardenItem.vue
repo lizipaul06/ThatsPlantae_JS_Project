@@ -1,9 +1,9 @@
 <template lang="html">
   <div >
-    <div v-if="gardenItem.image_url">
+    <div v-if="gardenItem.imageUrl">
       <!-- If the plant has more than one image, just show the first one -->
       <b-card
-      :img-src="gardenItem.image_url"
+      :img-src="gardenItem.imageUrl"
       img-alt="a plant"
       img-top
       style="max-width: 20rem;"
@@ -13,11 +13,11 @@
       align="center"
       >
       <template v-slot:header>
-        <h4 class="cardHeader">{{capitalLetter(gardenItem.common_name)}}</h4>
+        <h4 class="cardHeader">{{capitalLetter(gardenItem.commonName)}}</h4>
       </template>
       <b-card-body>
         <b-card-text  >
-          <p  v-if="gardenItem.scientific_name" class="font-italic">  Scientific Name: {{capitalLetter(gardenItem.scientific_name)}} </p>
+          <p  v-if="gardenItem.scientificName" class="font-italic">  Scientific Name: {{capitalLetter(gardenItem.scientificName)}} </p>
           <div v-if="gardenItem.mood">
             Today my plant: {{gardenItem.mood}}
           </div>
@@ -117,7 +117,7 @@ export default {
 
 
       this.deletePlant(gardenItem._id)
-              this.fetchGardenPlants();
+      this.fetchGardenPlants();
     },
 
     handleChange() {
@@ -125,11 +125,11 @@ export default {
       this.gardenItem.mood = this.mood
       console.log(this.gardenItem)
       this.updatePlantStatus(this.gardenItem)
-          this.fetchGardenPlants();
+      this.fetchGardenPlants();
     },
     getToDetails() {
-
-      this.fetchPlant( this.gardenItem.slug)
+      console.log(this.gardenItem)
+      this.fetchPlant(this.gardenItem.slug)
 
     },
     capitalLetter: plantHelper.capitalLetter

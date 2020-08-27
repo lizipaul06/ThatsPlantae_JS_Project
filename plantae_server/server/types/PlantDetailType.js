@@ -11,8 +11,10 @@ const MainSpeciesType = require('./MainSpeciesType');
 const PlantDetailType = new GraphQLObjectType({
   name: 'PlantDetail',
   fields: () => ({
-    common_name: {
-      type: GraphQLString
+    commonName: {
+      type: GraphQLString,
+      resolve:
+        ({common_name}) => common_name,
     },
     _id: {
       type: GraphQLInt,
@@ -20,17 +22,25 @@ const PlantDetailType = new GraphQLObjectType({
         ({id}) => id,
 
     },
-    family_common_name: {
-      type: GraphQLString
+    familyCommonName: {
+      type: GraphQLString,
+      resolve:
+        ({family_common_name}) => family_common_name,
     },
-    scientific_name: {
-      type: GraphQLString
+    scientificName: {
+      type: GraphQLString,
+      resolve:
+        ({scientific_name}) => scientific_name,
     },
-    main_species: {
-      type: MainSpeciesType
+    mainSpecies: {
+      type: MainSpeciesType,
+      resolve:
+        ({main_species}) => main_species,
     },
-    image_url: {
-      type: GraphQLString
+    imageUrl: {
+      type: GraphQLString,
+      resolve:
+        ({image_url}) => image_url
     },
     duration: {
       type: GraphQLString

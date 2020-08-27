@@ -15,23 +15,35 @@ const InchesType = new GraphQLObjectType({
 const GrowthType = new GraphQLObjectType({
   name: 'Growth',
   fields: () => ({
-    precipitation_minimum: {
-      type: InchesType
+    precipitationMinimum: {
+      type: InchesType,
+      resolve:
+        ({precipitation_minimum}) => precipitation_minimum,
     },
-    precipitation_maximum: {
-      type: InchesType
+    precipitationMaximum: {
+      type: InchesType,
+      resolve:
+        ({precipitation_maximum}) => precipitation_maximum,
     },
-    ph_minimum: {
-      type: GraphQLString
+    phMinimum: {
+      type: GraphQLString,
+      resolve:
+        ({ph_minimum}) => ph_minimum,
     },
-    ph_maximum: {
-      type: GraphQLString
+    phMaximum: {
+      type: GraphQLString,
+      resolve:
+        ({ph_maximum}) => ph_maximum,
     },
-    shade_tolerance: {
-      type: GraphQLString
+    shadeTolerance: {
+      type: GraphQLString,
+      resolve:
+        ({shade_tolerance}) => shade_tolerance,
     },
-    root_depth_minimum: {
-      type: InchesType
+    rootDepthMinimum: {
+      type: InchesType,
+      resolve:
+        ({root_depth_minimum}) => root_depth_minimum,
     },
   })
 })

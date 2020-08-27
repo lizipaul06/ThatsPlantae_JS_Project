@@ -1,7 +1,7 @@
 <template lang="html">
  <div v-if="allPlants">
    <v-select
-  label="common_name"
+  label="commonName"
       class="style-chooser"
   @input="setPlant"
   :options="allPlants"
@@ -48,7 +48,7 @@ export default {
     capitalLetter: plantHelper.capitalLetter,
     fuseSearch(options, search) {
       const fuse = new Fuse(options, {
-        keys: ['common_name', 'family_common_name'],
+        keys: ['commonName', 'familyCommonName'],
         shouldSort: true,
       });
       return search.length ? fuse.search(search) : fuse.list;

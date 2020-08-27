@@ -6,8 +6,10 @@ const {
 const PlantType = new GraphQLObjectType({
   name: 'Plant',
   fields: () => ({
-    common_name: {
-      type: GraphQLString
+    commonName: {
+      type: GraphQLString,
+      resolve:
+        ({common_name}) => common_name,
     },
     _id: {
       type: GraphQLInt,
@@ -17,8 +19,10 @@ const PlantType = new GraphQLObjectType({
     link: {
       type: GraphQLString
     },
-    family_common_name: {
-      type: GraphQLString
+    familyCommonName: {
+      type: GraphQLString,
+      resolve:
+        ({family_common_name}) => family_common_name,
     },
     slug: {
       type: GraphQLString

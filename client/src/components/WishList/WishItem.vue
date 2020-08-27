@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="plant">
     <b-card
-    :img-src="plant.images[0].url"
+    :img-src="plant.imageUrl"
     img-alt="a plant"
     img-top
     style="max-width: 20rem;"
@@ -10,15 +10,15 @@
     header-text-variant="cardHeader"
     >
     <template v-slot:header>
-      <h4 class="cardHeader">{{capitalLetter(plant.common_name)}}</h4>
+      <h4 class="cardHeader">{{capitalLetter(plant.commonName)}}</h4>
     </template>
     <b-card-body>
       <b-card-text >
-        <p  class="font-italic">  Scientific Name: {{capitalLetter(plant.scientific_name)}} </p>
+        <p  class="font-italic">  Scientific Name: {{capitalLetter(plant.scientificName)}} </p>
       </b-card-text>
       <b-button variant="outline-secondary"  v-on:click="getToDetails" >Plant Details</b-button>
       <b-button variant="outline-danger" v-on:click="deletePlant(plant._id)">Remove From WishList</b-button>
-      <b-button variant="outline-success" v-on:click="updateOwned">Add To Garden</b-button>
+      <b-button variant="outline-success" v-on:click="updateOwned(plant)">Add To Garden</b-button>
     </b-card-body>
 
   </b-card>
@@ -44,11 +44,17 @@ export default {
   props: ['plant'],
   methods: {
     ...mapActions(['deletePlant', 'fetchGardenPlants', 'updatePlant']),
-
-    updateOwned() {
+    updateOwned(plant) {
       this.plant.owned = true
       const updatedPlant = this.plant
-      this.updatePlant(updatedPlant)
+      this.updatePlantOwned(updatedPlant)
+
+    },
+    deletePlantItem(plant) {
+
+
+      this.deletePlant(plant._id)
+              this.fetchGardenPlants();
     },
     getToDetails() {
       this.$store.commit('setPlant', this.plant)

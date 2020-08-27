@@ -16,7 +16,7 @@ const getters = {
   },
   plantUrls: (state) => {
     let owned = state.gardenPlants.filter(plant => plant.owned)
-    return owned.map(plant => plant.image_url)
+    return owned.map(plant => plant.imageUrl)
 
   }
 
@@ -51,6 +51,22 @@ const actions = {
     })
 
     commit('addPlant', updatedPlant);
+  },
+  async updatePlantWished({
+    commit
+  }, updatedPlant) {
+    console.log(updatedPlant)
+
+
+   await axios.post(`http://localhost:3000/api/garden/${updatedPlant._id}`, {
+
+         ...updatedPlant,
+         _id: updatedPlant._id
+  })
+ 
+
+    commit('updatePlant', updatedPlant);
+
   },
   async deletePlant({
     commit
