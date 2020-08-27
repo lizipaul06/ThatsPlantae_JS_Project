@@ -14,8 +14,17 @@ const PlantDetailType = new GraphQLObjectType({
     common_name: {
       type: GraphQLString
     },
-    id: {
-      type: GraphQLInt
+    _id: {
+      type: GraphQLInt,
+      resolve:
+        ({id}) => id,
+
+    },
+    family_common_name: {
+      type: GraphQLString
+    },
+    scientific_name: {
+      type: GraphQLString
     },
     main_species: {
       type: MainSpeciesType

@@ -28,7 +28,7 @@ const actions = {
       query: gql `
           query{
        plants{
-        id
+        _id
         common_name
         slug
       }
@@ -42,11 +42,13 @@ const actions = {
   }, slug) {
     const response = await graphqlClient.query({
       query: gql `
-      query PlantDetail($slug: String!) {
+      query plantDetail($slug: String!) {
         plantDetail(slug: $slug) {
           slug
           common_name
-          id
+          _id
+          scientific_name
+          family_common_name
           main_species {
             growth {
               precipitation_minimum {
@@ -75,6 +77,7 @@ const actions = {
         slug: slug
       },
     });
+    console.log(response.data.plantDetail)
     commit('setPlant', response.data.plantDetail)
   },
 
@@ -82,6 +85,7 @@ const actions = {
   async fetchPlantDetailsGarden({
     commit
   }, slug) {
+    console.log(slug)
     const response = await graphqlClient.query({
       // It is important to not use the
       // ES6 template syntax for variables
@@ -89,11 +93,13 @@ const actions = {
       // because this would make it impossible
       // for Babel to optimize the code.
       query: gql `
-            query PlantDetail($slug: String!) {
+            query plantDetail($slug: String!) {
                 plantDetail(slug: $slug) {
                   slug
                   common_name
-                  id
+                  _id
+                  family_common_name
+                    scientific_name
                   main_species {
                     growth {
                       precipitation_minimum {
@@ -123,7 +129,7 @@ const actions = {
       },
     });
     console.log(response)
-    commit('setPlant', response.data)
+    commit('setPlantDetails', response.data.plantDetail)
   },
 
   async fetchRandomPlant({
@@ -131,32 +137,12 @@ const actions = {
   }, slug) {
     const response = await graphqlClient.query({
       query: gql `
-   query PlantDetail($slug: String!) {
+   query plantDetail($slug: String!) {
      plantDetail(slug: $slug) {
        slug
        common_name
-       id
-       main_species {
-         growth {
-           precipitation_minimum {
-             inches
-           }
-           precipitation_maximum {
-             inches
-           }
-           ph_minimum
-           ph_maximum
-           shade_tolerance
-           root_depth_minimum {
-             inches
-           }
-         }
-         flower {
-           color
-         }
-       },
+       _id
        image_url
-       duration
      }
    }
    `,

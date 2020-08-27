@@ -9,8 +9,10 @@ const PlantType = new GraphQLObjectType({
     common_name: {
       type: GraphQLString
     },
-    id: {
-      type: GraphQLInt
+    _id: {
+      type: GraphQLInt,
+      resolve:
+        ({id}) => id,
     },
     link: {
       type: GraphQLString

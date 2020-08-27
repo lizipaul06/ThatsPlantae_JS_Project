@@ -24,7 +24,8 @@ export default {
   created() {
 
     let image = new window.Image();
-    image.src = this.config.src.url;
+    image.src = this.config.src;
+
     image.onload = () => {
       // set image only when it is loaded
       this.image = image;

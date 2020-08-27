@@ -66,7 +66,7 @@ export default {
 
   },
   created() {
-
+    this.fetchPlants()
 
   },
   mounted() {

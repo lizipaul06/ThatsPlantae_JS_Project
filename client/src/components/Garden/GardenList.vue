@@ -27,9 +27,9 @@ export default {
   },
 
   mounted() {
-    console.log(this.ownedGardenPlants)
-    this.fetchGardenPlants();
 
+    this.fetchGardenPlants();
+    console.log(this.ownedGardenPlants)
     // this.owned();
     // when a plant from the list is added, push this to the myPlants array
 
@@ -42,7 +42,6 @@ export default {
 
   },
   created() {
-    this.fetchGardenPlants()
   },
   computed: {
     ...mapGetters(['ownedGardenPlants']),

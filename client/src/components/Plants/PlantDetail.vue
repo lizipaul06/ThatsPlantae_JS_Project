@@ -15,11 +15,11 @@
 
       <b-card-body>
     <b-card-text>
-        <!-- <p> Scientific Name: {{capitalLetter(selectedPlant.scientific_name)}} </p> -->
-        <!-- <p>Family: {{selectedPlant.family_common_name}}</p> -->
-        <!-- <p>Growing Requirements</p>
-        <p>Annual Rainfall: {{selectedPlant.main_species.growth.precipitation_minimum.inches}}in - {{selectedPlant.main_species.growth.precipitation_maximum.inches}}in</p>
-        -->
+        <p> Scientific Name: {{capitalLetter(selectedPlant.scientific_name)}} </p>
+        <p>Family: {{selectedPlant.family_common_name}}</p>
+        <p>Growing Requirements</p>
+        <!-- <p v-if="selectedPlant.main_species.growth.precipitation_minimum.inches && selectedPlant.main_species.growth.precipitation_maximum.inches">Annual Rainfall: {{selectedPlant.main_species.growth.precipitation_minimum.inches}}in - {{selectedPlant.main_species.growth.precipitation_maximum.inches}}in</p> -->
+
         <p>Soil ph: {{selectedPlant.main_species.growth.ph_minimum}} - {{selectedPlant.main_species.growth.ph_maximum}}</p>
         <!-- <p>Minimum Temperature: {{selectedPlant.main_species.growth.temperature_minimum.deg_c.toFixed(2)}}°c</p> -->
       <p>Shade Tolerance: {{selectedPlant.main_species.growth.shade_tolerance}}</p>
@@ -92,7 +92,7 @@ export default {
     return {
       slide: 0,
       sliding: null,
-
+     selectedplant: {}
 
 
     }
@@ -103,12 +103,11 @@ export default {
     onSlideEnd: plantHelper.onSlideEnd,
     capitalLetter: plantHelper.capitalLetter,
     addToMyGarden(selectedPlant) {
-      console.log(this.allPlants)
+      selectedPlant = this.fetchPlant(selectedPlant.slug)
       selectedPlant.owned = true;
-      console.log(this.selectedPlant)
-
+      selectedPlant._id = selectedPlant
       this.updatePlantOwned(selectedPlant)
-      this.fetchGardenPlants()
+          this.fetchGardenPlants();
     },
     addToWishList: function(selectedPlant) {
       selectedPlant.owned = false;
@@ -119,16 +118,10 @@ export default {
 
   },
   computed: {
+
     ...mapGetters(['selectedPlant', 'allPlants']),
 
-
-  },
-  created() {
-
-    this.fetchPlant()
-
-
-  },
+  }
   // mounted(){
   //   eventBus.$on('plant-selected', (plant) => {
   //     this.selectedPlant = plant

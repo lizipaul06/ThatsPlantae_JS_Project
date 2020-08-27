@@ -25,7 +25,7 @@ const createRouter = function(collection) {
     const id = req.params.id
     collection
       .findOne({
-        _id: ObjectID(id)
+        _id: id
       })
       .then((doc) => res.json(doc))
       .catch((err) => {
@@ -42,7 +42,7 @@ const createRouter = function(collection) {
     const id = req.params.id
     collection
       .deleteOne({
-        _id: ObjectID(id)
+        _id: id
       })
       .then((docs) => res.json(docs))
       .catch((err) => {
@@ -76,10 +76,9 @@ const createRouter = function(collection) {
   router.put('/:id', (req, res) => {
     const id = req.params.id;
     const updatedData = req.body;
-
     collection
       .findOneAndUpdate({
-        _id: ObjectID(id)
+        _id: id
       }, {
         $set: updatedData
       }, {
