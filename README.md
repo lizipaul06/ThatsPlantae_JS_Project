@@ -8,8 +8,6 @@ App uses front-end framework vue.js, an API using express with mongodb to store 
 * npm run serve </br>
 
 **Backend database**
-</br>
-- graphql server and express server connecting to mongodb
 * cd serve 
 * npm install 
 * npm run serve 
