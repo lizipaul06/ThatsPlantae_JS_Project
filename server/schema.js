@@ -36,12 +36,6 @@ const UrlType = new GraphQLObjectType({
 
 
 
-
-
-
-// XgX9f2jJkjLUOIZpht4FiqGeQ610go07jk_QV_nstwg
-//root query
-
 const RootQuery = new GraphQLObjectType({
   name: 'rootQueryName',
   fields:{
@@ -78,17 +72,9 @@ const getEntireUserList = async function(pageNo = 1) {
     return entireList
 
 }
-    //
-    //   return axios.get(`${BASE_URL}/${TOKEN}&page=1&complete_data=true&page_size=1953`)
-    //   .then( res => res.data.data);
-    // }
+
   },
-//trefle.io/api/v1/plants/XgX9f2jJkjLUOIZpht4FiqGeQ610go07jk_QV_nstwg&page=1&complete_data=true&page_size=1953
-  //
-  // plant: {
-  //    type: PlantType,
-  //    description: 'One plant',
-  //  },
+
    plantDetail:{
      type: PlantDetailType,
      args: {
