@@ -7,8 +7,8 @@ Front-end server
 * npm run serve </br>
 
 Backend database
-* cd plantae_server
-* npm run server:dev <br/>
+* npm run serve 
+- starts graphql server and express server connecting to mongodb
 
 Proxy server
 * cd server
