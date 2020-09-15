@@ -12,4 +12,6 @@ App uses front-end framework vue.js, an API using express with mongodb to store 
 * npm install 
 * npm run serve 
 
-
+## Develoymet
+Currently deployed on the Vercel
+https://plantae-client.lizipaul06.vercel.app/#/
