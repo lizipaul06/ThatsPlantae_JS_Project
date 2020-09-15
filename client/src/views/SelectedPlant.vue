@@ -5,11 +5,8 @@
 </template>
 
 <script>
-import {
-  eventBus
-} from '../main.js';
+
 import PlantDetail from '../components/Plants/PlantDetail';
-import PlantService from '../services/PlantService.js';
 
 export default {
   name: 'selectedPlant',

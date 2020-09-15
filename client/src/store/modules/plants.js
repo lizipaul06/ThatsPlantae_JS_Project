@@ -1,6 +1,4 @@
-import axios from 'axios';
 import gql from 'graphql-tag';
-
 import graphqlClient from '../../utils/graphql';
 
 const state = {
@@ -40,7 +38,6 @@ const actions = {
   async fetchPlant({
     commit
   }, slug) {
-   console.log(slug)
     const response = await graphqlClient.query({
       query: gql `
       query plantDetail($slug: String!) {
@@ -81,7 +78,6 @@ const actions = {
         slug: slug
       },
     });
-    console.log(response)
     commit('setPlant', response.data.plantDetail)
   },
 
@@ -89,13 +85,8 @@ const actions = {
   async fetchPlantDetailsGarden({
     commit
   }, slug) {
-    console.log(slug)
     const response = await graphqlClient.query({
-      // It is important to not use the
-      // ES6 template syntax for variables
-      // directly inside the `gql` query,
-      // because this would make it impossible
-      // for Babel to optimize the code.
+
       query: gql `
             query plantDetail($slug: String!) {
                 plantDetail(slug: $slug) {
@@ -135,7 +126,6 @@ const actions = {
         slug: slug
       },
     });
-    console.log(response)
     commit('setPlantDetails', response.data.plantDetail)
   },
 
@@ -157,8 +147,6 @@ const actions = {
         slug: slug
       },
     });
-
-    console.log(response.data.plantDetail)
     commit('setRandomPlant', response.data.plantDetail)
   }
 }

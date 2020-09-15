@@ -8,10 +8,7 @@
 </template>
 
 <script>
-import {
-  eventBus
-} from '../../main.js';
-import PlantService from '../../services/PlantService.js';
+
 import GardenItem from './GardenItem.vue'
 import {
   mapGetters,
@@ -29,7 +26,6 @@ export default {
   mounted() {
 
     this.fetchGardenPlants();
-    console.log(this.ownedGardenPlants)
     // this.owned();
     // when a plant from the list is added, push this to the myPlants array
 

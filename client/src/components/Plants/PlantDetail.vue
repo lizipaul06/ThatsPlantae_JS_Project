@@ -1,4 +1,4 @@
-å<template lang="html">
+<template lang="html">
   <b-container v-if="selectedPlant">
 
     <b-row>
@@ -26,7 +26,7 @@
         <!-- <p>Root Depth: {{selectedPlant.main_species.growth.root_depth_minimum.inches}}in</p> -->
         <div v-if="selectedPlant.mainSpecies.flower.color != null">
             <p>Flower Colors: </p>
-          <div v-for="color in selectedPlant.mainSpecies.flower.color">
+          <div v-for="color in selectedPlant.mainSpecies.flower.color" v-bind:key="color">
           <p>{{color}}</p>
         </div>
         </div>
@@ -75,15 +75,10 @@
 </template>
 
 <script>
-import {
-  eventBus
-} from '../../main.js'
-import PlantService from '../../services/PlantService.js'
 import plantHelper from '../../helpers.js'
 import {
   mapGetters,
-  mapActions,
-  mapMutations
+  mapActions
 } from 'vuex';
 
 export default {
@@ -112,7 +107,6 @@ export default {
 
       // selectedPlant = this.fetchPlant(selectedPlant.slug)
       selectedPlant.owned = false;
-        console.log(selectedPlant)
       this.updatePlantWished(selectedPlant)
           this.fetchGardenPlants();
     },

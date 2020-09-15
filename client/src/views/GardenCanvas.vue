@@ -13,7 +13,6 @@ export default {
     }
   },
   components: {
-    "canvas-component": Canvas,
     "garden-container": GardenContainer
   }
 }

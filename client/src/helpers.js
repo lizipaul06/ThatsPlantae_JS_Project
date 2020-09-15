@@ -1,8 +1,8 @@
-module.exports = {
-  onSlideStart(slide) {
+let plantHelper = {
+  onSlideStart() {
     this.sliding = true
   },
-  onSlideEnd(slide) {
+  onSlideEnd() {
     this.sliding = false
   },
   capitalLetter(str) {
@@ -15,3 +15,5 @@ module.exports = {
     return str.join(" ");
   }
 }
+
+export default plantHelper

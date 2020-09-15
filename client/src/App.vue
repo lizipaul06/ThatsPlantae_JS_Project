@@ -24,17 +24,15 @@
 
   </div>
 
-</div>
+
 
 
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import PlantService from './services/PlantService.js';
-import { eventBus } from './main.js';
+// import { eventBus } from './main.js';
 
-import Home from './views/Home';
 import PlantList from './components/Plants/PlantList';
 require('@/assets/css/coreStyles.scss')
 
@@ -49,7 +47,6 @@ export default {
     }
   },
   components: {
-    "home": Home,
     "plant-list": PlantList,
   },
   methods:{
@@ -73,9 +70,9 @@ export default {
 
   watch:{
 
-    randomPlant(){
-      eventBus.$emit('random-plant', this.randomPlant)
-    }
+    // randomPlant(){
+    //   eventBus.$emit('random-plant', this.randomPlant)
+    // }
 
 
   }

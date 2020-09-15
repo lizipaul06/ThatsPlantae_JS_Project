@@ -18,7 +18,7 @@
       </b-card-text>
       <b-button variant="outline-secondary"  v-on:click="getToDetails" >Plant Details</b-button>
       <b-button variant="outline-danger" v-on:click="deletePlant(plant._id)">Remove From WishList</b-button>
-      <b-button variant="outline-success" v-on:click="updateOwned(plant)">Add To Garden</b-button>
+      <b-button variant="outline-success" v-on:click="updateOwned()">Add To Garden</b-button>
     </b-card-body>
 
   </b-card>
@@ -30,21 +30,15 @@
 </template>
 
 <script>
-import PlantService from '../../services/PlantService.js';
-import {
-  eventBus
-} from '../../main.js';
 import plantHelper from '../../helpers.js'
 import {
-  mapGetters,
   mapActions
 } from 'vuex';
 export default {
   name: "wish-item",
-  props: ['plant'],
   methods: {
     ...mapActions(['deletePlant', 'fetchGardenPlants', 'updatePlant']),
-    updateOwned(plant) {
+    updateOwned() {
       this.plant.owned = true
       const updatedPlant = this.plant
       this.updatePlantOwned(updatedPlant)

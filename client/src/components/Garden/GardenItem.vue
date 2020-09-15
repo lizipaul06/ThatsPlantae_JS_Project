@@ -23,7 +23,7 @@
           </div>
         </b-card-text>
         <div class="">
-          <b-form-select  id="mood" for="mood" v-on:change="handleChange" text="Update plant status to:"v-model="mood" class="mb-3"
+          <b-form-select  id="mood" for="mood" v-on:change="handleChange" text="Update plant status to:" v-model="mood" class="mb-3"
           :options="options">
 
         </b-form-select>
@@ -39,17 +39,12 @@
 </div>
 
 
-</div>
+
 </template>
 
 <script>
 import plantHelper from '../../helpers.js'
-import PlantService from '../../services/PlantService.js';
 import {
-  eventBus
-} from '../../main.js';
-import {
-  mapGetters,
   mapActions
 } from 'vuex';
 export default {
@@ -123,12 +118,10 @@ export default {
     handleChange() {
 
       this.gardenItem.mood = this.mood
-      console.log(this.gardenItem)
       this.updatePlantStatus(this.gardenItem)
       this.fetchGardenPlants();
     },
     getToDetails() {
-      console.log(this.gardenItem)
       this.fetchPlant(this.gardenItem.slug)
 
     },

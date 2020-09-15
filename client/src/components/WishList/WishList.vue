@@ -5,10 +5,7 @@
 </template>
 
 <script>
-import {
-  eventBus
-} from '../../main.js';
-import PlantService from '../../services/PlantService.js';
+
 import WishItem from './WishItem.vue';
 import {
   mapGetters,

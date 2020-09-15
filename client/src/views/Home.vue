@@ -13,10 +13,7 @@
 </template>
 
 <script>
-import PlantService from '../services/PlantService.js';
-import {
-  eventBus
-} from '../main.js';
+
 import RandomPlant from '../components/RandomPlant';
 
 
@@ -35,14 +32,13 @@ export default {
 
   },
 
-  mounted() {
-    eventBus.$on('random-plant', (plant) => this.randomPlant = plant)
-    eventBus.$on('plant-selected', (plant) => {
-      this.selectedPlant = plant
-      PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
-    });
+  // mounted() {
+  //   eventBus.$on('random-plant', (plant) => this.randomPlant = plant)
+  //   eventBus.$on('plant-selected', (plant) => {
+  //     this.selectedPlant = plant
+  //     PlantService.getPlant(this.selectedPlant.id).then(res => this.plantDetailed = res)
+  //   });
 
-  },
   watch: {
 
     plantDetailed() {

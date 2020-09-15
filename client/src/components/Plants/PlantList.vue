@@ -15,9 +15,6 @@
 
 <script>
 import Fuse from 'fuse.js';
-import {
-  eventBus
-} from '../../main.js'
 import plantHelper from '../../helpers.js'
 import {
   mapGetters,
@@ -41,7 +38,6 @@ export default {
     ...mapActions(['fetchPlants', 'fetchPlant']),
 
     setPlant(value) {
-      console.log(value)
       let plant = this.fetchPlant(value.slug)
       this.$store.commit('setPlant', plant)
     },
